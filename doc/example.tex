@@ -1,0 +1,62 @@
+\documentclass[degree=doctor]{ahuthesis}
+  % 学位 degree:
+  %  doctor | master | bachelor | postdoc
+  % 学位类型 degree-type:
+  %  academic (默认) | professional
+  % 语言 language
+  %  chinese (默认) | english
+  % 字体库 fontset
+  %  windows | mac | ubuntu
+  % 超链接的彩色模式: 
+  % nocolor
+  % 建议终版使用 Windows 平台的字体编译
+
+% 论文基本配置, 加载宏包等全局配置
+\input{ahusetup}
+
+\begin{document}
+% 封面 (博士/硕士的封面是否显示. 如果不需要封面可将此命令注释掉)
+\makecover
+% 封面
+\maketitle
+
+% 使用授权的说明
+\copyrightpage
+% 将签字扫描后授权文件 scan-copyright.pdf 替换原始页面
+% \copyrightpage[file=scan-copyright.pdf]
+
+\frontmatter
+\input{chapters/abstract}
+
+% 目录
+\tableofcontents
+
+% 插图和附表清单
+% 本科生的插图索引和表格索引需要移至正文之后、参考文献前
+% \listoffiguresandtables  % 插图和附表清单(仅限研究生)
+\listoffigures           % 插图清单
+\listoftables            % 附表清单
+
+% 符号对照表
+\input{chapters/denotation}
+
+% 正文部分
+\mainmatter
+\input{chapters/chap01}
+\input{chapters/chap02}
+\input{chapters/chap03}
+
+% 其他部分
+\backmatter
+
+% 参考文献
+\bibliography{refs}        % 参考文献使用 BibTeX 编译
+
+% 附录
+\appendix
+\input{chapters/appendix}
+% 致谢
+\input{chapters/acknowledgements}
+% 在学期间完成的相关学术成果
+\input{chapters/resume}
+\end{document}

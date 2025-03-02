@@ -1,0 +1,130 @@
+% !TeX root = ./ahuthesis-example.tex
+
+% 论文基本信息配置
+
+\ahusetup{
+  %******************************
+  % 注意:
+  %   1. 配置里面不要出现空行
+  %   2. 不需要的配置信息可以删除
+  %   3. 建议先阅读文档中所有关于选项的说明
+  %******************************
+  %
+  % 输出格式
+  %   选择打印版 (print) 或用于提交的电子版 (electronic), 前者会插入空白页以便直接双面打印
+  %
+  output = print,
+  %
+  % 标题 (可使用“\\”命令手动控制换行)
+  %
+  title  = {安徽大学学位论文 \LaTeX{} 模板使用示例文档 v\version},
+  title* = {An Introduction to \LaTeX{} Thesis Template of Anhui
+            University v\version},
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%% 博士学位论文信息填写 %%%%%%%%%%%%%%%%%%%%%%%%%%%
+  clc              = {O157.5},                % 中图分类号
+  degree-category  = {理学博士},
+  degree-category* = {Doctor of Philosophy},
+  %
+  department = {数学科学学院},                 % 培养单位(填写所属院系的全名)
+  discipline  = {数学},                       % 一级学科(中文)
+  discipline* = {Mathematics},               % 一级学科(英文)
+  sub-discipline = {基础数学},                % 二级学科
+  author  = {作者姓名},                       % 作者姓名(中文)
+  author* = {Name},                          % 作者姓名(英文)
+  student-id = {A20614045},                  % 学号
+  supervisor  = {xxx},                       % 指导教师(中文姓名和职称之间以英文逗号“,”分开, 下同)
+  supervisor* = {xxx},
+  professional-rank = {教授},                % 指导教师的职称
+  % 提名页信息填写
+  start-date = {2015-09-01},                % 学习开始日期
+  end-date   = {2019-02-01},                % 学习结束日期
+  date       = {2019-06-01},                % 论文提交日期
+  defense-date = {2019-05-01},              % 论文答辩日期
+  % 是否在中文封面后的空白页生成书脊(默认 false)
+  include-spine = true,
+  spine-date = {2025},
+  %
+  % 
+  %%%%%%%%%%%%%%%%%%%%%%%%%%% 硕士信息填写 %%%%%%%%%%%%%%%%%%%%%%%%%%%
+  % clc              = {O157.5},                % 中图分类号
+  % degree-category  = {理学硕士},
+  % degree-category* = {Doctor of Philosophy},
+  % %
+  % department = {数学科学学院},                 % 培养单位(填写所属院系的全名)
+  % discipline  = {数学},                       % 一级学科(中文)
+  % discipline* = {Mathematics},               % 一级学科(英文)
+  % sub-discipline = {基础数学},                % 二级学科
+  % author  = {作者姓名},                       % 作者姓名(中文)
+  % author* = {Name},                      % 作者姓名(英文)
+  % student-id = {A20614045},                  % 学号
+  % supervisor  = {xxx},                       % 指导教师(中文姓名和职称之间以英文逗号“,”分开, 下同)
+  % supervisor* = {xxx},
+  % professional-rank = {教授},                % 指导教师的职称
+  % % 提名页信息填写
+  % start-date = {2015-09-01},                % 学习开始日期
+  % end-date   = {2019-02-01},                % 学习结束日期
+  % date       = {2019-06-01},                % 论文提交日期
+  % defense-date = {2019-05-01},              % 论文答辩日期
+  % % 是否在中文封面后的空白页生成书脊(默认 false)
+  % include-spine = true,
+  % spine-date = {2025},
+  %
+  %
+  %%%%%%%%%%%%%%%%%%%%%%%%%%% 博士后出站报告信息填写 %%%%%%%%%%%%%%%%%%%%%%%%%%%
+  %
+  % clc            = {O157.5},           % 中图分类号
+  % udc            = {UDC},
+  % id             = {编号},
+  % discipline     = {一级学科},          % 流动站(一级学科)名称
+  % sub-discipline = {二级学科},          % 专业(二级学科)名称
+  % start-date     = {2011-07-01},       % 研究工作起始时间
+}
+  %
+  % 
+%%%%%%%%%%%%%%%%%%%%%%%%%%% 载入所需的宏包 %%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 定理类环境宏包
+\usepackage{amsthm}
+% 也可以使用 ntheorem
+% \usepackage[amsmath,thmmarks,hyperref]{ntheorem}
+
+\ahusetup{
+  % 数学字体
+  math-font  = newcm,  % xits | newcm
+  cite-style = super
+}
+
+% 表格加脚注
+\usepackage{threeparttable}
+
+% 跨页表格
+\usepackage{longtable}
+
+% 算法
+\usepackage{algorithm}
+\usepackage{algorithmic}
+
+% 量和单位
+\usepackage{siunitx}
+
+% 参考文献使用 BibTeX + natbib 宏包
+% 顺序编码制
+\usepackage[sort]{natbib}
+\bibliographystyle{ahuthesis-numeric}
+
+% 著者-出版年制
+% \usepackage{natbib}
+% \bibliographystyle{ahuthesis-author-year}
+
+% 定义所有的图片文件在 figures 子目录下
+\graphicspath{{figures/}}
+
+% 数学命令
+\makeatletter
+\newcommand\dif{%  % 微分符号
+  \mathop{}\!\mathrm{d}%
+}
+\makeatother
+
+% hyperref 宏包在最后调用
+\usepackage{hyperref}

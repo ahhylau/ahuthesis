@@ -1,0 +1,5349 @@
+% \iffalse meta-comment
+%
+% Copyright (C) 2024-2025 by ahhylau <liu@ahu.edu.cn>
+%
+% This work may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License, either version 1.3c
+% of this license or (at your option) any later version.
+% The latest version of this license is in
+%    https://www.latex-project.org/lppl.txt
+% and version 1.3c or later is part of all distributions of LaTeX
+% version 2008 or later.
+%
+% \fi
+%
+% \iffalse
+%<*driver>
+\ProvidesFile{ahuthesis.dtx}[2025/03/01 1.0 Anhui University Thesis Template]
+\documentclass{ltxdoc}
+\usepackage{dtx-style}
+
+\EnableCrossrefs
+\CodelineIndex
+\RecordChanges
+
+\begin{document}
+  \DocInput{\jobname.dtx}
+\end{document}
+%</driver>
+% \fi
+%
+% \DoNotIndex{\newenvironment,\@bsphack,\@empty,\@esphack,\sfcode}
+% \DoNotIndex{\addtocounter,\label,\let,\linewidth,\newcounter}
+% \DoNotIndex{\noindent,\normalfont,\par,\parskip,\phantomsection}
+% \DoNotIndex{\providecommand,\ProvidesPackage,\refstepcounter}
+% \DoNotIndex{\RequirePackage,\setcounter,\setlength,\string,\strut}
+% \DoNotIndex{\textbackslash,\texttt,\ttfamily,\usepackage}
+% \DoNotIndex{\begin,\end,\begingroup,\endgroup,\par,\\}
+% \DoNotIndex{\if,\ifx,\ifdim,\ifnum,\ifcase,\else,\or,\fi}
+% \DoNotIndex{\let,\def,\xdef,\edef,\newcommand,\renewcommand}
+% \DoNotIndex{\expandafter,\csname,\endcsname,\relax,\protect}
+% \DoNotIndex{\Huge,\huge,\LARGE,\Large,\large,\normalsize}
+% \DoNotIndex{\small,\footnotesize,\scriptsize,\tiny}
+% \DoNotIndex{\normalfont,\bfseries,\slshape,\sffamily,\interlinepenalty}
+% \DoNotIndex{\textbf,\textit,\textsf,\textsc}
+% \DoNotIndex{\hfil,\par,\hskip,\vskip,\vspace,\quad}
+% \DoNotIndex{\centering,\raggedright,\ref}
+% \DoNotIndex{\c@secnumdepth,\@startsection,\@setfontsize}
+% \DoNotIndex{\ ,\@plus,\@minus,\p@,\z@,\@m,\@M,\@ne,\m@ne}
+% \DoNotIndex{\@@par,\DeclareOperation,\RequirePackage,\LoadClass}
+% \DoNotIndex{\AtBeginDocument,\AtEndDocument}
+%
+% \GetFileInfo{\jobname.dtx}
+%
+% \def\indexname{索引}
+% \IndexPrologue{\section{\indexname}}
+%
+%
+% \title{\bfseries\color[RGB]{61,65,119} \ahuthesis: 安徽大学学位论文模板}
+% \author{{\fangsong 刘乐乐}\\[5pt]\texttt{liu@ahu.edu.cn}}
+% \date{v\fileversion\ (\filedate)}
+% \maketitle\thispagestyle{empty}
+% \begin{center}
+%		\includegraphics[height=4.5cm]{logo.pdf}
+% \end{center}
+%
+% \begin{abstract}\noindent
+%  此项目旨在建立一个简单易用的安徽大学学位论文 \LaTeX{} 模板, 包括本科毕业论文(设计、创作)、硕士
+%  论文、博士论文以及博士后出站报告. 
+% \end{abstract}
+%
+% \vskip2cm
+% \def\abstractname{说明}
+% \begin{abstract}
+% \noindent
+% \begin{enumerate}
+% \item 本模板为作者根据安徽大学教务处发布的《本科毕业论文(设计、创作)撰写规范和写作模板》(2014 年版本)
+% 和研究生院发布的《研究生撰写学位论文的规定》的 Word 模板编写而成.
+% \item 目前, 本科毕业论文(设计、创作)暂不可用, 请勿使用. 后续会增加对本科毕业论文的支持.
+% \item \ahuthesis\ 为 Word 模板的 \LaTeX\ 实现, 不保证格式审查老师不提意见. 任何由于使用本模板而引起的论文
+% 格式审查问题均与本模板作者无关. 
+% \item 安徽大学研究生院对学位论文的格式细节并未做具体的要求, 因此, \ahuthesis\ 对部分
+% 细节做了设置, 使排版出来的论文尽可能的美观. 使用本模板前, 请认真阅读 \file{ahuthesis.pdf} 
+% 文件.
+% \item 本模板以清华大学学位论文模板 (ThuThesis) 为基础制作, 在此对 ThuThesis
+% 模板的开发和维护者表示感谢!
+% \item 本模板的发布遵守 \LaTeX\ Project Public License, 使用前请认真阅读协议内容.
+% \end{enumerate}
+% \end{abstract}
+%
+%
+% \clearpage
+% \pagestyle{fancy}
+% \begin{multicols}{2}[
+%   \setlength{\columnseprule}{.4pt}
+%   \setlength{\columnsep}{18pt}]
+%   \tableofcontents
+% \end{multicols}
+% \clearpage
+%
+% \section{模板介绍}
+% \ahuthesis{} (\textbf{A}n\textbf{h}ui \textbf{U}niversity \LaTeX{}
+% \textbf{Thesis} Template) 是安徽大学毕业论文的 \LaTeX{} 模板, 包括本科毕业论文(设计、创作)、硕士
+% 论文、博士论文以及博士后出站报告. 
+%
+% 本模板编写之初, 可以找到的安徽大学 \LaTeX{} 论文模板有以下这些:
+% \begin{itemize}
+% \item Monoceros393 编写的 AHUThesis 模板 (项目地址: \href{https://github.com/Monoceros393/AHUThesis}{AHUThesis}).
+% \item qxx 编写的安徽大学本科毕业论文的 \LaTeX{} 模板 (项目地址: \href{https://github.com/qxx/AHU_Thesis}{AHU\_Thesis}).
+% \end{itemize}
+% \vspace{1.5mm}
+%
+% 以上模板大都没有经过系统化的设计, 且已停止后续维护. 相比之下, 清华大学 thuthesis, 
+% 复旦大学 fduthesis, 中国科学技术大学 ustcthesis, 中国科学院大学 ucasthesis 以及
+% 上海交通大学 sjtuthesis 等学校的学位论文 \LaTeX{} 模板成熟稳定, 并已开发维护了数年.
+%
+% \ahuthesis{} 在充分借鉴已有优秀模板的基础上, 结合《安徽大学研究生撰写学位论文的规定》(2019 版), 
+% 进行设计, 力求合规、简洁, 易于实现. \ahuthesis{} 使用文学化编程 (Literate Programming), 
+% 利用 doc/DocStrip 将代码和说明文档混合编写, 便于以后的升级和维护.
+%
+% 本文档将尽量完整地介绍模板的使用方法, 如有不清楚之处, 或者想提出改进建议, 
+% 可以在 \href{https://github.com/ahhylau/ahuthesis/issues}{Github Issues}
+% 参与讨论或提问. 有兴趣者都可以参与完善此手册, 也欢迎对代码的贡献. 
+%
+% \note[注意: ]{模板的作用在于减少论文写作过程中格式调整的时间. 前提是遵守模板的
+% 用法, 否则即便用了 \ahuthesis{} 也难以保证输出的论文符合学校规范.}
+%
+%
+% \section{贡献者}
+% \label{sec:contributors}
+%
+% 目前, 安徽大学 \LaTeX{} 学位论文模板 \ahuthesis{} 由数学科学学院刘乐乐老师编写并维护.
+% 欢迎更多的老师和同学参与模板的后续维护! 
+%
+% \section{安装}
+% \label{sec:installation}
+%
+% 本模板用到的宏包比较多, 这些包在常见的 \TeX{} 发行版中都有, 按照操作系统的不同, 
+% 可以选择不同的 \TeX{} 发行版:
+% \begin{itemize}
+% \item Windows 和 Linux 用户, 推荐使用 \TeX{}Live.
+% \item Mac 用户, 推荐使用 Mac\TeX{}.
+% \end{itemize}
+%
+% 由于历史原因, 目前国内使用 C\TeX 套装的人还是很多. 然而, C\TeX 套装自从 2012 年后就不再更新了
+% \footnote{2022 年开始, C\TeX{}套装继续进行了更新维护.}, 已不能适应当前 \TeX{} 中文技术的发展
+% 许多宏包已经很老旧了. 因此本模板不再支持在 C\TeX 套装 (版本 v2.9.2 及之前的版本均无法使用). 
+% 
+%
+% \subsection{模板的组成}
+%
+% 下表列出了 \ahuthesis{} 的主要文件及其功能介绍: 
+%
+% \begin{longtable}{l|p{8cm}}
+% \toprule
+% {\heiti 文件 (夹) } & {\heiti 功能描述} \\ \midrule
+% \endfirsthead 
+% \midrule
+% {\heiti 文件 (夹) } & {\heiti 功能描述} \\ \midrule
+% \endhead
+% \endfoot
+% \endlastfoot
+% ahuthesis.ins & \textsc{DocStrip} 驱动文件 (开发用) \\
+% ahuthesis.dtx & \textsc{DocStrip} 源文件 (开发用) \\ \midrule
+% ahuthesis.cls & 模板类文件 \\
+% ahuthesis-*.bst & \hologo{BibTeX} 参考文献表样式文件 \\ \midrule
+% ahuthesis-example.tex & 示例文档主文件 \\
+% refs.bib & 参考文献 \\
+% chapters/ & 示例文档章节具体内容 \\
+% figures/ & 示例文档图片路径\\
+% ahusetup.tex & 示例文档基本配置 \\ \midrule
+% \textbf{ahuthesis.pdf} & 用户手册 (本文档) \\ \bottomrule
+% \end{longtable}
+%
+% 几点说明: 
+% \begin{itemize}
+% \item \file{ahuthesis.cls} 可由 \file{ahuthesis.ins}
+%   和 \file{ahuthesis.dtx} 生成, 但为了降低新手用户的使用难度, 故
+%   将 \file{ahuthesis.cls} 文件一起发布. 
+% \item 使用前阅读文档: \file{ahuthesis.pdf}. 
+% \end{itemize}
+%
+% \subsection{编译环境}
+% \label{sec:generate-thesis}
+% 本模板在 Windows 10 / Windows 11 和 \TeX Live 2024 下开发, 支持多种平台. 
+% 模板支持在 TeX Live、MacTeX 和 MiKTeX 平台下进行编译, 但要求 2017 年或更新的发行版. 
+% 当然, 尽可能使用最新的版本可以避免 bug. 
+%
+% 本模板使用 \texttt{ctex} 宏包进行中文字体的配置, 因此在不同操作系统下的兼容性有保证. 
+% 以下将介绍几种常见的生成论文的方法, 用户可根据自己的情况选择. 最简便的方法是使用 \LaTeX{} 
+% 编辑器 (推荐 TeXstudio 或 Visual Studio Code) 直接编译, 支持使用 \XeLaTeX\ 
+% (推荐)和 Lau\LaTeX 方式编译. 下面介绍在命令行下使用本模板生成论文的方法. 
+%
+%
+% \subsection{编译论文}
+% \label{sec:generate-thesis}
+%
+% 生成论文: 
+% \begin{shell}
+%   > xelatex ahuthesis-example.tex
+%   > bibtex ahuthesis-example.aux              # 生成 bbl 文件
+%   > bibtex ahuthesis-example-appendix.aux     # 附录的参考文献
+%   > xelatex ahuthesis-example.tex             # 解决引用
+%   > xelatex ahuthesis-example.tex             # 生成论文 PDF
+% \end{shell}
+%
+% 下面的命令用来生成用户手册: 
+% \begin{shell}
+%   > xelatex -shell-escape ahuthesis.dtx
+%   > makeindex -s gind.ist -o ahuthesis.ind ahuthesis.idx
+%   > xelatex -shell-escape ahuthesis.dtx
+%   > xelatex -shell-escape ahuthesis.dtx  # 生成说明文档 ahuthesis.pdf
+% \end{shell}
+%
+%
+% \section{使用说明}
+% \label{sec:usage}
+% 本手册假定用户已经能处理一般的 \LaTeX{} 文档, 并对 \hologo{BibTeX} 有一定了解. 如果
+% 从未接触过 \TeX{} 和 \LaTeX, 建议先学习相关的基础知识. 
+%
+% \subsection{示例文件}
+% \label{sec:userguide}
+%
+% 模板核心文件有: \file{ahuthesis.cls}, \file{ahuthesis-*.bst} (\hologo{BibTeX}), 
+% 但如果没有示例文档会较难下手, 所以推荐从模板自带的示例文档入手. 其中包括了论文
+% 写作用到的所有命令及其使用方法, 只需用自己的内容进行相应替换就可以. 对于不清
+% 楚的命令可以查阅本手册. 下面的例子描述了模板中章节的组织形式, 
+% 具体内容可以参考模板附带的 \file{ahuthesis-example.tex} 和 \file{chapters/}. 
+%
+% \lstinputlisting[style=lstStyleLaTeX]{example.tex}
+%
+% \subsection{论文选项}
+% \label{sec:option}
+%
+% \subsubsection{学位}
+% \DescribeOption{degree}
+% 选择学位, 可选: \option{bachelor}, \option{master}, \option{doctor}(默认), \option{postdoc}. 
+% 本节中的 \emph{key-value} 选项只能在文档类的选项中进行设置, 不能用于 \cs{ahusetup} 命令. 
+% \begin{latex}
+%   % 博士论文
+%   \documentclass[degree=doctor]{ahuthesis}
+% \end{latex}
+%
+% \subsubsection{学位类型}
+% \label{sec:degree-type}
+% \DescribeOption{degree-type}
+% 定义研究生学位的类型, 可选: \option{academic}(默认)、\option{professional}, 
+% 本科生不受影响. 
+% \begin{latex}
+%   \documentclass[degree=master, degree-type=professional]{ahuthesis}
+% \end{latex}
+%
+% \subsubsection{彩色模式}
+% \DescribeOption{nocolor}
+% 文字超链接不使用彩色 (默认关闭). 开启方法如下:
+% \begin{latex}
+% \documentclass[nocolor]{ahuthesis}
+% \end{latex}
+%
+% \subsubsection{字体配置}
+% \label{sec:font-config}
+% \DescribeOption{fontset}
+% 模板默认会自动根据操作系统配置合适的字体, 用户也可以通过 \option{fontset} 时指定使用预设的字库, 如: 
+% \begin{latex}
+%   \documentclass[fontset=windows]{ahuthesis}
+% \end{latex}
+% 允许的选项有 \option{windows}、\option{mac} 和 \option{ubuntu}, 具体使用的字体见表~\ref{tab:fontset}. 
+%
+% \begin{table}[htb]
+%   \centering
+%   \caption{\ahuthesis{} 预设的字体}
+%   \label{tab:fontset}
+%   \begin{tabular}{cccc}
+%     \toprule
+%     \option{windows} & \option{mac}    & \option{ubuntu} \\
+%     \midrule
+%     Times New Roman  & Times New Roman & TeX Gyre Termes \\
+%     Arial            & Arial           & TeX Gyre Heros  \\
+%     Courier          & Menlo           & TeX Gyre Cursor \\
+%     中易宋体         & 华文宋体        & 思源宋体          \\
+%     中易黑体         & 华文黑体        & 思源黑体          \\
+%     中易仿宋         & 华文仿宋        & Fandol 仿宋       \\
+%     中易楷体         & 华文楷体        & Fandol 楷体       \\
+%     \bottomrule
+%   \end{tabular}
+% \end{table}
+%
+% 需要注意, 建议用户在提交终版前使用 Windows 平台的字体进行编译. 
+% 这样中文字体同 Word 模板一致. 
+%
+% 关于字体的配置, 详见 \pkg{fontspec}、\pkg{xeCJK}、\pkg{ctex} 等宏包的使用说明和代码. 
+%
+% \DescribeOption{font}
+% 配置全文使用的西文字体. 所有可选项目为 \option{auto}(默认)、\option{times}、\option{termes}、
+% \option{xits}、\option{newcm}. 通常来说, 用户\textbf{不需要}调整此选项. 
+%
+% \DescribeOption{cjk-font}
+% 配置全文使用的中文字体. 所有可选项为 \option{auto}(默认)、\option{windows}、\option{windows-local}、
+% \option{mac}、\option{mac-word} 和 \option{noto}. 
+% 通常来说, 用户\textbf{不需要}调整此选项, 模板会自动通过 \option{fontset} 选项选择合适的字体. 
+%
+% \DescribeOption{windows-font-dir}
+% 配置搜索 Windows 字体的路径, 仅适用于 Overleaf 等不方便全局安装字体的环境. 如果此目录下能找到中易宋体, 
+% 则将自动使用这些字体编译. 如有可能, 始终建议全局安装相应字体, 模板能够自动检测. 
+%
+% \subsection{论文设置}
+% 论文的设置可以通过统一命令 \cs{ahusetup} 设置 \emph{key=value} 形式完成. 
+%
+% \DescribeMacro{\ahusetup}
+% \cs{ahusetup} 用法与常见 \emph{key=value} 命令相同, 如下: 
+% \begin{latex}
+%   \ahusetup{
+%     key1 = value1,
+%     key2 = {a value, with comma},
+%   }
+%   % 可以多次调用
+%   \ahusetup{
+%     key3 = value3,
+%     key1 = value11,  % 覆盖 value1
+%   }
+% \end{latex}
+%
+% \note[注意:]{\cs{ahusetup} 使用 \pkg{kvsetkeys} 机制, 所以配置项之间不能有空行, 否则会报错.}
+%
+% \subsubsection{输出格式}
+% \DescribeOption{output}
+% 选择输出的格式是打印版还是电子版(用于提交), 可选: \option{print}(默认)、\option{electronic}. 
+% 打印版 \option{print} 自动在单面打印的部分插入空白页(比如封面), 并且保证正文第 1 页在右侧. 
+% 电子版 \option{electronic} 选项会去掉空白页. 注意在不同选项下, 生成的声明页码很可能不同. 为了避免页码错误, 
+% \ahuthesis{}将会在插入扫描的 PDF 文件时自动生成页码, 因此\textbf{扫描声明页时请移除底部的页码}, 以防重叠. 
+%
+% \begin{latex}
+%   \ahusetup{
+%     output = electronic,
+%   }
+% \end{latex}
+%
+% \subsubsection{书写语言}
+% \DescribeOption{language}
+% 在导言区设置 \option{language} 会修改论文的主要语言, 如章节标题等. 
+% 在正文中设置 \option{language} 只修改接下来部分的书写语言, 
+% 如标点格式、图表名称, 但不影响章节标题等. 
+%
+% \begin{latex}
+%   \ahusetup{
+%     language = english,
+%   }
+% \end{latex}
+%
+%
+% \subsection{封面信息}
+% \label{sec:titlepage}
+% 封面信息可以通过统一设置命令 \cs{ahusetup} 设置 \emph{key=value} 形式完成; 
+% 带 * 号的键通常是对应的英文. 
+%
+% \subsubsection{论文标题}
+% 中英文标题. 可以在标题内部使用换行 |\\|. 
+% \begin{latex}
+%   \ahusetup{
+%     title  = {论文中文题目},
+%     title* = {Thesis English Title},
+%   }
+% \end{latex}
+%
+% \subsubsection{申请学位名称}
+% \label{sec:degree-category}
+% 学位名称的设置比较复杂, 见表~\ref{tab:degree-category}. 
+%
+% \begin{table}[h]
+%   \caption{学位名称的要求}
+%   \label{tab:degree-category}
+%   \begin{tabular}{p{2cm}p{6cm}p{6cm}}
+%     \toprule
+%     学位类型 & degree-category & degree-category* \\
+%     \midrule
+%     学术型博士 & 需注明所属的学科门类, 例如: 
+%         哲学、经济学、法学、教育学、文学、历史学、理学、工学、农学、医学、
+%         军事学、管理学、艺术学
+%       & Doctor of Philosophy \\
+%     \midrule
+%     学术型硕士 & 同上
+%       & 哲学、文学、历史学、法学、教育学、艺术学门类
+%         填写“Master of Arts“, 其它填写“Master of Science” \\
+%     \midrule
+%     专业型研究生学位 & 专业学位的名称, 例如: 教育博士、工程硕士
+%       & 专业学位的名称, 例如: Doctor of Education, Master of Engineering \\
+%     \midrule
+%     本科生 & - & - \\
+%     \bottomrule
+%   \end{tabular}
+% \end{table}
+%
+% \begin{latex}
+%   \ahusetup{
+%     degree-category  = {您要申请什么学位},
+%     degree-category* = {Degree in English},
+%   }
+% \end{latex}
+%
+% \subsubsection{院系名称}
+% 院系名称. 
+% \begin{latex}
+%   \ahusetup{
+%     department = {系名全称},
+%   }
+% \end{latex}
+%
+% \subsubsection{学科名称}
+%
+% \begin{latex}
+%   \ahusetup{
+%     discipline  = {一级学科名称},
+%     discipline* = {Discipline in English},
+%   }
+% \end{latex}
+%
+% \begin{latex}
+%   \ahusetup{
+%     sub-discipline  = {二级学科名称},
+%     sub-discipline* = {Discipline in English},
+%   }
+% \end{latex}
+%
+% \subsubsection{专业领域}
+%
+% 仅用于研究生专业型学位. 设置专业领域的专业学位类别, 填写相应专业领域名称.
+%
+% \begin{latex}
+%   \ahusetup{
+%     professional-field  = {专业领域},
+%     professional-field* = {Professional field},
+%   }
+% \end{latex}
+%
+%
+% \subsubsection{作者姓名}
+% 作者姓名. 
+% \begin{latex}
+%   \ahusetup{
+%     author  = {中文姓名},
+%     author* = {Name in Pinyin},
+%   }
+% \end{latex}
+%
+% \subsubsection{学号}
+% 学号, 仅用于论文编号. 
+% \begin{latex}
+%   \ahusetup{
+%     student-id  = {20000310000},
+%   }
+% \end{latex}
+%
+% \subsubsection{导师}
+% \myentry{导师}
+% 导师的姓名与职称之间以“,”(西文逗号)隔开, 下同. 
+% \begin{latex}
+%   \ahusetup{
+%     supervisor  = {导师姓名, 教授},
+%     supervisor* = {Professor Supervisor Name},
+%   }
+% \end{latex}
+%
+% \myentry{副导师}
+% 本科生的辅导教师, 硕士的副指导教师. 
+% \begin{latex}
+%   \ahusetup{
+%     associate-supervisor  = {副导师姓名, 副教授},
+%     associate-supervisor* = {Professor Assoc-Supervisor Name},
+%   }
+% \end{latex}
+%
+% \myentry{联合指导教师}
+% \begin{latex}
+%   \ahusetup{
+%     co-supervisor  = {联合指导教师姓名, 教授},
+%     co-supervisor* = {Professor Join-Supervisor Name},
+%   }
+% \end{latex}
+%
+% \myentry{指导教师职称}
+% 用于论文提名页中的信息.
+% \begin{latex}
+%   \ahusetup{
+%     professional-rank = {教授},
+%   }
+% \end{latex}
+%
+%
+% \subsubsection{日期}
+%
+% 论文提名页中的各种日期. 默认为当前日期, 也可以自己指定, 要求使用 ISO 格式. 
+% \begin{latex}
+%   \ahusetup{
+%     start-date   = {2015-09-01}, % 学习开始日期
+%     end-date     = {2019-02-01}, % 学习结束日期
+%     date         = {2019-06-01}, % 论文提交日期 
+%     defense-date = {2019-05-01}, % 论文答辩日期
+%   }
+% \end{latex}
+%
+% \subsubsection{密级}
+% \label{sec:setup-secret}
+% 定义秘密级别和年限. 
+% \begin{latex}
+%   \ahusetup{
+%     secret-year  = 10,
+%     secret-level = {秘密},
+%   }
+% \end{latex}
+%
+% \subsubsection{博士后参数}
+% \begin{latex}
+%   \ahusetup{
+%     clc            = {分类号},
+%     udc            = {udc},
+%     id             = {id},
+%     discipline     = {流动站(一级学科)名称},
+%     sub-discipline = {专业(二级学科)名称},
+%     start-date     = {2023-07-01}, % 研究工作起始时间
+%   }
+% \end{latex}
+%
+% \myentry{封面和提名页}
+% \DescribeMacro{\makecover}
+% \DescribeMacro{\maketitle}
+% 生成封面和提名页, 不含授权说明, 摘要等. 
+% \begin{latex}
+%   % 如果不需要封面, 可将 \cs{\makecover} 注释掉.
+%   \makecover
+%   \maketitle
+% \end{latex}
+%
+% \subsection{前言部分}
+%
+% \subsubsection{授权说明}
+% \myentry{授权说明}
+% \DescribeMacro{\copyrightpage}
+% 可选参数为扫描得到的 PDF 文件名, 例如: 
+% \begin{latex}
+%   % 将签字扫描后授权文件 scan-copyright.pdf 替换原始页面
+%   \copyrightpage[file=scan-copyright.pdf]
+% \end{latex}
+%
+% \subsubsection{摘要}
+% \myentry{摘要}
+% \DescribeEnv{abstract}
+% \DescribeEnv{abstract*}
+% 摘要直接在正文中使用 \env{abstract}, \env{abstract*} 环境生成. 
+%
+% \begin{latex}
+%   \begin{abstract}
+%     摘要请写在这里.
+%   \end{abstract}
+%
+%   \begin{abstract*}
+%     Here comes the abstract in English.
+%   \end{abstract*}
+% \end{latex}
+%
+% \myentry{关键词}
+% \DescribeMacro{\keywords}
+% \DescribeMacro{\keywords*}
+% 关键词需要使用 \cs{ahusetup} 进行设置. 关键词之间以\emph{西文逗号}隔开, 模板会
+% 自动调整为要求的格式. 关键词的设置只要在摘要环境结束前即可. 
+% \begin{latex}
+%   \ahusetup{
+%     keywords  = {关键词 1, 关键词 2},
+%     keywords* = {keyword 1, keyword 2},
+%   }
+% \end{latex}
+%
+% \subsubsection{目录和索引表}
+% 目录、插图、表格、公式和算法等索引命令分别如下, 将其插入到期望的位置即可(带*的命令表
+% 示对应的索引表不会出现在目录中): 
+%
+% \DescribeMacro{\tableofcontents}
+% \DescribeMacro{\listoffigures}
+% \DescribeMacro{\listoffigures*}
+% \DescribeMacro{\listoftables}
+% \DescribeMacro{\listoftables*}
+% \DescribeMacro{\listofequations}
+% \DescribeMacro{\listofequations*}
+% \DescribeMacro{\listofalgorithms}
+% \DescribeMacro{\listofalgorithms*}
+% \begin{longtable}{ll}
+% \toprule
+%  {\heiti 用途} & {\heiti 命令} \\ \midrule
+% 目录     & \cs{tableofcontents} \\ \midrule
+% 插图索引 & \cs{listoffigures}   \\
+%          & \cs{listoffigures*}  \\ \midrule
+% 表格索引 & \cs{listoftables}    \\
+%          & \cs{listoftables*}   \\ \midrule
+% 公式索引 & \cs{listofequations} \\
+%          & \cs{listofequations*}\\ \midrule
+% 算法索引 & \cs{listofalgorithms} \\
+%          & \cs{listofalgorithms*}\\ \bottomrule
+% \end{longtable}
+%
+% \DescribeOption{toc-chapter-style}
+% 设置目录章标题的西文和数字的字体. 
+% \begin{latex}
+%   \ahusetup{
+%     toc-chapter-style = times,
+%   }
+% \end{latex}
+% 该选项只对本科生有效. 
+%
+% \LaTeX{} 默认支持插图和表格索引, 是通过 \cs{caption} 命令完成的, 因此它们必须出
+% 现在浮动环境中, 否则不被计数. 
+%
+% 如果不想让某个表格或者图片出现在索引里面, 那么请使用命令 \cs{caption*}, 这
+% 个命令不会给表格编号, 也就是出来的只有标题文字而没有“表~xx”, “图~xx”, 否则
+% 索引里面序号不连续就显得不伦不类, 这也是 \LaTeX{} 里星号命令默认的规则. 
+%
+% 公式索引为本模板扩展, 模板扩展了 \pkg{amsmath} 几个内部命令, 使得公式编号样式和
+% 自动索引功能非常方便. 一般来说, 你用到的所有数学环境编号都没问题了, 这个可以参
+% 看示例文档. 如果你有个非常特殊的数学环境需要加入公式索引, 那么请使
+% 用 \cs{equcaption}\marg{编号}. 此命令表示 equation caption, 带一个参数, 即显示
+% 在索引中的编号. 因为公式与图表不同, 我们很少给一个公式附加一个标题, 之所以起这
+% 么个名字是因为图表就是通过 \cs{caption} 加入索引的, \cs{equcaption} 完全就是为
+% 了生成公式列表, 不产生什么标题. 
+%
+% 使用方法如下. 假如有一个非 equation 数学环境 \texttt{mymath}, 只要在其中写一
+% 句 \cs{equcaption} 就可以将它加入公式列表. 
+% \begin{latex}
+%   \begin{mymath}
+%     \label{eq:emc2}\equcaption{\ref{eq:emc2}}
+%     E=mc^2
+%   \end{mymath}
+% \end{latex}
+%
+% \texttt{mymath} 中公式的编号需要自己来做. 
+%
+% 同图表一样, 附录中的公式有时也不希望它跟全文统一编号, 而且不希望它出现在公式
+% 索引中. 目前的办法是利用 \cs{tag*}\marg{公式编号} 来解决. 用法比较简单, 此
+% 处不再罗嗦, 实例请参看示例文档附录 A 的前两个公式. 
+%
+% \subsubsection{符号对照表}
+% \DescribeEnv{denotation}
+% 主要符号表环境, 跟 \env{description} 类似, 使用方法参见示例文件. 带一个可选参数, 
+% 用来指定符号列的宽度(默认为 2.5cm). 
+% \begin{latex}
+%   \begin{denotation}
+%     \item[E] 能量
+%     \item[m] 质量
+%     \item[c] 光速
+%   \end{denotation}
+% \end{latex}
+%
+% 如果默认符号列的宽度不满意, 可以通过参数来调整: 
+% \begin{latex}
+%   \begin{denotation}[1.5cm] % 设置为 1.5cm
+%     \item[E] 能量
+%     \item[m] 质量
+%     \item[c] 光速
+%   \end{denotation}
+% \end{latex}
+%
+% 符号对照表的另外一种方法是调用 \pkg{nomencl} 宏包, 需要在导言区设置: 
+%
+% \begin{latex}
+%   \usepackage{nomencl}
+%   \makenomenclature
+% \end{latex}
+%
+% 然后在正文中任意位置使用 \cs{nomenclature} 声明需要添加到主要符号表的符号: 
+%
+% \begin{latex}
+%   \nomenclature{$m$}{The mass of one angel}
+% \end{latex}
+%
+% 最后使用 \cs{printnomenclature} 命令生成符号表. 更详细的使用方法参见 \pkg{nomencl} 宏包的文档. 
+%
+% \subsection{正文部分}
+% \subsubsection{图表编号}
+% \DescribeOption{figure-number-separator}
+% \DescribeOption{table-number-separator}
+% \DescribeOption{equation-number-separator}
+% 研究生要求图表和公式的编号使用“.”或“-”连接, 模板默认使用句点“.”. 
+% 用户也可以通过 \option{figure-number-separator}、\option{table-number-separator}
+% 等选项分别设置: 
+% \begin{latex}
+%   \ahusetup{
+%     figure-number-separator = {-},
+%     table-number-separator = {-},
+%     equation-number-separator = {-},
+%   }
+% \end{latex}
+% \DescribeOption{number-separator}
+% \indent 也可以使用 \option{number-separator} 命令同时设置图、表、公式三项的编号连接符, 
+% 比如 |\ahusetup{number-separator = -}|. 
+%
+% 本科生要求“附录中图、表、公式的编号, 应与正文中的编号区分开”, 
+% 应理解为将章号改变为附录对应的大写字母编号, 连接符不宜改变. 
+%
+% \subsubsection{数学符号}
+% \label{sec:math}
+%
+% \DescribeOption{math-font}
+% 模板使用默认使用 XITS Math 作为数学字体. 
+% 用户也可以使用 \option{math-font} 选项切换其他数学字体, 可选: 
+% \option{newcm} (New Computer Modern Math)
+%
+% 以上字体都是 OpenType 格式的字体, 需要配合
+% \href{http://mirrors.ctan.org/macros/unicodetex/latex/unicode-math/unicode-math.pdf}{\pkg{unicode-math}}
+% 宏包使用. 注意, \pkg{unicode-math} 宏包与 \pkg{amsfonts}、\pkg{amssymb}、\pkg{bm}、
+% \pkg{mathrsfs}、\pkg{upgreek} 等宏包\emph{不}兼容. 
+% 模板作了处理, 用户可以直接使用这些宏包的命令, 如 \cs{bm}、\cs{mathscr}、\cs{uppi}. 
+%
+% \subsubsection{定理环境}
+% \label{sec:theorem}
+% \ahuthesis{} 定义了常用的数学环境: 
+%
+% \begin{center}
+% \begin{tabular}{*{7}{l}}\toprule
+%   axiom & theorem & definition & proposition & lemma & conjecture & claim \\
+%   公理 & 定理 & 定义 & 命题 & 引理 & 猜想 & 断言 \\ \midrule
+%   proof & corollary & example & exercise & assumption & remark & problem \\
+%   证明 & 推论 & 例子& 练习 & 假设 & 注释 & 问题 \\ \bottomrule
+% \end{tabular}
+% \end{center}
+%
+% 比如: 
+% \begin{latex}
+%   \begin{definition}
+%     道千乘之国, 敬事而信, 节用而爱人, 使民以时. 
+%   \end{definition}
+% \end{latex}
+% 产生(自动编号): 
+% \medskip
+%
+% \noindent\framebox[\linewidth][l]{{\heiti 定义~1.1~~~} % {道千乘之国, 敬事而信, 节用而爱人, 使民以时. }}
+%
+% \smallskip
+% 列举出来的数学环境毕竟是有限的, 如果想用\emph{胡说}这样的数学环境, 那么可以定义: 
+% \begin{latex}
+%   \newtheorem{nonsense}{胡说}[chapter]
+% \end{latex}
+%
+% 然后这样使用: 
+% \begin{latex}
+%   \begin{nonsense}
+%     契丹武士要来中原夺武林秘笈. —— 慕容博
+%   \end{nonsense}
+% \end{latex}
+%
+% 产生(自动编号): 
+%
+% \medskip
+% \noindent\framebox[\linewidth][l]{{\heiti 胡说~1.1~~~} % {契丹武士要来中原夺武林秘笈. —— 慕容博}}
+%
+% \subsubsection{列表环境}
+% \DescribeEnv{itemize}
+% \DescribeEnv{enumerate}
+% \DescribeEnv{description}
+% 为了适合中文习惯, 模板将这三个常用的列表环境用 \pkg{enumitem} 进行了纵向间距压
+% 缩. 一方面清除了多余空间, 另一方面用户可以自己指定列表环境的样式(如标签符号, 
+% 缩进等). 细节请参看 \pkg{enumitem} 文档, 此处不再赘述. 
+%
+% \subsubsection{引用方式}
+% \label{sec:citestyle}
+% 模板支持两种引用方式, 分别为理工科常用的“顺序编码制”和文科常用的“著者-出版年制”. 
+% 使用者在设置参考文献表的格式 (\cs{bibliographystyle}, 见第~\ref{sec:bibliography} 节) 时, 
+% 正文中引用文献的标注会自动调整为对应的格式. 
+%
+% 如果需要标出引文的页码, 可以写在 \cs{cite} 的可选参数中, 如
+% |\cite[42]{knuth84}|. 
+%
+% \paragraph{顺序编码制}
+% \DescribeMacro{\inlinecite}
+% 顺序编码制的参考文献引用分为两种模式: 
+% \begin{enumerate}
+%   \item 上标模式, 比如“同样的工作有很多\textsuperscript{[1-2]}...”; 
+%   \item 正文模式, 比如“文 [3] 中详细说明了...”. 
+% \end{enumerate}
+%
+% \DescribeOption{cite-style}
+% 用户可以将引用标注的格式设为正文模式: 
+% \begin{latex}
+%   \ahusetup{
+%     cite-style = inline,
+%   }
+% \end{latex}
+% 也可以使用 \cs{inlinecite}\marg{key} 临时使用正文模式的引用标注. 
+%
+% \paragraph{著者-出版年制}
+% 著者-出版年制的参考文献引用有两种模式: 
+% \begin{enumerate}
+%   \item \cs{citep}: 著者与年份均在括号中, 比如“(Zhang, 2008)”, 同默认的 \cs{cite} 命令; 
+%   \item \cs{citet}: 著者姓名作为正文的一部分, 比如“Zhang (2008)”; 
+% \end{enumerate}
+%
+% 另外, \pkg{natbib} 还提供了其他方便引用的命令, 比如 \cs{citeauthor}、\cs{citeyear} 等, 
+% 更多细节参考 \pkg{natbib} 的文档. 
+%
+% \subsection{其他部分}
+%
+% \subsubsection{参考文献}
+% \label{sec:bibliography}
+%
+% 参考文献通常可以使用 \hologo{BibTeX} 或 biblatex 生成. 
+% \hologo{BibTeX} 是 LaTeX 处理参考文献的传统的方式, 
+% 需要在使用 \cs{bibliographystyle}\marg{style} 选择样式
+% 并用 \cs{bibliography} 设置 \file{.bib} 的路径. 
+% 然后使用 \texttt{bibtex} 对 \file{.aux} 文件进行编译得到 \file{.bbl} 文件. 
+% 其中的参考文献表内容会在后续编译时替换到 \cs{bibliography} 的位置. 
+%
+% 如果使用 BibTeX 的方式, 需要在导言区载入 \pkg{natbib} 宏包并选择样式, 如: 
+% \begin{latex}
+%   % 顺序编码制
+%   \usepackage[sort]{natbib}
+%   \bibliographystyle{ahuthesis-numeric}
+% \end{latex}
+% 或
+% \begin{latex}
+%   % 著者-出版年制
+%   \usepackage{natbib}
+%   \bibliographystyle{ahuthesis-author-year}
+% \end{latex}
+% 其中的 \option{sort} 选项会将同一处引用的多个文献编号严格按照顺序排序.
+%
+% 参考文献表采用“著者-出版年”制组织时, 各篇文献首先按文献种类集中, 然后按著者字
+% 顺和出版年排列; 中文文献可以按著者汉语拼音字顺排列, 也可以按著者的笔画笔顺排列. 
+% 但由于 \hologo{BibTeX} 功能的局限性, 无法自动获取著者姓名的拼音或笔画笔顺进行正确排序. 
+% 解决方法是在 \file{.bib} 数据库的中文文献的 |key| 域手动录入著者姓名的拼音, 
+% 这比较适合中文文献数量较少的情况, 如: 
+% \begin{latex}
+%   @book{capital,
+%     author = {马克思 and 恩格斯},
+%     key    = {ma3 ke4 si1 & en1 ge2 si1},
+%     ...
+%   }
+% \end{latex}
+%
+% \subsubsection{致谢}
+%
+% \DescribeEnv{acknowledgements}
+% 致谢环境.
+%
+% \begin{latex}
+%   \begin{acknowledgements}
+%     特别感谢 \ahuthesis{} 节省了论文排版时间!
+%   \end{acknowledgements}
+% \end{latex}
+%
+% \subsubsection{声明}
+% \DescribeMacro{\statement}
+% 直接使用 \cs{statement} 命令可以编译生成声明页. 
+% 如果要插入扫描后的声明页, 将可选参数指定为扫描后的 PDF 文件名, 例如: 
+%
+% \begin{latex}
+%   \statement[file=scan-statement.pdf]
+% \end{latex}
+%
+% 由于本科生的打印版和电子版有空白页的差别, 声明的页码可能不同. 
+% 所以编译生成声明页时默认不加页脚(\option{empty}), 
+% 在签字后插入扫描页时再补上页脚(\option{plain}), 防止页码冲突. 
+% 研究生不存在空白页的问题, 在编译生成声明时默认加页眉页脚(\option{plain}), 
+% 而插入扫描版时不再重复(\option{empty}). 
+%
+% 声明的页眉页脚也可以通过 \option{page-style} 参数手动控制, 
+% 比如编译生成时固定不加页眉页脚: 
+% \begin{latex}
+%   \statement[page-style=empty]
+% \end{latex}
+% 插入扫描版声明补上页眉页脚: 
+% \begin{latex}
+%   \statement[file=scan-statement.pdf, page-style=plain]
+% \end{latex}
+%
+% \subsubsection{附录}
+%
+% 附录由 \cs{appendix} 命令开启, 然后像正文一样书写. 
+% \begin{latex}
+%   \appendix
+%   \chapter{常用不等式}
+%   ...
+% \end{latex}
+%
+% \DescribeOption{toc-depth}
+% 若用户需要在目录中只出现附录的章标题, 不出现附录中的一级、二级节标题. 模板默认
+% 如此设置, 用户也可以在 \cs{appendix} 命令后手动控制加入目录的标题层级, 其
+% 中 |0| 表示章标题, |1| 表示一级节标题, 以此类推. 
+%
+% \begin{latex}
+%   \appendix
+%   \ahusetup{toc-depth=0}  % 目录只出现章标题
+% \end{latex}
+%
+% \subsubsection{在学期间完成的相关学术成果}
+% \DescribeEnv{resume}
+% 博士研究生的标题为“攻读博士学位期间取得的研究成果”; 
+% 硕士研究生的标题为“攻读硕士学位期间取得的学术成果”. 
+%
+% \DescribeEnv{achievements}
+% 本章的其他标题同样使用 \cs{section*}, \cs{subsection*} 等命令生成, 
+% 研究成果用 \env{achievements} 环境罗列. 
+%
+% \begin{latex}
+%   \begin{resume}
+%     \section*{个人简历}
+%     ......
+%     \section*{在学期间完成的相关学术成果}
+%
+%     \subsection*{学术论文}
+%     \begin{achievements}
+%       \item 论文 1
+%       \item 论文 2
+%     \end{achievements}
+%
+%     \subsection*{专利}
+%     \begin{achievements}
+%       \item 专利 1
+%       \item 专利 2
+%     \end{achievements}
+%   \end{resume}
+% \end{latex}
+%
+%
+% \subsection{书脊}
+% \DescribeOption{spine-font}
+% \DescribeOption{spine-title}
+% \DescribeOption{spine-author}
+% \DescribeOption{spine-date}
+% 生成装订的书脊, 为竖排格式. 内容默认使用论文的标题、作者、校名(安徽大学)、日期. 
+% 可以设置 \option{spine-title}, \option{spine-author} 和 \option{spine-date} 来修改. 
+%
+% 研究生的书脊字体默认为五号黑体字. 
+% 根据论文的薄厚而定, 可以使用 \option{spine-font} 设置字号. 
+% \begin{latex}
+%   \ahusetup{
+%     spine-font   = {\zihao{3}},
+%     spine-title  = {书脊的标题},
+%     spine-author = {书脊的作者姓名},
+%     spine-date   = {完成日期},
+%   }
+% \end{latex}
+%
+% \DescribeOption{include-spine}
+% 打开此选项后, 书脊会出现在中文封面后面的第一个空白页. 如果有英文封面, 则在英文封面之前. 
+% 如果需要书脊出现在其他位置, 请手工使用 \cs{spine} 生成, 不要使用此选项. 
+% \begin{latex}
+%   \ahusetup{
+%     include-spine = true,
+%   }
+% \end{latex}
+%
+%
+% \section{写在最后}
+% \label{sec:thanks}
+%
+% 欢迎各位到 \href{http://github.com/tuna/ahuthesis/}{\ahuthesis{} GitHub 主页}贡献!
+%
+%
+% ^^A redefine some commands in markdown package to remove annoying section numbering
+% \renewcommand{\markdownRendererHeadingTwo}[1]{\subsection*{#1}}
+% \renewcommand{\markdownRendererHeadingThree}[1]{\subsubsection*{#1}}
+% ^^A render changelog from markdown
+% \markdownInput{CHANGELOG.md}
+%
+% \StopEventually{\PrintIndex}
+% \clearpage
+%
+%
+% \section{实现细节}
+%
+% 下面这些内容面向 \LaTeX{} 宏包开发者或者对 ahuthesis 开发感兴趣的用户, 如果您有任何建议或想法,
+% 都欢迎到 Github \href{https://github.com/ahhylau/ahuthesis/issues}{提交 Issue}.
+%
+% \subsection{基本信息}
+%    \begin{macrocode}
+%<cls>\NeedsTeXFormat{LaTeX2e}[2017/04/15]
+%<cls>\ProvidesClass{ahuthesis}
+%<cls>[2025/03/01 1.0 Anhui University Thesis Template]
+%    \end{macrocode}
+%
+% 报错
+%    \begin{macrocode}
+\newcommand\ahu@error[1]{%
+  \ClassError{ahuthesis}{#1}{}%
+}
+\newcommand\ahu@warning[1]{%
+  \ClassWarning{ahuthesis}{#1}%
+}
+\newcommand\ahu@debug[1]{%
+  \typeout{Package ahuthesis Info: #1}%
+}
+\newcommand\ahu@patch@error[1]{%
+  \ahu@error{Failed to patch command \protect#1}%
+}
+\newcommand\ahu@deprecate[2]{%
+  \def\ahu@@tmp{#2}%
+  \ahu@warning{%
+    The #1 is deprecated%
+    \ifx\ahu@@tmp\@empty\else
+      . Use #2 instead%
+    \fi
+  }%
+}
+%    \end{macrocode}
+%
+% 检查 \LaTeXe{} kernel 版本
+%    \begin{macrocode}
+\@ifl@t@r\fmtversion{2017/04/15}{}{
+  \ahu@error{%
+    TeX Live 2017 or later version is required to compile this document%
+  }
+}
+%    \end{macrocode}
+%
+% 检查编译引擎, 要求使用 \XeLaTeX. 
+%    \begin{macrocode}
+\RequirePackage{iftex}
+\ifXeTeX\else
+  \ifLuaTeX\else
+    \ahu@error{XeLaTeX or LuaLaTeX is required to compile this document}
+  \fi
+\fi
+%    \end{macrocode}
+%
+% \subsection{定义选项}
+% \label{sec:defoption}
+% 定义论文类型以及是否涉密
+%    \begin{macrocode}
+%<*cls>
+\hyphenation{Ahu-Thesis}
+\def\ahuthesis{ahuthesis}
+\def\version{1.0}
+\RequirePackage{kvdefinekeys}
+\RequirePackage{kvsetkeys}
+\RequirePackage{kvoptions}
+\SetupKeyvalOptions{
+  family=ahu,
+  prefix=ahu@,
+  setkeys=\kvsetkeys}
+%    \end{macrocode}
+%
+% \begin{macro}{\ahusetup}
+% 提供一个 \cs{ahusetup} 命令支持 \emph{key-value} 的方式来设置. 
+%    \begin{macrocode}
+\let\ahu@setup@hook\@empty
+\newcommand\ahusetup[1]{%
+  \let\ahu@setup@hook\@empty
+  \kvsetkeys{ahu}{#1}%
+  \ahu@setup@hook
+}
+%    \end{macrocode}
+% \end{macro}
+%
+% 同时用 \emph{key-value} 的方式来定义这些接口: 
+% \begin{latex}
+%   \ahu@define@key{
+%     <key> = {
+%       name = <name>,
+%       choices = {
+%         <choice1>,
+%         <choice2>,
+%       },
+%       default = <default>,
+%     },
+%   }
+% \end{latex}
+%
+% 其中 |choices| 设置允许使用的值, 默认为第一个(或者 \meta{default}); 
+% \meta{code} 是相应的内容被设置时执行的代码. 
+%
+%    \begin{macrocode}
+\newcommand\ahu@define@key[1]{%
+  \kvsetkeys{ahu@key}{#1}%
+}
+\kv@set@family@handler{ahu@key}{%
+%    \end{macrocode}
+%
+% \cs{ahusetup} 会将 \meta{value} 存到 \cs{ahu@\meta{key}}, 
+% 但是宏的名字包含 “-” 这样的特殊字符时不方便直接调用,  
+% 这时可以用 |name| 设置 \meta{key} 的别称, 比如 |key = math@style|, 
+% 这样就可以通过 \cs{ahu@math@style} 来引用. 
+% |default| 是定义该 \meta{key} 时默认的值, 缺省为空. 
+%
+%    \begin{macrocode}
+  \@namedef{ahu@#1@@name}{#1}%
+  \def\ahu@@default{}%
+  \def\ahu@@choices{}%
+  \kv@define@key{ahu@value}{name}{%
+    \@namedef{ahu@#1@@name}{##1}%
+  }%
+%    \end{macrocode}
+%
+% 由于在定义接口时, \cs{ahu@\meta{key}@@code} 不一定有定义, 
+% 而且在文档类/宏包中还有可能对该 |key| 的 |code| 进行添加. 
+% 所以 \cs{ahu@\meta{key}@@code} 会检查如果在定义文档类/宏包时则推迟执行, 否则立即执行. 
+%
+%    \begin{macrocode}
+  \@namedef{ahu@#1@@check}{}%
+  \@namedef{ahu@#1@@code}{}%
+%    \end{macrocode}
+%
+% 保存下 |choices = {}| 定义的内容, 在定义 \cs{ahu@\meta{name}} 后再执行. 
+%
+%    \begin{macrocode}
+  \kv@define@key{ahu@value}{choices}{%
+    \def\ahu@@choices{##1}%
+    \@namedef{ahu@#1@@reset}{}%
+%    \end{macrocode}
+%
+% \cs{ahu@\meta{key}@check} 检查 |value| 是否有效, 
+% 并设置 \cs{ifahu@\meta{name}@\meta{value}}. 
+%
+%    \begin{macrocode}
+    \@namedef{ahu@#1@@check}{%
+      \@ifundefined{%
+        ifahu@\@nameuse{ahu@#1@@name}@\@nameuse{ahu@\@nameuse{ahu@#1@@name}}%
+      }{%
+        \ahu@error{Invalid value "#1 = \@nameuse{ahu@\@nameuse{ahu@#1@@name}}"}%
+      }%
+      \@nameuse{ahu@#1@@reset}%
+      \@nameuse{ahu@\@nameuse{ahu@#1@@name}@\@nameuse{ahu@\@nameuse{ahu@#1@@name}}true}%
+    }%
+  }%
+  \kv@define@key{ahu@value}{default}{%
+    \def\ahu@@default{##1}%
+  }%
+  \kvsetkeys{ahu@value}{#2}%
+  \@namedef{ahu@\@nameuse{ahu@#1@@name}}{}%
+%    \end{macrocode}
+%
+% 第一个 \meta{choice} 设为 \meta{default}, 
+% 并且对每个 \meta{choice} 定义 \cs{ifahu@\meta{name}@\meta{choice}}. 
+%
+%    \begin{macrocode}
+  \kv@set@family@handler{ahu@choice}{%
+    \ifx\ahu@@default\@empty
+      \def\ahu@@default{##1}%
+    \fi
+    \expandafter\newif\csname ifahu@\@nameuse{ahu@#1@@name}@##1\endcsname
+    \expandafter\g@addto@macro\csname ahu@#1@@reset\endcsname{%
+      \@nameuse{ahu@\@nameuse{ahu@#1@@name}@##1false}%
+    }%
+  }%
+  \kvsetkeys@expandafter{ahu@choice}{\ahu@@choices}%
+%    \end{macrocode}
+%
+% 将 \meta{default} 赋值到 \cs{ahu@\meta{name}}, 如果非空则执行相应的代码. 
+%
+%    \begin{macrocode}
+  \expandafter\let\csname ahu@\@nameuse{ahu@#1@@name}\endcsname\ahu@@default
+  \expandafter\ifx\csname ahu@\@nameuse{ahu@#1@@name}\endcsname\@empty\else
+    \@nameuse{ahu@#1@@check}%
+  \fi
+%    \end{macrocode}
+%
+% 定义 \cs{ahusetup} 接口. 
+%
+%    \begin{macrocode}
+  \kv@define@key{ahu}{#1}{%
+    \@namedef{ahu@\@nameuse{ahu@#1@@name}}{##1}%
+    \@nameuse{ahu@#1@@check}%
+    \@nameuse{ahu@#1@@code}%
+  }%
+}
+%    \end{macrocode}
+%
+% 定义接口向 |key| 添加 |code|: 
+%
+%    \begin{macrocode}
+\newcommand\ahu@option@hook[2]{%
+  \expandafter\g@addto@macro\csname ahu@#1@@code\endcsname{#2}%
+}
+%    \end{macrocode}
+%
+%    \begin{macrocode}
+\ahu@define@key{
+  degree = {
+    choices = {
+      bachelor,
+      master,
+      doctor,
+      postdoc,
+    },
+    default = doctor,
+  },
+  degree-type = {
+    choices = {
+      academic,
+      professional,
+    },
+    name = degree@type,
+  },
+%    \end{macrocode}
+%
+% 论文的主要语言. 
+%    \begin{macrocode}
+  main-language = {
+    name = main@language,
+    choices = {
+      chinese,
+      english,
+    },
+  },
+%    \end{macrocode}
+%
+% 用于设置局部语言. 
+%    \begin{macrocode}
+  language = {
+    choices = {
+      chinese,
+      english,
+    },
+  },
+%    \end{macrocode}
+%
+% 字体
+%    \begin{macrocode}
+  system = {
+    choices = {
+      auto,
+      mac,
+      unix,
+      windows,
+    },
+    default = auto,
+  },
+  fontset = {
+    choices = {
+      auto,
+      windows,
+      mac,
+      ubuntu,
+    },
+    default = auto,
+  },
+  font = {
+    choices = {
+      auto,
+      times,
+      termes,
+      xits,
+      newcm,
+    },
+    default = auto,
+  },
+  cjk-font = {
+    name = cjk@font,
+    choices = {
+      auto,
+      windows,
+      windows-local,
+      mac,
+      mac-word,
+      noto,
+    },
+    default = auto,
+  },
+  windows-font-dir = {
+    name = windows@font@dir,
+    default = {.},
+  },
+  math-font = {
+    name = math@font,
+    choices = {
+      auto,
+      xits,
+      newcm,
+    },
+    default = auto,
+  },
+%    \end{macrocode}
+%
+% 选择打印版还是用于上传的电子版. 
+%    \begin{macrocode}
+  output = {
+    choices = {
+      print,
+      electronic,
+    },
+    default = print,
+  },
+}
+%    \end{macrocode}
+%
+%    \begin{macrocode}
+\newif\ifahu@degree@graduate
+\newcommand\ahu@set@graduate{%
+  \ahu@degree@graduatefalse
+  \ifahu@degree@doctor
+    \ahu@degree@graduatetrue
+  \fi
+  \ifahu@degree@master
+    \ahu@degree@graduatetrue
+  \fi
+}
+\ahu@set@graduate
+\ahu@option@hook{degree}{%
+  \ahu@set@graduate
+}
+%    \end{macrocode}
+%
+% 设置默认 \option{openany}. 
+%    \begin{macrocode}
+\DeclareBoolOption[false]{openright}
+\DeclareComplementaryOption{openany}{openright}
+%    \end{macrocode}
+%
+% \option{raggedbottom} 选项(默认打开)
+%    \begin{macrocode}
+\DeclareBoolOption[true]{raggedbottom}
+%    \end{macrocode}
+%
+% 超链接是否使用彩色 (默认使用蓝色).
+%    \begin{macrocode}
+\DeclareBoolOption[false]{nocolor}
+%    \end{macrocode}
+%
+% 将选项传递给 \pkg{ctexbook}. 
+%    \begin{macrocode}
+\DeclareDefaultOption{\PassOptionsToClass{\CurrentOption}{ctexbook}}
+%    \end{macrocode}
+%
+% 解析用户传递过来的选项, 并加载 \pkg{ctexbook}. 
+%    \begin{macrocode}
+\ProcessKeyvalOptions*
+%    \end{macrocode}
+%
+% 设置默认 \option{openany}. 
+%    \begin{macrocode}
+\ifahu@openright
+  \PassOptionsToClass{openright}{book}
+\else
+  \PassOptionsToClass{openany}{book}
+\fi
+%    \end{macrocode}
+%
+% \pkg{unicode-math} 不需要 \pkg{fontspec} 设置数学字体. 
+%    \begin{macrocode}
+\PassOptionsToPackage{no-math}{fontspec}
+%    \end{macrocode}
+%
+% 使用 \pkg{ctexbook} 类, 优于调用 \pkg{ctex} 宏包. 
+%    \begin{macrocode}
+\LoadClass[a4paper,UTF8,zihao=-4,scheme=plain]{ctexbook}[2017/04/01]
+%    \end{macrocode}
+%
+\setCJKfamilyfont{STXingka}{STXingka.ttf}
+\newcommand{\STXingka}{\CJKfamily{STXingka}}
+%
+% \subsection{装载宏包}
+% \label{sec:loadpackage}
+%
+% 引用的宏包和相应的定义. 
+%    \begin{macrocode}
+\RequirePackage{etoolbox}
+\RequirePackage{filehook}
+\RequirePackage{xparse}
+%    \end{macrocode}
+%
+%    \begin{macrocode}
+\RequirePackage{geometry}%
+%    \end{macrocode}
+%
+% 利用 \pkg{fancyhdr} 设置页眉页脚. 
+%    \begin{macrocode}
+\RequirePackage{fancyhdr}
+%    \end{macrocode}
+%
+%    \begin{macrocode}
+\RequirePackage{titletoc}
+%    \end{macrocode}
+%
+% 利用 \pkg{notoccite} 避免目录中引用编号混乱. 
+%    \begin{macrocode}
+\RequirePackage{notoccite}
+%    \end{macrocode}
+%
+% \AmSTeX\ 宏包, 用来排出更加漂亮的公式. 
+%    \begin{macrocode}
+\RequirePackage{amsmath}
+%    \end{macrocode}
+%
+% 图形支持宏包. 
+%    \begin{macrocode}
+\RequirePackage{graphicx}
+%    \end{macrocode}
+%
+% 并排图形. \pkg{subfigure}, \pkg{subfig} 已经不再推荐, 用新的 \pkg{subcaption}. 
+% 浮动图形和表格标题样式. \pkg{caption2} 已经不推荐使用, 采用新的 \pkg{caption}. 
+%    \begin{macrocode}
+\RequirePackage[labelformat=simple]{subcaption}
+%    \end{macrocode}
+%
+% \pkg{pdfpages} 宏包便于我们插入扫描后的授权说明和声明页 PDF 文档. 
+%
+% 由于 \pkg{pdfpages} 跟 \pkg{TikZ} 的 \pkg{external} 库冲突, 
+% 需要在导言区的结尾进行处理. 
+%    \begin{macrocode}
+\RequirePackage{pdfpages}
+\includepdfset{fitpaper=true}
+\AtEndPreamble{
+  \ifx\tikzifexternalizing\@undefined\else
+    \tikzifexternalizing{
+      \renewcommand*\includepdf[2][]{}
+    }{}
+  \fi
+}
+%    \end{macrocode}
+%
+% 更好的列表环境. 
+%    \begin{macrocode}
+\RequirePackage[shortlabels]{enumitem}
+\RequirePackage{environ}
+%    \end{macrocode}
+%
+% 禁止 \LaTeX{} 自动调整多余的页面底部空白, 并保持脚注仍然在底部. 
+%    \begin{macrocode}
+\ifahu@raggedbottom
+  \RequirePackage[bottom,perpage,hang]{footmisc}
+  \raggedbottom
+\else
+  \RequirePackage[perpage,hang]{footmisc}
+\fi
+%    \end{macrocode}
+%
+% 利用 \pkg{xeCJKfntef} 实现汉字的下划线和盒子内两段对齐, 并可以避免
+% \cs{makebox}\oarg{width}\oarg{s} 可能产生的 underful boxes. 
+%    \begin{macrocode}
+\ifXeTeX
+  \RequirePackage{xeCJKfntef}
+\else
+  \RequirePackage{ulem}
+\fi
+%    \end{macrocode}
+%
+% 表格控制
+%    \begin{macrocode}
+\RequirePackage{array}
+%    \end{macrocode}
+%
+% 使用三线表: \cs{toprule}, \cs{midrule}, \cs{bottomrule}. 
+%    \begin{macrocode}
+\RequirePackage{booktabs}
+%    \end{macrocode}
+%
+%    \begin{macrocode}
+\RequirePackage{url}
+%    \end{macrocode}
+%
+% 对冲突的宏包报错. 
+%    \begin{macrocode}
+\newcommand\ahu@package@conflict[2]{%
+  \AtEndOfPackageFile*{#1}{%
+    \AtBeginOfPackageFile*{#2}{%
+      \ahu@error{The "#2" package is incompatible with "#1"}%
+    }%
+  }%
+}
+\ahu@package@conflict{bibunits}{biblatex}
+\ahu@package@conflict{bibunits}{chapterbib}
+\ahu@package@conflict{bibunits}{multibib}
+
+\ahu@package@conflict{unicode-math}{amscd}
+\ahu@package@conflict{unicode-math}{amsfonts}
+\ahu@package@conflict{unicode-math}{amssymb}
+\ahu@package@conflict{unicode-math}{bbm}
+\ahu@package@conflict{unicode-math}{bm}
+\ahu@package@conflict{unicode-math}{mathrsfs}
+
+\ahu@package@conflict{natbib}{biblatex}
+\ahu@package@conflict{natbib}{cite}
+%    \end{macrocode}
+%
+% \subsection{页面设置}
+% \label{sec:layout}
+%
+% 《安徽大学研究生撰写学位论文规定》: 
+% 页边距: 上下左右均为 2.5 厘米
+%
+% \pkg{fancyhdr} 的页眉是沿底部对齐的, 所以只需设置 \cs{headsep}, 
+% \cs{headheight} 可以适当增加高度允许多行页眉. 
+%
+%    \begin{macrocode}
+\geometry{
+  paper          = a4paper,  % 210 * 297mm
+}
+\newcommand\ahu@set@geometry{%
+  \ifahu@degree@bachelor
+    \geometry{
+      top        = 3.8cm,
+      bottom     = 3.2cm,
+      left       = 3cm,
+      right      = 3cm,
+      headheight = 1.9cm,
+      headsep    = 1.9cm,
+      footskip   = 1.45cm,
+    }%
+  \else
+    \geometry{
+      top     = 2.5cm,
+      bottom  = 2.5cm,
+      left    = 2.5cm,
+      right   = 2.5cm,
+    }%
+  \fi
+}
+\ahu@set@geometry
+\ahu@option@hook{degree}{\ahu@set@geometry}
+\ahu@option@hook{output}{\ahu@set@geometry}
+%    \end{macrocode}
+%
+%
+% \subsection{语言设置}
+%
+% 定义 \cs{ahu@main@language}, 当在导言区修改 \option{language} 时, 
+% 保存为论文的主要语言; \cs{ahu@reset@main@language} 则用于正文中恢复为主要语言. 
+%    \begin{macrocode}
+\ahusetup{main-language=\ahu@language}%
+\let\ahu@main@language\ahu@language
+\ahu@option@hook{language}{%
+  \ifx\@begindocumenthook\@undefined\else
+    \ahusetup{main-language=\ahu@language}%
+    \let\ahu@main@language\ahu@language
+  \fi
+}
+\newcommand\ahu@reset@main@language{%
+  \ahusetup{language = \ahu@main@language}%
+  \let\ahu@language\ahu@main@language
+}
+%    \end{macrocode}
+%
+% 根据语言设置各章节的名称, 只有在导言区设置 \option{degree} 和
+% \option{language} 时会修改, 而在正文局部切换语言时则不变. 
+%    \begin{macrocode}
+\newcommand\ahu@set@chapter@names{%
+  \ifahu@main@language@chinese
+    \def\bibname{参考文献}%
+    \def\appendixname{附录}%
+    \def\indexname{索引}%
+    \ifahu@degree@bachelor
+      \def\contentsname{目\qquad 录}%
+      \def\listfigurename{插图索引}%
+      \def\listtablename{表格索引}%
+      \def\ahu@list@figure@table@name{插图和附表索引}%
+      \def\ahu@list@algorithm@name{算法索引}%
+      \def\ahu@acknowledgements@name{致\qquad 谢}%
+      \def\listequationname{公式索引}%
+      \def\ahu@denotation@name{主要符号表}%
+      \def\ahu@resume@name{在学期间参加课题的研究成果}%
+    \else
+      \def\listfigurename{插图清单}%
+      \def\listtablename{附表清单}%
+      \def\ahu@list@figure@table@name{插图和附表清单}%
+      \def\ahu@list@algorithm@name{算法清单}%
+      \def\listequationname{公式清单}%
+      \def\ahu@acknowledgements@name{致\quad 谢}%
+      \ifahu@degree@doctor
+        \def\contentsname{目\quad 录}%
+        \def\ahu@denotation@name{符号和缩略语说明}%
+        \def\ahu@resume@name{攻读博士学位期间取得的研究成果}%
+      \else 
+      \ifahu@degree@master
+        \def\contentsname{目\qquad 次}%
+        \def\ahu@denotation@name{符号表}%
+        \def\ahu@resume@name{攻读硕士学位期间取得的学术成果}%
+      \else
+        \def\contentsname{目\qquad 次}%
+        \def\ahu@denotation@name{符号表}%
+        \def\ahu@resume@name{个人简历、发表的学术论文与科研成果}%
+      \fi
+      \fi
+    \fi
+  \else
+    \ifahu@main@language@english
+      \def\indexname{Index}%
+      \ifahu@degree@bachelor
+        \def\contentsname{CONTENTS}%
+        \def\listfigurename{FIGURES}%
+        \def\listtablename{TABLES}%
+        \def\ahu@list@figure@table@name{FIGURES AND TABLES}%
+        \def\ahu@list@algorithm@name{ALGORITHMS}%
+        \def\listequationname{EQUATIONS}%
+        \def\ahu@denotation@name{ABBREVIATIONS}%
+        \def\bibname{REFERENCES}%
+        \def\appendixname{APPENDIX}%
+        \def\ahu@acknowledgements@name{ACKNOWLEDGEMENTS}%
+        \def\ahu@resume@name{PUBLICATIONS}%
+      \else
+        \def\contentsname{Table of Contents}%
+        \def\listfigurename{List of Figures}%
+        \def\listtablename{List of Tables}%
+        \def\ahu@list@figure@table@name{List of Figures and Tables}%
+        \def\ahu@list@algorithm@name{List of Algorithms}%
+        \def\listequationname{List of Equations}%
+        \def\ahu@denotation@name{List of Symbols and Acronyms}%
+        \def\bibname{References}%
+        \def\appendixname{Appendix}%
+        \def\ahu@acknowledgements@name{Acknowledgements}%
+        \def\ahu@resume@name{Resume}%
+      \fi
+    \fi
+  \fi
+}
+\ahu@set@chapter@names
+\ahu@option@hook{degree}{\ahu@set@chapter@names}
+\ahu@option@hook{main-language}{\ahu@set@chapter@names}
+%    \end{macrocode}
+%
+% 这部分名称在正文中局部地修改语言时会发生变化, 比如英文摘要. 
+%    \begin{macrocode}
+\newcommand\ahu@set@names{%
+  \ifahu@language@chinese
+    \ctexset{
+      figurename = 图,
+      tablename  = 表,
+    }%
+    \def\ahu@algorithm@name{算法}%
+    \def\ahu@equation@name{公式}%
+    \def\ahu@assumption@name{假设}%
+    \def\ahu@definition@name{定义}%
+    \def\ahu@proposition@name{命题}%
+    \def\ahu@lemma@name{引理}%
+    \def\ahu@theorem@name{定理}%
+    \def\ahu@axiom@name{公理}%
+    \def\ahu@corollary@name{推论}%
+    \def\ahu@exercise@name{练习}%
+    \def\ahu@example@name{例}%
+    \def\ahu@remark@name{注释}%
+    \def\ahu@problem@name{问题}%
+    \def\ahu@conjecture@name{猜想}%
+    \def\ahu@claim@name{断言}%
+    \def\ahu@proof@name{证明}%
+    \def\ahu@theorem@separator{: }%
+  \else
+    \ifahu@language@english
+      \ctexset{
+        figurename = {Figure},
+        tablename  = {Table},
+      }%
+      \def\ahu@algorithm@name{Algorithm}%
+      \def\ahu@equation@name{Equation}%
+      \def\ahu@assumption@name{Assumption}%
+      \def\ahu@definition@name{Definition}%
+      \def\ahu@proposition@name{Proposition}%
+      \def\ahu@lemma@name{Lemma}%
+      \def\ahu@theorem@name{Theorem}%
+      \def\ahu@axiom@name{Axiom}%
+      \def\ahu@corollary@name{Corollary}%
+      \def\ahu@exercise@name{Exercise}%
+      \def\ahu@example@name{Example}%
+      \def\ahu@remark@name{Remark}%
+      \def\ahu@problem@name{Problem}%
+      \def\ahu@claim@name{Claim}%
+      \def\ahu@conjecture@name{Conjecture}%
+      \def\ahu@proof@name{Proof}%
+      \def\ahu@theorem@separator{: }%
+    \fi
+  \fi
+}
+\ahu@set@names
+\ahu@option@hook{language}{\ahu@set@names}
+%    \end{macrocode}
+%
+% \subsection{字体}
+% \label{sec:font}
+%
+% \subsubsection{字号}
+%
+% \begin{macro}{\normalsize}
+% 正文小四号(12bp)字, 行距为固定值 20 bp. 其他字号的行距按照相同的比例设置. 
+% 注意重定义 \cs{normalsize} 应在 \pkg{unicode-math} 的 \cs{setmathfont} 前. 
+%
+% 表达式行的行距为单倍行距, 段前空 6 磅, 段后空 6 磅. 
+%
+% \cs{small} 等其他命令通常用于表格等环境中, 这部分要求单倍行距, 与正文的字号-行距比例不同, 
+% 所以保留默认的 1.2 倍字号的行距, 作为单倍行距在英文(1.15 倍字号)和中文(1.3倍字号)
+% 两种情况的折衷. 
+%    \begin{macrocode}
+\renewcommand\normalsize{%
+  \@setfontsize\normalsize{12bp}{20bp}%
+  \abovedisplayskip 6bp%
+  \abovedisplayshortskip 6bp%
+  \belowdisplayshortskip 6bp%
+  \belowdisplayskip \abovedisplayskip
+}
+\normalsize
+\ifx\MakeRobust\@undefined \else
+    \MakeRobust\normalsize
+\fi
+%    \end{macrocode}
+% \end{macro}
+%
+% WORD 中的字号对应该关系如下(1bp = 72.27/72 pt):
+% \begin{center}
+% \begin{longtable}{llll}
+% \toprule
+% 初号 & 42bp & 14.82mm & 42.1575pt \\
+% 小初 & 36bp & 12.70mm & 36.135 pt \\
+% 一号 & 26bp & 9.17mm & 26.0975pt \\
+% 小一 & 24bp & 8.47mm & 24.09pt \\
+% 二号 & 22bp & 7.76mm & 22.0825pt \\
+% 小二 & 18bp & 6.35mm & 18.0675pt \\
+% 三号 & 16bp & 5.64mm & 16.06pt \\
+% 小三 & 15bp & 5.29mm & 15.05625pt \\
+% 四号 & 14bp & 4.94mm & 14.0525pt \\
+% 小四 & 12bp & 4.23mm & 12.045pt \\
+% 五号 & 10.5bp & 3.70mm & 10.59375pt \\
+% 小五 & 9bp & 3.18mm & 9.03375pt \\
+% 六号 & 7.5bp & 2.56mm & \\
+% 小六 & 6.5bp & 2.29mm & \\
+% 七号 & 5.5bp & 1.94mm & \\
+% 八号 & 5bp & 1.76mm & \\\bottomrule
+% \end{longtable}
+% \end{center}
+%
+% \begin{macro}{\ahu@def@fontsize}
+% 根据习惯定义字号. 用法: \cs{ahu@def@fontsize}\marg{字号名称}\marg{磅数}
+%
+% 避免了字号选择和行距的紧耦合. 所有字号定义时为单倍行距, 并提供选项指定行距倍数. 
+%    \begin{macrocode}
+\def\ahu@def@fontsize#1#2{%
+  \expandafter\newcommand\csname #1\endcsname[1][1.3]{%
+    \fontsize{#2}{##1\dimexpr #2}\selectfont}}
+%    \end{macrocode}
+% \end{macro}
+%
+% 一组字号定义. 
+%    \begin{macrocode}
+\ahu@def@fontsize{chuhao}{42bp}
+\ahu@def@fontsize{xiaochu}{36bp}
+\ahu@def@fontsize{yihao}{26bp}
+\ahu@def@fontsize{xiaoyi}{24bp}
+\ahu@def@fontsize{erhao}{22bp}
+\ahu@def@fontsize{xiaoer}{18bp}
+\ahu@def@fontsize{sanhao}{16bp}
+\ahu@def@fontsize{xiaosan}{15bp}
+\ahu@def@fontsize{sihao}{14bp}
+\ahu@def@fontsize{xiaosi}{12bp}
+\ahu@def@fontsize{wuhao}{10.5bp}
+\ahu@def@fontsize{xiaowu}{9bp}
+\ahu@def@fontsize{liuhao}{7.5bp}
+\ahu@def@fontsize{xiaoliu}{6.5bp}
+\ahu@def@fontsize{qihao}{5.5bp}
+\ahu@def@fontsize{bahao}{5bp}
+%    \end{macrocode}
+%
+% 检测系统. 
+%    \begin{macrocode}
+\ifahu@system@auto
+  \IfFileExists{/System/Library/Fonts/Menlo.ttc}{
+    \ahusetup{system = mac}
+  }{
+    \IfFileExists{/dev/null}{
+      \IfFileExists{null:}{
+        \ahusetup{system = windows}
+      }{
+        \ahusetup{system = unix}
+      }
+    }{
+      \ahusetup{system = windows}
+    }
+  }
+  \ahu@debug{Detected system: \ahu@system}
+\fi
+%    \end{macrocode}
+%
+% 使用 \pkg{fontspec} 配置字体. 
+%    \begin{macrocode}
+\newcommand\ahu@mac@word@font@dir{%
+  /Applications/Microsoft Word.app/Contents/Resources/DFonts%
+}
+\ifahu@fontset@auto
+  \ifahu@system@windows
+    \ahusetup{fontset = windows}
+  \else
+    \IfFontExistsTF{SimSun}{
+      \ahusetup{fontset = windows}
+    }{
+      \IfFileExists{\ahu@windows@font@dir/Simsun.ttc}{
+        \ahusetup{fontset = windows, cjk-font = windows-local}
+      }{
+        \IfFileExists{\ahu@mac@word@font@dir/Simsun.ttc}{
+          \ahusetup{fontset = windows, cjk-font = mac-word}
+        }{
+          \ifahu@system@mac
+            \ahusetup{fontset = mac}
+          \else
+            \IfFontExistsTF{Noto Serif CJK SC}{
+              \ahusetup{fontset = ubuntu}
+            }{
+            }
+          \fi
+        }
+      }
+    }
+  \fi
+  \ahu@debug{Detected fontset: \ahu@fontset}
+\fi
+%    \end{macrocode}
+%
+% \subsubsection{西文字体}
+%
+% 《指南》要求西文字体使用 Times New Roman 和 Arial, 
+% 但是在 Linux 下没有这两个字体, 所以使用它们的克隆版 TeX Gyre Termes 和
+% TeX Gyre Heros. 
+%    \begin{macrocode}
+\newcommand\ahu@set@font{%
+  \@nameuse{ahu@set@font@\ahu@font}%
+}
+\ahu@option@hook{font}{\ahu@set@font}
+%    \end{macrocode}
+%
+%    \begin{macrocode}
+\newcommand\ahu@set@font@auto{%
+  \ifahu@font@auto
+    \ifahu@fontset@windows
+      \ahusetup{font=times}%
+    \else
+      \ifahu@fontset@mac
+        \ahusetup{font=times}%
+      \else
+        \ahusetup{font=termes}%
+      \fi
+    \fi
+  \fi
+}
+\ahu@option@hook{math-font}{\g@addto@macro\ahu@setup@hook{\ahu@set@font@auto}}
+\AtBeginOfPackageFile*{siunitx}{\ahu@set@font@auto}
+\AtEndPreamble{\ahu@set@font@auto}
+%    \end{macrocode}
+%
+% Times New Roman + Arial
+%    \begin{macrocode}
+\newcommand\ahu@set@font@times{%
+  \setmainfont{Times New Roman}%
+  \setsansfont{Arial}%
+  \ifahu@fontset@mac
+    \setmonofont{Menlo}[Scale = MatchLowercase]%
+  \else
+    \setmonofont{Courier New}[Scale = MatchLowercase]%
+  \fi
+}
+%    \end{macrocode}
+%
+% TeX Gyre Termes
+%    \begin{macrocode}
+\newcommand\ahu@set@font@termes{%
+  \setmainfont{texgyretermes}[
+    Extension      = .otf,
+    UprightFont    = *-regular,
+    BoldFont       = *-bold,
+    ItalicFont     = *-italic,
+    BoldItalicFont = *-bolditalic,
+  ]%
+  \ahu@set@texgyre@sans@mono
+}
+\newcommand\ahu@set@texgyre@sans@mono{%
+  \setsansfont{texgyreheros}[
+    Extension      = .otf,
+    UprightFont    = *-regular,
+    BoldFont       = *-bold,
+    ItalicFont     = *-italic,
+    BoldItalicFont = *-bolditalic,
+  ]%
+  \setmonofont{texgyrecursor}[
+    Extension      = .otf,
+    UprightFont    = *-regular,
+    BoldFont       = *-bold,
+    ItalicFont     = *-italic,
+    BoldItalicFont = *-bolditalic,
+    Scale          = MatchLowercase,
+    Ligatures      = CommonOff,
+  ]%
+}
+%    \end{macrocode}
+%
+% XITS 字体. 
+% XITS 的文件名在 v1.109 2018-09-30
+% 从 \file{xits-regular.otf}、\file{xits-math.otf} 分别改为
+% \file{XITS-Regular.otf}、\file{XITSMath-Regular.otf}. 
+%    \begin{macrocode}
+\let\ahu@font@family@xits\@empty
+\newcommand\ahu@set@xits@names{%
+  \ifx\ahu@font@family@xits\@empty
+    \IfFontExistsTF{XITSMath-Regular.otf}{%
+      \gdef\ahu@font@family@xits{XITS}%
+      \gdef\ahu@font@style@xits@rm{Regular}%
+      \gdef\ahu@font@style@xits@bf{Bold}%
+      \gdef\ahu@font@style@xits@it{Italic}%
+      \gdef\ahu@font@style@xits@bfit{BoldItalic}%
+      \gdef\ahu@font@name@xits@math{XITSMath-Regular}%
+    }{%
+      \gdef\ahu@font@family@xits{xits}%
+      \gdef\ahu@font@style@xits@rm{regular}%
+      \gdef\ahu@font@style@xits@bf{bold}%
+      \gdef\ahu@font@style@xits@it{italic}%
+      \gdef\ahu@font@style@xits@bfit{bolditalic}%
+      \gdef\ahu@font@name@xits@math{xits-math}%
+    }%
+  \fi
+}
+\newcommand\ahu@set@font@xits{%
+  \ahu@set@xits@names
+  \setmainfont{\ahu@font@family@xits}[
+    Extension      = .otf,
+    UprightFont    = *-\ahu@font@style@xits@rm,
+    BoldFont       = *-\ahu@font@style@xits@bf,
+    ItalicFont     = *-\ahu@font@style@xits@it,
+    BoldItalicFont = *-\ahu@font@style@xits@bfit,
+  ]%
+  \ahu@set@texgyre@sans@mono
+}
+%    \end{macrocode}
+%
+% New Computer Modern
+%    \begin{macrocode}
+\newcommand\ahu@set@font@newcm{%
+  \setmainfont{NewCM10}[
+    Extension      = .otf,
+    UprightFont    = *-Book,
+    BoldFont       = *-Bold,
+    ItalicFont     = *-BookItalic,
+    BoldItalicFont = *-BoldItalic,
+  ]%
+  \setsansfont{NewCMSans10}[
+    Extension         = .otf,
+    UprightFont       = *-Book,
+    BoldFont          = *-Bold,
+    ItalicFont        = *-BookOblique,
+    BoldItalicFont    = *-BoldOblique,
+  ]%
+  \setmonofont{NewCMMono10}[
+    Extension           = .otf,
+    UprightFont         = *-Book,
+    ItalicFont          = *-BookItalic,
+    BoldFont            = *-Bold,
+    BoldItalicFont      = *-BoldOblique,
+  ]%
+}
+%    \end{macrocode}
+%
+%
+% \subsubsection{中文字体}
+%
+%    \begin{macrocode}
+\ifahu@cjk@font@auto
+  \ifahu@fontset@mac
+    \ahusetup{cjk-font = mac}
+  \else
+    \ifahu@fontset@windows
+      \IfFontExistsTF{SimSun}{
+        \ahusetup{cjk-font = windows}
+      }{
+        \IfFileExists{\ahu@windows@font@dir/Simsun.ttc}{
+          \ahusetup{cjk-font = windows-local}
+        }{
+          \IfFileExists{\ahu@mac@word@font@dir/Simsun.ttc}{
+            \ahusetup{cjk-font = mac-word}
+          }{
+            \ahu@error{Cannot find "SimSun" font}
+          }
+        }
+      }
+    \else
+      \ifahu@fontset@ubuntu
+        \ahusetup{cjk-font = noto}
+    \fi
+  \fi
+  \ahu@debug{Detected CJK font: \ahu@cjk@font}
+\fi
+%    \end{macrocode}
+%
+% Windows 的中易字体. 
+%    \begin{macrocode}
+\newcommand\ahu@set@cjk@font@windows{%
+  \setCJKmainfont{SimSun}[
+    AutoFakeBold = 3,
+    ItalicFont   = KaiTi,
+  ]%
+  \setCJKsansfont{SimHei}[AutoFakeBold = 3]%
+  \setCJKmonofont{FangSong}%
+  \setCJKfamilyfont{zhsong}{SimSun}[AutoFakeBold = 3]%
+  \setCJKfamilyfont{zhhei}{SimHei}[AutoFakeBold = 3]%
+  \setCJKfamilyfont{zhkai}{KaiTi}%
+  \setCJKfamilyfont{zhfs}{FangSong}%
+}
+%    \end{macrocode}
+%
+% 使用本地的 Windows 字体文件. 
+%
+% Windows 的中易楷体和仿宋字体文件名分别为 \file{Simkai.ttf} 和
+% \file{Simfang.ttf}, 而 macOS 版 Word 对应的字体名为 \file{Kaiti.ttf} 和 \file{Fangsong.ttf}. 
+% 所以需要进行判断. 
+%    \begin{macrocode}
+\@namedef{ahu@set@cjk@font@windows-local}{%
+  \IfFileExists{\ahu@windows@font@dir/Kaiti.ttf}{
+    \setCJKmainfont{SimSun}[%
+      Path         = \ahu@windows@font@dir/,
+      Extension    = .ttc,
+      AutoFakeBold = 3,
+      ItalicFont   = Kaiti,
+      ItalicFeatures = {Extension = .ttf},
+    ]%
+    \setCJKmonofont{Fangsong}[
+      Path         = \ahu@windows@font@dir/,
+      Extension    = .ttf,
+    ]%
+    \setCJKfamilyfont{zhkai}{Kaiti}[
+      Path         = \ahu@windows@font@dir/,
+      Extension    = .ttf,
+    ]%
+    \setCJKfamilyfont{zhfs}{Fangsong}[
+      Path         = \ahu@windows@font@dir/,
+      Extension    = .ttf,
+    ]%
+  }{
+    \setCJKmainfont{SimSun}[%
+      Path         = \ahu@windows@font@dir/,
+      Extension    = .ttc,
+      AutoFakeBold = 3,
+      ItalicFont   = Simkai,
+      ItalicFeatures = {Extension = .ttf},
+    ]%
+    \setCJKmonofont{Simfang}[
+      Path         = \ahu@windows@font@dir/,
+      Extension    = .ttf,
+    ]%
+    \setCJKfamilyfont{zhkai}{Simkai}[
+      Path         = \ahu@windows@font@dir/,
+      Extension    = .ttf,
+    ]%
+    \setCJKfamilyfont{zhfs}{Simfang}[
+      Path         = \ahu@windows@font@dir/,
+      Extension    = .ttf,
+    ]%
+  }
+  \setCJKsansfont{SimHei}[%
+    Path         = \ahu@windows@font@dir/,
+    Extension    = .ttf,
+    AutoFakeBold = 3,
+  ]%
+  \setCJKfamilyfont{zhsong}{SimSun}[%
+    Path         = \ahu@windows@font@dir/,
+    Extension    = .ttc,
+    AutoFakeBold = 3,
+  ]%
+  \setCJKfamilyfont{zhhei}{SimHei}[%
+    Path         = \ahu@windows@font@dir/,
+    Extension    = .ttf,
+    AutoFakeBold = 3,
+  ]%
+}
+%    \end{macrocode}
+%
+% macOS 的 Microsoft Word 字体. 
+%    \begin{macrocode}
+\@namedef{ahu@set@cjk@font@mac-word}{%
+  \let\ahu@windows@font@dir\ahu@mac@word@font@dir
+  \@nameuse{ahu@set@cjk@font@windows-local}%
+}
+%    \end{macrocode}
+%
+% macOS 的华文字体. 
+%    \begin{macrocode}
+\newcommand\ahu@set@cjk@font@mac{%
+  \defaultCJKfontfeatures{}%
+  \setCJKmainfont{Songti SC}[
+    UprightFont    = * Light,
+    BoldFont       = * Bold,
+    ItalicFont     = Kaiti SC Regular,
+    BoldItalicFont = Kaiti SC Bold,
+  ]%
+  \setCJKsansfont{Heiti SC}[
+    UprightFont    = * Light,
+    BoldFont       = * Medium,
+  ]%
+  \setCJKmonofont{STFangsong}
+  \setCJKfamilyfont{zhsong}{Songti SC}[
+    UprightFont    = * Light,
+    BoldFont       = * Bold,
+  ]%
+  \setCJKfamilyfont{zhhei}{Heiti SC}[
+    UprightFont    = * Light,
+    BoldFont       = * Medium,
+  ]%
+  \setCJKfamilyfont{zhfs}{STFangsong}%
+  \setCJKfamilyfont{zhkai}{Kaiti SC}[
+    UprightFont    = * Regular,
+    BoldFont       = * Bold,
+  ]%
+  \setCJKfamilyfont{zhli}{Baoli SC}%
+  \setCJKfamilyfont{zhyuan}{Yuanyi SC}[
+    UprightFont    = * Light,
+    BoldFont       = * Bold,
+  ]%
+}
+%    \end{macrocode}
+%
+% 思源字体. 
+% 注意 Noto CJK 的 regular 字重名字不带“Regular”. 
+%    \begin{macrocode}
+\newcommand\ahu@set@cjk@font@noto{%
+  \defaultCJKfontfeatures{}%
+  \setCJKmainfont{Noto Serif CJK SC}[
+    UprightFont    = * Light,
+    BoldFont       = * Bold,
+    ItalicFont     = FandolKai-Regular,
+    ItalicFeatures = {Extension = .otf},
+    Script         = CJK,
+  ]%
+  \setCJKsansfont{Noto Sans CJK SC}[
+    BoldFont       = * Medium,
+    Script         = CJK,
+  ]%
+  \setCJKmonofont{Noto Sans Mono CJK SC}[
+    Script         = CJK,
+  ]%
+  \setCJKfamilyfont{zhsong}{Noto Serif CJK SC}[
+    UprightFont    = * Light,
+    UprightFont    = * Bold,
+    Script         = CJK,
+  ]%
+  \setCJKfamilyfont{zhhei}{Noto Sans CJK SC}[
+    BoldFont       = * Medium,
+    Script         = CJK,
+  ]%
+  \setCJKfamilyfont{zhfs}{FandolFang}[
+    Extension      = .otf,
+    UprightFont    = *-Regular,
+  ]%
+  \setCJKfamilyfont{zhkai}{FandolKai}[
+    Extension      = .otf,
+    UprightFont    = *-Regular,
+  ]%
+}
+%    \end{macrocode}
+%
+%    \begin{macrocode}
+\providecommand\songti{\CJKfamily{zhsong}}
+\providecommand\heiti{\CJKfamily{zhhei}}
+\providecommand\fangsong{\CJKfamily{zhfs}}
+\providecommand\kaishu{\CJKfamily{zhkai}}
+\newcommand\ahu@set@cjk@font{%
+  \@nameuse{ahu@set@cjk@font@\ahu@cjk@font}%
+}
+\ahu@set@cjk@font
+\ahu@option@hook{cjk-font}{\ahu@set@cjk@font}
+%    \end{macrocode}
+%
+% \subsubsection{数学字体}
+%
+%    \begin{macrocode}
+\newcommand\ahu@qed{\rule{1ex}{1ex}}
+\newcommand\ahu@load@unimath{%
+  \@ifpackageloaded{unicode-math}{}{%
+    \RequirePackage{unicode-math}%
+%    \end{macrocode}
+%
+% 兼容旧的粗体命令: \pkg{bm} 的 \cs{bm} 和 \pkg{amsmath} 的 \cs{boldsymbol}. 
+%    \begin{macrocode}
+    \DeclareRobustCommand\bm[1]{{\symbfit{##1}}}%
+    \DeclareRobustCommand\boldsymbol[1]{{\symbfit{##1}}}%
+%    \end{macrocode}
+%
+% 兼容 \pkg{amsfonts} 和 \pkg{amssymb} 中的一些命令. 
+%    \begin{macrocode}
+    \newcommand\square{\mdlgwhtsquare}%
+    \newcommand\blacksquare{\mdlgblksquare}%
+    \AtBeginDocument{%
+      \renewcommand\checkmark{\ensuremath{\symbol{"2713}}}%
+    }%
+%    \end{macrocode}
+%
+% 兼容 \pkg{amsthm} 的 \cs{qedsymbol}. 
+%    \begin{macrocode}
+    \renewcommand\ahu@qed{\ensuremath{\QED}}%
+  }%
+}
+%    \end{macrocode}
+%
+% XITS Math
+%    \begin{macrocode}
+\newcommand\ahu@set@math@font@xits{%
+  \ahu@set@xits@names
+  \setmathfont{\ahu@font@name@xits@math}[
+    Extension    = .otf,
+  ]%
+  \setmathfont{\ahu@font@name@xits@math}[
+    Extension    = .otf,
+    StylisticSet = 1,
+    range        = {cal,bfcal},
+  ]%
+}
+%    \end{macrocode}
+%
+% New Computer Modern Math
+%    \begin{macrocode}
+\newcommand\ahu@set@math@font@newcm{%
+  \setmathfont{NewCMMath-Book}[
+    Extension    = .otf,
+  ]%
+  \setmathfont{NewCMMath-Book}[
+    Extension    = .otf,
+    StylisticSet = 1,
+    range        = {scr,bfscr},
+  ]%
+  \setmathrm{NewCM10}[
+    Extension      = .otf,
+    UprightFont    = *-Book,
+    BoldFont       = *-Bold,
+    ItalicFont     = *-BookItalic,
+    BoldItalicFont = *-BoldItalic,
+  ]%
+  \setmathsf{NewCMSans10}[
+    Extension         = .otf,
+    UprightFont       = *-Book,
+    BoldFont          = *-Bold,
+    ItalicFont        = *-BookOblique,
+    BoldItalicFont    = *-BoldOblique,
+  ]%
+  \setmathtt{NewCMMono10}[
+    Extension           = .otf,
+    UprightFont         = *-Book,
+    ItalicFont          = *-BookItalic,
+    BoldFont            = *-Bold,
+    BoldItalicFont      = *-BoldOblique,
+  ]%
+}
+%    \end{macrocode}
+%
+%
+%    \begin{macrocode}
+\newcommand\ahu@set@math@font{%
+      \ahu@load@unimath
+      \@nameuse{ahu@set@math@font@\ahu@math@font}%
+}
+\ahu@option@hook{math-font}{\g@addto@macro\ahu@setup@hook{\ahu@set@math@font}}
+\newcommand\ahu@set@math@font@auto{%
+  \ifahu@math@font@auto
+    \ahusetup{math-font=xits}%
+  \fi
+}
+\AtBeginOfPackageFile*{siunitx}{\ahu@set@math@font@auto}
+\AtEndPreamble{\ahu@set@math@font@auto}
+%    \end{macrocode}
+%
+%
+% \subsection{主文档格式}
+% \label{sec:mainbody}
+%
+% \subsubsection{页眉页脚}
+% \label{sec:headerfooter}
+%
+% \pkg{fancyhdr} 定义页眉页脚很方便, 但是有一个非常隐蔽的坑. 
+% 第一次调用 \pkg{fancyhdr} 定义的样式时会修改 \cs{chaptermark}, 
+% 这会导致页眉信息错误(多余章号并且英文大写). 
+% 这是因为在 \cs{ps@fancy} 中对 \cs{chaptermark} 进行重定义, 
+% 所以我们先调用 \cs{ps@fancy}, 再修改 \cs{chaptermark}. 
+%    \begin{macrocode}
+\pagestyle{fancy}
+%    \end{macrocode}
+%
+% 定义页眉和页脚. 
+% 研究生: 
+% 页眉宋体五号字, 宋体五号字居中书写; 
+% 页码五号 Times New Roman 体. 
+%
+% 本科生: 
+% 页眉: 无; 
+% 页码: 位于页面底端, 居中书写. 
+%
+%    \begin{macrocode}
+\fancypagestyle{plain}{%
+  \fancyhf{}%
+  \renewcommand\footrulewidth{0pt}%
+  \ifahu@degree@bachelor
+    \renewcommand\headrulewidth{0pt}%
+    \fancyfoot[C]{
+      \ifahu@main@language@chinese
+        \xiaowu
+      \else
+        \normalsize
+      \fi
+      \thepage
+    }%
+    \let\@mkboth\@gobbletwo
+    \let\chaptermark\@gobble
+  \else
+    \renewcommand\headrulewidth{0.75bp}%
+      \wuhao
+      \ifahu@main@language@chinese
+        \fancyhead[CO]{安徽大学学位论文}
+        \fancyhead[CE]{\zihao{5}\leftmark}
+      \else
+        \fancyhead[CO]{Anhui University}
+        \fancyhead[CE]{\MakeUppercase{\leftmark}}%
+      \fi
+    \fancyfoot[C]{\wuhao\thepage}%
+    \let\@mkboth\markboth
+    \def\chaptermark##1{%
+      \markboth{%
+        \CTEXifname{%
+          \CTEXthechapter
+          \ifahu@main@language@chinese
+            \quad
+          \else
+            \space
+          \fi
+        }{}##1%
+      }{}%
+    }%
+  \fi
+  \let\sectionmark\@gobble
+}
+%    \end{macrocode}
+%
+% \cs{chapter} 会调用特殊的 page style. 
+%    \begin{macrocode}
+\def\ps@chapter{}
+\ctexset{chapter/pagestyle = chapter}
+%    \end{macrocode}
+%
+% \subsubsection{Three matters}
+% \begin{macro}{\cleardoublepage}
+% 对于 \textsl{openright} 选项, 必须保证章首页右开, 且如果前章末页无内容须清空其页眉页脚. 
+%    \begin{macrocode}
+\def\cleardoublepage{%
+  \clearpage
+  \if@twoside
+    \ifahu@output@print
+      \ifodd\c@page
+      \else
+        \thispagestyle{empty}%
+        \hbox{}%
+        \newpage
+        \if@twocolumn
+          \hbox{}\newpage
+        \fi
+      \fi
+    \fi
+  \fi
+}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\frontmatter}
+% \begin{macro}{\mainmatter}
+% \begin{macro}{\backmatter}
+% 单面和双面模式与常规的不太一样. 
+%    \begin{macrocode}
+\renewcommand\frontmatter{%
+  \cleardoublepage
+  \@mainmatterfalse
+  \pagestyle{empty}
+}
+\renewcommand\mainmatter{%
+  \cleardoublepage
+  \@mainmattertrue
+  \pagestyle{plain}
+  \pagenumbering{arabic}
+  \normalsize%
+}
+\newif\ifahu@backmatter
+\renewcommand\backmatter{%
+  \if@openright
+    \cleardoublepage
+  \else
+    \clearpage
+  \fi
+  \@mainmatterfalse
+  \ahu@backmattertrue
+  \ahusetup{toc-depth = 0}%
+}
+%    \end{macrocode}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+%
+% \subsubsection{段落}
+% \label{sec:paragraph}
+%
+% 全文首行缩进 2 字符, 标点符号用全角
+%    \begin{macrocode}
+\ctexset{%
+  punct=quanjiao,
+}
+\newcommand\ahu@set@indent{%
+  \ifahu@main@language@chinese
+    \ctexset{autoindent=2}%
+  \else
+    \ctexset{autoindent=0.8cm}%
+  \fi
+}
+\ahu@set@indent
+\ahu@option@hook{degree}{\ahu@set@indent}
+\ahu@option@hook{main-language}{\ahu@set@indent}
+%    \end{macrocode}
+%
+% 设置 url 样式, 与上下文一致
+%    \begin{macrocode}
+\urlstyle{same}
+%    \end{macrocode}
+%
+% 使用 \pkg{xurl} 的方法, 增加 URL 可断行的位置. 
+%    \begin{macrocode}
+\g@addto@macro\UrlBreaks{%
+  \do0\do1\do2\do3\do4\do5\do6\do7\do8\do9%
+  \do\A\do\B\do\C\do\D\do\E\do\F\do\G\do\H\do\I\do\J\do\K\do\L\do\M
+  \do\N\do\O\do\P\do\Q\do\R\do\S\do\T\do\U\do\V\do\W\do\X\do\Y\do\Z
+  \do\a\do\b\do\c\do\d\do\e\do\f\do\g\do\h\do\i\do\j\do\k\do\l\do\m
+  \do\n\do\o\do\p\do\q\do\r\do\s\do\t\do\u\do\v\do\w\do\x\do\y\do\z
+}
+\Urlmuskip=0mu plus 0.1mu
+%    \end{macrocode}
+%
+% 取消列表的间距, 以符合中文习惯. 
+%    \begin{macrocode}
+\partopsep=\z@skip
+\def\@listi{\leftmargin\leftmargini
+            \parsep \z@skip
+            \topsep \z@skip
+            \itemsep\z@skip}
+\let\@listI\@listi
+\@listi
+\def\@listii {\leftmargin\leftmarginii
+              \labelwidth\leftmarginii
+              \advance\labelwidth-\labelsep
+              \topsep    \z@skip
+              \parsep    \z@skip
+              \itemsep   \z@skip}
+\def\@listiii{\leftmargin\leftmarginiii
+              \labelwidth\leftmarginiii
+              \advance\labelwidth-\labelsep
+              \topsep    \z@skip
+              \parsep    \z@skip
+              \partopsep \z@skip
+              \itemsep   \z@skip}
+%    \end{macrocode}
+%
+% 使用 \pkg{enumitem} 命令调整默认列表环境间的距离.
+%    \begin{macrocode}
+\setlist{nosep}
+%    \end{macrocode}
+%
+% \subsubsection{脚注}
+% \label{sec:footnote}
+%
+% 禁止脚注跨页.
+%    \begin{macrocode}
+\interfootnotelinepenalty=10000
+%    \end{macrocode}
+%
+% 脚注内容采用小五号字, 中文用宋体, 英文和数字用 Times New Roman 体按两端对齐格式书写,
+% 单倍行距, 段前段后均空 0 磅. 脚注的序号按页编排, 不同页的脚注序号不需要连续.
+%
+% 脚注处序号“1,……,10”的字体是“正文”, 不是“上标”, 序号与脚注内容文字之间空半个汉字符,
+% 脚注的段落格式为: 单倍行距, 段前空 0 磅, 段后空 0 磅, 悬挂缩进 1.5 字符;
+% 字号为小五号字, 汉字用宋体, 外文用 Times New Roman 体.
+%
+% 定义脚注分割线, 字号(宋体小五), 以及悬挂缩进(1.5 字符).
+%    \begin{macrocode}
+\def\footnoterule{\vskip-3\p@\hrule\@width0.3\textwidth\@height0.4\p@\vskip2.6\p@}
+\footnotemargin=13.5bp
+%    \end{macrocode}
+%
+% 修改 \pkg{footmisc} 定义的脚注格式.
+%    \begin{macrocode}
+\long\def\@makefntext#1{%
+  \begingroup
+    % 序号取消上标
+    \def\@makefnmark{\hbox{\normalfont\@thefnmark}}%
+    \xiaowu
+    \ifFN@hangfoot
+      \bgroup
+      \setbox\@tempboxa\hbox{%
+        \ifdim\footnotemargin>\z@
+          \hb@xt@\footnotemargin{\@makefnmark\hss}%
+        \else
+          \@makefnmark
+        \fi
+      }%
+      \leftmargin\wd\@tempboxa
+      \rightmargin\z@
+      \linewidth \columnwidth
+      \advance \linewidth -\leftmargin
+      \parshape \@ne \leftmargin \linewidth
+      % \footnotesize
+      \xiaowu
+      \@setpar{{\@@par}}%
+      \leavevmode
+      \llap{\box\@tempboxa}%
+      \parskip\hangfootparskip\relax
+      \parindent\hangfootparindent\relax
+    \else
+      \parindent1em%
+      \noindent
+      \ifdim\footnotemargin>\z@
+        \hb@xt@ \footnotemargin{\hss\@makefnmark}%
+      \else
+        \ifdim\footnotemargin=\z@
+          \llap{\@makefnmark}%
+        \else
+          \llap{\hb@xt@ -\footnotemargin{\@makefnmark\hss}}%
+        \fi
+      \fi
+    \fi
+    \footnotelayout#1%
+    \ifFN@hangfoot
+      \par\egroup
+    \fi
+  \endgroup
+}
+%    \end{macrocode}
+%
+% \subsubsection{数学相关}
+% \label{sec:equation}
+% 允许太长的公式断行、分页等. 
+%    \begin{macrocode}
+\allowdisplaybreaks[4]
+%    \end{macrocode}
+%
+% 公式距前后文的距离由 4 个参数控制, 参见 \cs{normalsize} 的定义. 
+%
+%
+% \subsubsection{浮动对象: 插图和表格}
+% \label{sec:float}
+%
+% 图表浮动体的默认位置设为 |h|. 
+%    \begin{macrocode}
+\def\fps@figure{htbp}
+\def\fps@table{htbp}
+%    \end{macrocode}
+%
+% 设置浮动对象和文字之间的距离
+%    \begin{macrocode}
+\setlength{\floatsep}{12\p@ \@plus 2\p@ \@minus 2\p@}
+\setlength{\textfloatsep}{12\p@ \@plus 2\p@ \@minus 2\p@}
+\setlength{\intextsep}{12\p@ \@plus 2\p@ \@minus 2\p@}
+\setlength{\@fptop}{0bp \@plus1.0fil}
+\setlength{\@fpsep}{12bp \@plus2.0fil}
+\setlength{\@fpbot}{0bp \@plus1.0fil}
+%    \end{macrocode}
+%
+% 由于 LaTeX2e kernel 的问题, 图表等浮动体与文字前后的距离不一致, 需要进行 patch. 
+%    \begin{macrocode}
+\patchcmd{\@addtocurcol}%
+  {\vskip \intextsep}%
+  {\edef\save@first@penalty{\the\lastpenalty}\unpenalty
+   \ifnum \lastpenalty = \@M  % hopefully the OR penalty
+     \unpenalty
+   \else
+     \penalty \save@first@penalty \relax % put it back
+   \fi
+   \ifnum\outputpenalty <-\@Mii
+     \addvspace\intextsep
+     \vskip\parskip
+   \else
+     \addvspace\intextsep
+   \fi}%
+  {}{\ahu@patch@error{\@addtocurcol}}
+\patchcmd{\@addtocurcol}%
+  {\vskip\intextsep \ifnum\outputpenalty <-\@Mii \vskip -\parskip\fi}%
+  {\ifnum\outputpenalty <-\@Mii
+     \aftergroup\vskip\aftergroup\intextsep
+     \aftergroup\nointerlineskip
+   \else
+     \vskip\intextsep
+   \fi}%
+  {}{\ahu@patch@error{\@addtocurcol}}
+\patchcmd{\@getpen}{\@M}{\@Mi}
+  {}{\ahu@patch@error{\@getpen}}
+%    \end{macrocode}
+%
+% 将浮动参数设为较宽松的值. 
+%    \begin{macrocode}
+\renewcommand{\textfraction}{0.15}
+\renewcommand{\topfraction}{0.85}
+\renewcommand{\bottomfraction}{0.65}
+\renewcommand{\floatpagefraction}{0.60}
+%    \end{macrocode}
+%
+% 允许用户设置图表编号的连接符. 
+%    \begin{macrocode}
+\ahu@define@key{
+  figure-number-separator = {
+    name    = figure@number@separator,
+    default = {.},
+  },
+  table-number-separator = {
+    name    = table@number@separator,
+    default = {.},
+  },
+  equation-number-separator = {
+    name    = equation@number@separator,
+    default = {.},
+  },
+  number-separator = {
+    name    = number@separator,
+    default = {.},
+  },
+}
+\renewcommand\thefigure{%
+  \ifnum\c@chapter>\z@
+    \thechapter
+    \ahu@figure@number@separator
+  \fi
+  \@arabic\c@figure
+}
+\renewcommand\thetable{%
+  \ifnum\c@chapter>\z@
+    \thechapter
+    \ahu@table@number@separator
+  \fi
+  \@arabic\c@table
+}
+\renewcommand\theequation{%
+  \ifnum\c@chapter>\z@
+    \thechapter
+    \ahu@equation@number@separator
+  \fi
+  \@arabic\c@equation
+}
+\newcommand\ahu@set@number@separator{%
+  \let\ahu@figure@number@separator\ahu@number@separator
+  \let\ahu@table@number@separator\ahu@number@separator
+  \let\ahu@equation@number@separator\ahu@number@separator
+}
+\ahu@option@hook{number-separator}{\ahu@set@number@separator}
+%    \end{macrocode}
+%
+% 定制浮动图形和表格标题样式: 
+% \begin{itemize}
+%   \item 图表标题字号为 10.5bp (五号), 宋体加粗.
+%   \item 去掉图表号后面的冒号, 图序与图名文字之间空一个汉字符宽度
+%   \item 图: caption 在下, 段前空 6 磅, 段后空 12 磅
+%   \item 表: caption 在上, 段前空 12 磅, 段后空 6 磅
+% \end{itemize}
+%    \begin{macrocode}
+\DeclareCaptionFont{ahu}{%
+  \ifahu@degree@bachelor
+    \fontsize{10.5bp}{15bp}\selectfont
+  \else
+    \ifahu@language@chinese
+      \fontsize{10.5bp}{14.3bp}\selectfont\bfseries
+    \else
+      \fontsize{10.5bp}{12.65bp}\selectfont
+    \fi
+  \fi
+}
+\captionsetup{
+  font           = ahu,
+  labelsep       = quad,
+  skip           = 6bp,
+  figureposition = bottom,
+  tableposition  = top,
+}
+\captionsetup[sub]{font=ahu}
+\renewcommand{\thesubfigure}{(\alph{subfigure})}
+\renewcommand{\thesubtable}{(\alph{subtable})}
+% \renewcommand{\p@subfigure}{:}
+%    \end{macrocode}
+%
+% 研究生和本科生都推荐使用三线表, 并且要求表的上、下边线为单直线, 线粗为 1.5 磅; 
+% 第三条线为单直线, 线粗为 1 磅. 
+% 这里设置 \pkg{booktabs} 线粗的默认值. 
+%    \begin{macrocode}
+\heavyrulewidth=1.5bp
+\lightrulewidth=1bp
+%    \end{macrocode}
+%
+%    \begin{macrocode}
+\AtEndOfPackageFile*{threeparttable}{
+  \g@addto@macro\TPT@defaults{\wuhao}
+}
+%    \end{macrocode}
+%
+% \subsubsection{章节标题}
+% \label{sec:theor}
+%    \begin{macrocode}
+  \newcommand{\ahu@abstract@name}{摘\quad 要}
+  \newcommand{\ahu@abstract@name@en}{Abstract}
+%    \end{macrocode}
+%
+% 各级标题格式设置. 
+%    \begin{macrocode}
+\ctexset{%
+  chapter = {
+    nameformat   = {},
+    numberformat = {},
+    titleformat  = {},
+    fixskip      = true,
+    afterindent  = true,
+    lofskip      = 0pt,
+    lotskip      = 0pt,
+  },
+  section = {
+    afterindent  = true,
+  },
+  subsection = {
+    afterindent  = true,
+  },
+  subsubsection = {
+    afterindent  = true,
+  },
+  paragraph/afterindent = true,
+  subparagraph/afterindent = true,
+}
+%    \end{macrocode}
+%
+% 本科生: 
+% \begin{center}
+%   \begin{tabular}{lclll}
+%     \toprule
+%     标题        & 中文       & 英文       & 段前/后间距 & 行距 \\
+%     \midrule
+%     一级节标题  & 黑体小三号 & Arial 15pt & 30/20 pt    & 20pt \\
+%     二级节标题  & 黑体四号   & Arial 14pt & 25/12 pt    & 18pt \\
+%     三级节标题  & 黑体小四号 & Arial 13pt & 12/6 pt     & 15pt \\
+%     四级节标题  & 黑体小四号 & Arial 12pt & 12/6 pt     &      \\
+%     \bottomrule
+%   \end{tabular}
+% \end{center}
+%
+% 这里三级节标题的“中文黑体小四号”和“英文 Arial 13pt”不一致, 取 13pt. 
+%    \begin{macrocode}
+\newcommand\ahu@set@section@format{%
+  \ifahu@degree@bachelor
+    \ctexset{%
+      chapter = {
+        format     = \centering\sffamily\fontsize{15bp}{20bp}\selectfont,
+        aftername  = \quad,
+        beforeskip = 30bp,
+        afterskip  = 20bp,
+      },
+      section = {
+        format     = \sffamily\fontsize{14bp}{18bp}\selectfont,
+        aftername  = \quad,
+        beforeskip = 25bp,
+        afterskip  = 12bp,
+      },
+      subsection = {
+        format     = \sffamily\fontsize{13bp}{15bp}\selectfont,
+        aftername  = \quad,
+        beforeskip = 12bp,
+        afterskip  = 6bp,
+      },
+      subsubsection = {
+        format     = \sffamily\fontsize{12bp}{14bp}\selectfont,
+        aftername  = \quad,
+        beforeskip = 12bp,
+        afterskip  = 6bp,
+      },
+    }%
+    \ifahu@main@language@chinese
+      \ctexset{
+        chapter = {
+          name   = {第,章},
+          number = \chinese{chapter},
+        },
+      }%
+    \else
+      \ctexset{
+        chapter = {
+          name   = \chaptername\space,
+          number = \ahu@english@number{chapter},
+        },
+      }%
+    \fi
+%    \end{macrocode}
+%
+% 研究生要求: 
+% \begin{itemize}
+%   \item 各章标题, 例如: “\textsf{第一章\quad 引言}”. 
+%
+%     章序号与章名之间空一个汉字符. 
+%     采用黑体三号字, 居中书写, 单倍行距, 
+%     段前空 24 磅, 段后空 18 磅. 
+%
+%   \item 一级节标题, 例如: “\textsf{3.1 本文主要结论以及证明}”. 
+%
+%     节标题序号与标题名之间空一个汉字符(下同). 
+%     采用黑体四号(14pt)字居左书写, 行距为固定值 20 磅, 
+%     段前空 24 磅, 段后空 6 磅. 
+%
+%   \item 二级节标题, 例如: “\textsf{3.1.1 主要结论}”. 
+%
+%     采用黑体 13pt 字居左书写, 行距为固定值 20 磅, 
+%     段前空 12 磅, 段后空 6 磅. 
+%
+%   \item 三级节标题, 例如: “\textsf{3.1.2.1 主要结论的证明}”. 
+%
+%     采用黑体小四号(12pt)字居左书写, 行距为固定值 20 磅, 
+%     段前空 12 磅, 段后空 6 磅. 
+% \end{itemize}
+%
+% 由于 Word 的行距算法不同, 这里进行了一些调整使得视觉上更接近. 
+%    \begin{macrocode}
+  \else
+    \ctexset{%
+      chapter = {
+        beforeskip = 27bp,
+        afterskip  = 27bp,
+      },
+      section = {
+        beforeskip = 24bp,
+        afterskip  = 6bp,
+      },
+      subsection = {
+        beforeskip = 12bp,
+        afterskip  = 6bp,
+      },
+      subsubsection = {
+        beforeskip = 12bp,
+        afterskip  = 6bp,
+      },
+    }%
+    \ifahu@main@language@chinese
+      \ctexset{%
+        chapter = {
+          format      = \centering\sffamily\sanhao,
+          nameformat  = {},
+          titleformat = {},
+          name        = {第,章},
+          number      = \chinese{chapter},
+          aftername   = \quad,
+        },
+        section = {
+          format     = \sffamily\fontsize{14bp}{20bp}\selectfont,
+          aftername  = \quad,
+        },
+        subsection = {
+          format     = \sffamily\fontsize{13bp}{20bp}\selectfont,
+          aftername  = \quad,
+        },
+        subsubsection = {
+          format     = \sffamily\fontsize{12bp}{20bp}\selectfont,
+          aftername  = \quad,
+        },
+      }%
+    \else
+      \ctexset{%
+        chapter = {
+          format      = \centering\sffamily\bfseries\fontsize{16bp}{20bp}\selectfont,
+          nameformat  = \MakeUppercase,
+          titleformat = \MakeUppercase,
+          name        = \chaptername\space,
+          aftername   = \space,
+          number      = \thechapter,
+        },
+        section = {
+          format     = \sffamily\bfseries\fontsize{14bp}{20bp}\selectfont,
+          aftername  = \space,
+        },
+        subsection = {
+          format     = \sffamily\bfseries\fontsize{13bp}{20bp}\selectfont,
+          aftername  = \space,
+        },
+        subsubsection = {
+          format     = \sffamily\bfseries\fontsize{12bp}{20bp}\selectfont,
+          aftername  = \space,
+        },
+      }%
+    \fi
+  \fi
+}
+\ahu@set@section@format
+\ahu@option@hook{degree}{\ahu@set@section@format}
+\ahu@option@hook{main-language}{\ahu@set@section@format}
+%    \end{macrocode}
+%
+%    \begin{macrocode}
+\newcommand\ahu@english@number[1]{%
+  \expandafter\ifcase\csname c@#1\endcsname
+    Zero\or
+    One\or
+    Two\or
+    Three\or
+    Four\or
+    Five\or
+    Six\or
+    Seven\or
+    Eight\or
+    Nine\or
+    Ten\or
+    Eleven\or
+    Twelve\or
+    Thirteen\or
+    Fourteen\or
+    Fifteen\or
+    Sixteen\or
+    Seventeen\or
+    Eighteen\or
+    Nineteen\or
+    Twenty\or
+    \ahu@error{You are genius}%
+  \fi
+}
+%    \end{macrocode}
+%
+% \begin{macro}{\ahu@chapter*}
+% 默认的 \cs{chapter*} 很难同时满足研究生院和本科生的论文要求. 
+% 所以定义一个灵活的 \cs{ahu@chapter*} 专门处理这些要求. 
+%
+% \cs{ahu@chapter*}\oarg{tocline}\marg{title}\oarg{header}: tocline 是出现在目录
+% 中的条目, 如果为空则此 chapter 不出现在目录中, 如果省略表示目录出现 title; 
+% title 是章标题; header 是页眉出现的标题, 如果忽略则取 title. 
+%    \begin{macrocode}
+\newcommand\ahu@pdfbookmark[2]{}
+\newcommand\ahu@phantomsection{}
+\NewDocumentCommand\ahu@chapter{s o m o}{%
+  \IfBooleanF{#1}{%
+    \ahu@error{You have to use the star form: \string\ahu@chapter*}%
+  }%
+  \if@openright\cleardoublepage\else\clearpage\fi%
+  \IfValueTF{#2}{%
+    \ifthenelse{\equal{#2}{}}{%
+      \ahu@pdfbookmark{0}{#3}%
+    }{%
+      \ahu@phantomsection
+      \addcontentsline{toc}{chapter}{#2}%
+    }%
+  }{%
+    \ahu@phantomsection
+    \addcontentsline{toc}{chapter}{#3}%
+  }%
+  \ifahu@degree@bachelor\ctexset{chapter/beforeskip=40bp}\fi
+  \chapter*{#3}%
+  \ifahu@degree@bachelor\ctexset{chapter/beforeskip=30bp}\fi
+  \IfValueTF{#4}{%
+    \ifthenelse{\equal{#4}{}}{%
+      \@mkboth{}{}%
+    }{%
+      \@mkboth{#4}{#4}%
+    }%
+  }{%
+    \@mkboth{#3}{#3}%
+  }%
+}
+%    \end{macrocode}
+% \end{macro}
+%
+%
+% \subsubsection{目录}
+% \label{sec:toc}
+% 最多 4 层, 即: x.x.x.x, 对应的命令和层序号分别是: 
+% \cs{chapter}(0), \cs{section}(1), \cs{subsection}(2), \cs{subsubsection}(3). 
+%    \begin{macrocode}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{2}
+%    \end{macrocode}
+%
+% \begin{macro}{\tableofcontents}
+% 目录生成命令. 
+%    \begin{macrocode}
+\renewcommand\tableofcontents{%
+  \ahu@chapter*[]{\contentsname}%
+  \@starttoc{toc}%
+}
+\ahu@define@key{
+  toc-chapter-style = {
+    name = toc@chapter@style,
+    choices = {
+      arial,
+      times,
+    },
+    default = arial,
+  },
+}
+\newcommand\ahu@leaders{\nobreak\titlerule*[4bp]{.}\nobreak}
+\newcommand\ahu@set@toc@format{%
+  \contentsmargin{\z@}%
+%    \end{macrocode}
+%
+% 本科生: 
+% 目录从第 1 章开始, 每章标题用黑体小四号字, 行间距为 20pt, 
+% 行前空 6pt, 行后空 0pt. 
+% 其它级节标题用宋体小四字, 行间距为 20pt. 
+%
+% 注意示例中章标题的字母和数字是衬线体, 所以这里用 \cs{heiti}. 
+% 示例中的一级和二级节标题分别缩进 1 和 1.5 个汉字符. 
+%    \begin{macrocode}
+  \ifahu@degree@bachelor
+    \ifahu@main@language@chinese
+      \titlecontents{chapter}
+        [\z@]{\addvspace{6bp}
+          \ifahu@toc@chapter@style@arial
+            \sffamily
+          \else
+            \heiti
+          \fi
+        }
+        {\contentspush{\hyperlink{chapter.\thecontentslabel}{\thecontentslabel\quad}}}{}
+        {\rmfamily\ahu@leaders\thecontentspage}%
+      \titlecontents{section}
+        [1em]{}
+        {\contentspush{\hyperlink{section.\thecontentslabel}{\thecontentslabel\quad}}}{}
+        {\ahu@leaders\thecontentspage}%
+      \titlecontents{subsection}
+        [1.5em]{}
+        {\contentspush{\hyperlink{subsubsection.\thecontentslabel}{\thecontentslabel\quad}}}{}
+        {\ahu@leaders\thecontentspage}%
+    \else
+%    \end{macrocode}
+%
+% 本科生英文专业: 左侧按级依次缩进 0.5cm. 
+%    \begin{macrocode}
+      \ifahu@main@language@english
+        \titlecontents{chapter}
+          [\z@]{\addvspace{6bp}\sffamily}
+          {\contentspush{\thecontentslabel\quad}}{}
+          {\rmfamily\ahu@leaders\thecontentspage}%
+        \titlecontents{section}
+          [0.5cm]{}
+          {\contentspush{\thecontentslabel\quad}}{}
+          {\ahu@leaders\thecontentspage}%
+        \titlecontents{subsection}
+          [1cm]{}
+          {\contentspush{\thecontentslabel\quad}}{}
+          {\ahu@leaders\thecontentspage}%
+      \fi
+    \fi
+%    \end{macrocode}
+%
+% 研究生: 
+% \begin{enumerate}
+%   \item 目录中的章标题行采用黑体小四号字, 固定行距 20 磅, 段前段后 0 磅; 
+%     其他内容采用宋体小四号字, 行距为固定值 20 磅, 
+%     段前、段后均为 0 磅. 
+%   \item 目录中的章标题行居左书写, 一级节标题行缩进 1 个汉字符, 
+%     二级节标题行缩进 2 个汉字符. 
+% \end{enumerate}
+%
+% 注意示例中章标题的字母和数字是无衬线体, 所以用这里用 \cs{sffamily}, 
+% 但是页码仍然用 \cs{rmfamily}. 
+%    \begin{macrocode}
+  \else
+    \ifahu@main@language@chinese
+      \titlecontents{chapter}
+        [\z@]{\sffamily}
+        {\contentspush{\hyperlink{chapter.\thecontentslabel}{\thecontentslabel\quad}}}%
+        {}
+        {\rmfamily\ahu@leaders\thecontentspage}%
+      \titlecontents{section}
+        [1em]{}
+        {\contentspush{\hyperlink{section.\thecontentslabel}{\thecontentslabel\quad}}}%
+        {}
+        {\ahu@leaders\thecontentspage}%
+      \titlecontents{subsection}
+        [2em]{}
+        {\contentspush{\hyperlink{subsubsection.\thecontentslabel}{\thecontentslabel\quad}}}%
+        {}
+        {\ahu@leaders\thecontentspage}%
+    \else
+      \titlecontents{chapter}
+        [\z@]{\heiti}
+        {\contentspush{\MakeUppercase{\thecontentslabel}\space}\MakeUppercase}{\MakeUppercase}
+        {\rmfamily\ahu@leaders\thecontentspage}%
+      \titlecontents{section}
+        [1em]{}
+        {\contentspush{\thecontentslabel\space}}{}
+        {\ahu@leaders\thecontentspage}%
+      \titlecontents{subsection}
+        [2em]{}
+        {\contentspush{\thecontentslabel\space}}{}
+        {\ahu@leaders\thecontentspage}%
+    \fi
+  \fi
+}
+\ahu@set@toc@format
+\ahu@option@hook{degree}{\ahu@set@toc@format}
+\ahu@option@hook{main-language}{\ahu@set@toc@format}
+%    \end{macrocode}
+% \end{macro}
+%
+%
+% \subsubsection{封面和封底}
+% \label{sec:cover}
+% 定义密级参数. 
+%    \begin{macrocode}
+\ahu@define@key{
+  secret-level = {
+    name = secret@level,
+  },
+  secret-year = {
+    name = secret@year,
+  },
+%    \end{macrocode}
+%
+% 论文中英文题目. 
+%    \begin{macrocode}
+  title = {
+    default = {标题},
+  },
+  title* = {
+    default = {Title},
+    name    = title@en,
+  },
+%    \end{macrocode}
+%
+% 作者、导师、副导师、联合指导老师. 
+%    \begin{macrocode}
+  author = {
+    default = {姓名},
+  },
+  author* = {
+    default = {Name of author},
+    name    = author@en,
+  },
+  student-id = {
+    name = student@id,
+  },
+  supervisor = {
+    default = {导师姓名},
+  },
+  supervisor* = {
+    default = {Name of supervisor},
+    name    = supervisor@en,
+  },
+  associate-supervisor = {
+    name = associate@supervisor,
+  },
+  associate-supervisor* = {
+    name = associate@supervisor@en,
+  },
+  co-supervisor = {
+    name = co@supervisor,
+  },
+  co-supervisor* = {
+    name = co@supervisor@en,
+  },
+  professional-rank = {
+    default = {教授},
+    name = professional@rank,
+  },
+%    \end{macrocode}
+%
+% 学位中英文. 
+%    \begin{macrocode}
+  degree-category = {
+    default = {理学博士},
+    name    = degree@category,
+  },
+  degree-category* = {
+    default = {Doctor of Philosophy},
+    name    = degree@category@en,
+  },
+}
+
+%    \end{macrocode}
+%
+% 院系中英文名称. 
+%    \begin{macrocode}
+\ahu@define@key{
+  department = {
+    default = {数学科学学院},
+  },
+%    \end{macrocode}
+%
+% 一级学科中英文名称. 
+%    \begin{macrocode}
+  discipline = {
+    default = {数学},
+  },
+  discipline* = {
+    default = {Mathematics},
+    name    = discipline@en,
+  },
+  sub-discipline = {
+    default = {基础数学},
+    name    = subdiscipline,
+  },
+  sub-discipline* = {
+    default = {Pure Mathematics},
+    name    = subdiscipline@en,
+  },
+}
+\ahu@option@hook{discipline}{%
+  \ifahu@degree@type@professional
+    \ahu@warning{`discipline' for professional degree is deprecated. Use `professional-field' instead.}
+    \let\ahu@professional@field\ahu@discipline
+    \let\ahu@discipline\@empty
+  \fi
+}
+\ahu@option@hook{discipline*}{%
+  \ifahu@degree@type@professional
+    \ahu@warning{`discipline*' for professional degree is deprecated. Use `professional-field*' instead.}
+    \let\ahu@professional@field@en\ahu@discipline@en
+    \let\ahu@discipline@en\@empty
+  \fi
+}
+%    \end{macrocode}
+%
+% 专业领域. 
+%    \begin{macrocode}
+\ahu@define@key{
+  professional-field = {
+    name    = professional@field,
+  },
+  professional-field* = {
+    name    = professional@field@en,
+  },
+%    \end{macrocode}
+%
+% 工程领域. 
+%    \begin{macrocode}
+  engineering-field = {
+    name    = engineering@field,
+  },
+  engineering-field* = {
+    name    = engineering@field@en,
+  },
+%    \end{macrocode}
+%
+% 提名页中的日期. 
+%    \begin{macrocode}
+  start-date = {
+    name    = start@date,
+    default = {\the\year-\two@digits{\month}-\two@digits{\day}},
+  },
+  end-date = {
+    name    = end@date,
+    default = {\the\year-\two@digits{\month}-\two@digits{\day}},
+  },
+  date = {
+    default = {\the\year-\two@digits{\month}-\two@digits{\day}},
+  },
+  defense-date = {
+    name    = defense@date,
+    default = {\the\year-\two@digits{\month}-\two@digits{\day}},
+  },
+%    \end{macrocode}
+%
+% 博士后封面参数. 
+%    \begin{macrocode}
+  clc,
+  udc,
+  id,
+%    \end{macrocode}
+%
+% 中文封面后是否生成书脊页. 
+%    \begin{macrocode}
+  include-spine = {
+    name = include@spine,
+    choices = {
+      false,
+      true,
+    },
+    default = false,
+  },
+}
+%    \end{macrocode}
+%
+% 输出日期的给定格式: \cs{ahu@format@date}\marg{format}\marg{date}, 
+% 其中格式 \meta{format} 接受三个参数分别对应年、月、日, 
+% \meta{date} 是 ISO 格式的日期(yyyy-mm-dd). 
+%    \begin{macrocode}
+\newcommand\ahu@format@date[2]{%
+  \edef\ahu@@date{#2}%
+  \def\ahu@@process@date##1-##2-##3\@nil{%
+    #1{##1}{##2}{##3}%
+  }%
+  \expandafter\ahu@@process@date\ahu@@date\@nil
+}
+\newcommand\ahu@date@zh@digit[3]{#1 年 \number#2 月 \number#3 日}
+\newcommand\ahu@date@zh@digit@short[3]{#1 年 \number#2 月}
+\newcommand\ahu@date@zh@short[3]{\zhdigits{#1}年\zhnumber{#2}月}
+\newcommand\ahu@date@month[1]{%
+  \ifcase\number#1\or
+    January\or February\or March\or April\or May\or June\or
+    July\or August\or September\or October\or November\or December%
+  \fi
+}
+\newcommand\ahu@date@en@short[3]{\ahu@date@month{#2}, #1}
+%    \end{macrocode}
+%
+% 下划线命令. 
+% \pkg{ulem} 的下划线 \cs{uline} 可以控制粗细和深度. 
+%    \begin{macrocode}
+\newcommand\ahu@underline[2][6em]{\hskip1pt\underline{\hb@xt@ #1{\hss#2\hss}}\hskip3pt}
+\newcommand\ahu@uline[2][6em]{\uline{\hb@xt@ #1{\hss#2\hss}}}
+%    \end{macrocode}
+%
+% 将内容拉伸或压缩到固定宽度. 
+%    \begin{macrocode}
+\newcommand\ahu@fixed@box[2]{%
+  \begingroup
+    \ifLuaTeX
+      \ltjsetparameter{kanjiskip = {0pt plus 2filll minus 1filll}}%
+    \else
+      \renewcommand\CJKglue{\hspace{0pt plus 2filll minus 1filll}}%
+    \fi
+    \makebox[#1][l]{#2}%
+  \endgroup
+}
+%    \end{macrocode}
+%
+% 如果内容小于给定宽度, 则拉伸至该宽度, 否则取自然宽度. 
+%    \begin{macrocode}
+\newbox\ahu@stretch@box
+\newcommand\ahu@stretch[2]{%
+  \sbox\ahu@stretch@box{#2}%
+  \ifdim \wd\ahu@stretch@box < #1\relax
+    \begingroup
+      \ifLuaTeX
+        \ltjsetparameter{kanjiskip = {0pt plus 2filll}}%
+      \else
+        \renewcommand\CJKglue{\hspace{0pt plus 2filll}}%
+      \fi
+      \makebox[#1][l]{#2}%
+    \endgroup
+  \else
+    \box\ahu@stretch@box
+  \fi
+}
+%    \end{macrocode}
+%
+% 如果内容小于给定宽度, 则在右侧填充空白至该宽度, 否则取自然宽度. 
+%    \begin{macrocode}
+\newbox\ahu@pad@box
+\newcommand\ahu@pad[2]{%
+  \sbox\ahu@pad@box{#2}%
+  \ifdim \wd\ahu@pad@box < #1\relax
+    \makebox[#1][l]{\box\ahu@pad@box}%
+  \else
+    \box\ahu@pad@box
+  \fi
+}
+%    \end{macrocode}
+%
+% 导师的姓名和职称使用“,”分开, 所以这里用 \pkg{kvsetkeys} 的 \cs{comma@parse} 来处理. 
+%    \begin{macrocode}
+\newcounter{ahu@csl@count}
+\newcommand\ahu@name@title@process[1]{%
+  \ifcase\c@ahu@csl@count  % == 0
+    \gdef\ahu@@name{#1}%
+  \or  % == 1
+    \gdef\ahu@@title{#1}%
+  \fi
+  \stepcounter{ahu@csl@count}%
+}
+\newcommand\ahu@name@title@format[2]{%
+  \ahu@pad{3cm}{\ahu@stretch{4em}{#1}}%
+  \ahu@stretch{3em}{#2}%
+}
+\newcommand\ahu@name@title[1]{%
+  \setcounter{ahu@csl@count}{0}%
+  \gdef\ahu@@name{}%
+  \gdef\ahu@@title{}%
+  \expandafter\comma@parse\expandafter{#1}{\ahu@name@title@process}%
+  \ahu@name@title@format{\ahu@@name}{\ahu@@title}%
+}
+%    \end{macrocode}
+%
+% \myentry{封面}
+% \begin{macro}{\makecover}
+% 生成封面. 此命令只对博士/硕士学位论文有效. 
+%    \begin{macrocode}
+\newcommand{\makecover}{
+  \cleardoublepage
+  \pagestyle{empty}
+  \ahu@pdfbookmark{-1}{\ahu@title}%
+  \ifahu@degree@graduate
+     \ahu@cover@page
+     \ifahu@include@spine@true
+       \spine
+     \fi
+  \fi
+}
+%    \end{macrocode}
+% \end{macro}
+%
+% \myentry{提名页}
+% \begin{macro}{\maketitle}
+% 生成题名页. 
+%    \begin{macrocode}
+\renewcommand\maketitle{%
+  \cleardoublepage
+  \pagestyle{empty}
+  \ahu@pdfbookmark{-1}{\ahu@title}%
+  \ahu@titlepage
+  \clearpage
+}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\ahu@titlepage}
+% 题名页设置.
+%
+%    \begin{macrocode}
+\newcommand\ahu@titlepage{%
+  \ahusetup{language = chinese}%
+  \ifahu@degree@graduate
+    \ahu@titlepage@graduate@first
+    \cleardoublepage
+    \ahu@titlepage@graduate@second
+    \cleardoublepage
+  \else
+    \ifahu@degree@bachelor
+      % 本科生
+      \ahu@titlepage@bachelor
+    \else
+      \ifahu@degree@postdoc
+        % 博后
+        \ahu@cover@postdoc
+        \cleardoublepage
+        \ahu@titlepage@postdoc
+      \fi
+    \fi
+  \fi
+  \ahu@reset@main@language
+}
+%    \end{macrocode}
+% \end{macro}
+%
+% \myentry{研究生封面}
+% \begin{macro}{\ahu@cover@page}
+% 首先设置一个临时长度, 后面会使用.
+%    \begin{macrocode}
+\newlength{\temporarywidth}
+\settowidth{\temporarywidth}{中图分类号:}
+\def\ahu@cover@page{%
+  \newgeometry{
+    top    = 3.2cm,
+    bottom = 4.4cm,
+    left   = 2.5cm,
+    right  = 2.5cm 
+  }%
+ \thispagestyle{empty}
+ \begingroup
+   \noindent {\zihao{5}\bfseries\heiti%
+   \makebox[\temporarywidth][s]{%
+   中图分类号:} {\bfseries\ahu@clc} \\[2mm]
+   \makebox[\temporarywidth][s]{%
+   论文编号:} 10357\ahu@student@id}
+ \endgroup
+ \par
+ \begin{center}
+   \ifahu@nocolor
+    \raisebox{-20ex}{
+    \includegraphics[width=8.5cm]{ahublack.pdf}}
+   \else
+    \raisebox{-20ex}{
+    \includegraphics[width=8.5cm]{ahulogo.pdf}}
+   \fi
+ \end{center}
+ \vskip12mm
+ \begin{center}
+  \fontsize{48bp}{48bp}\selectfont\STXingka 
+    \ifahu@degree@doctor
+      博士学位论文
+    \else
+      \ifahu@degree@master
+        \ifahu@degree@type@professional 
+          专业硕士学位论文
+        \else
+          硕士学位论文
+        \fi
+      \fi
+    \fi
+ \end{center}
+ \vskip32mm
+ \begin{center}
+  \fontsize{32bp}{48bp}\selectfont\bfseries\ahu@title
+ \end{center}
+ \vfill
+    \ifahu@degree@type@professional
+      \begin{center}\heiti\zihao{4}
+       \begin{tabular}{cc}
+\makebox[6em][l]{作者姓名} & \uline{\makebox[12em]{\ahu@author}} \\[6mm]
+\makebox[6em][l]{专业学位类别} & \uline{\makebox[12em]{\ahu@discipline}} \\[6mm]
+\makebox[6em][l]{专业学位领域} & \uline{\makebox[12em]{\ahu@professional@field}} \\[6mm]
+\makebox[6em][l]{指导教师} & \uline{\makebox[12em]{\ahu@supervisor}} 
+       \end{tabular}
+     \end{center}
+    \else
+    \begin{center}\heiti\zihao{4}
+     \begin{tabular}{cc}
+\makebox[4em][s]{作者姓名} & \uline{\makebox[12em]{\ahu@author}} \\[6mm]
+\makebox[4em][s]{一级学科} & \uline{\makebox[12em]{\ahu@discipline}} \\[6mm]
+\makebox[4em][s]{二级学科} & \uline{\makebox[12em]{\ahu@subdiscipline}} \\[6mm]
+\makebox[4em][s]{指导教师} & \uline{\makebox[12em]{\ahu@supervisor}} 
+     \end{tabular}
+   \end{center}
+  \fi
+  \clearpage
+  \restoregeometry
+}
+%    \end{macrocode}
+% \end{macro}
+%
+% \myentry{研究生提名页(第一页)}
+%    \begin{macrocode}
+\newcommand{\ahu@titlepage@graduate@first}{%
+  \newgeometry{
+    top    = 7cm,
+    bottom = 4.5cm,
+    left   = 2.5cm,
+    right  = 2.5cm 
+  }%
+ \thispagestyle{empty}
+  \begin{center}
+    \xiaoer[1.9]\bfseries\ahu@title@en
+  \end{center}
+  \vskip15mm
+  \begin{center}
+\zihao{4} A Dissertation Submitted for the Degree of \ahu@degree@category@en
+  \end{center}
+  \vskip45mm
+  \begin{center}\zihao{-3}
+    \begin{tabular}{cc}
+\makebox[4em][s]{\bfseries Candidate:} & \uline{\makebox[12em]{\bfseries\ahu@author@en}} \\[10mm]
+\makebox[4em][s]{\bfseries Supervisor:} & \uline{\makebox[12em]{\bfseries\ahu@supervisor@en}}
+    \end{tabular}
+ \end{center}
+  \clearpage
+  \restoregeometry
+ }
+%    \end{macrocode}
+%
+% \myentry{研究生提名页(第二页)}
+%    \begin{macrocode}
+\newcommand\ahu@titlepage@graduate@second{%
+  \newgeometry{
+    top     = 3.1cm,
+    bottom  = 6.5cm,
+    left   = 2.5cm,
+    right  = 2.5cm 
+  }%
+  \thispagestyle{empty}%
+  \begingroup
+   \noindent {\zihao{5}\bfseries\heiti%
+   \makebox[\temporarywidth][s]{%
+   中图分类号:} {\bfseries\ahu@clc} \\[2mm]
+   \makebox[\temporarywidth][s]{%
+   论文编号:} 10357\ahu@student@id}
+  \endgroup
+  \vskip 107pt
+  \begingroup
+    \centering
+    \xiaoer\heiti 
+    \ifahu@degree@doctor
+      博\quad 士\quad 学\quad 位\quad 论\quad 文
+    \else
+      \ifahu@degree@master 
+       硕\quad 士\quad 学\quad 位\quad 论\quad 文
+      \fi
+    \fi
+    \par
+    \vskip 70pt%
+    \begingroup
+      \sffamily\bfseries\xiaoyi\heiti
+      \ahu@title\par
+    \endgroup
+    \ifahu@main@language@english
+      \vskip 5.4pt%
+      \begingroup
+        \sffamily\bfseries\fontsize{20bp}{31.2bp}\selectfont
+        \ahu@title@en\par
+      \endgroup
+    \fi
+  \endgroup
+  \vfill 
+  \begingroup
+    \ifahu@degree@type@professional
+      \noindent
+\begin{tabular}{@{}p{0.2\textwidth} p{0.3\textwidth} @{}p{0.2\textwidth} p{0.3\textwidth}}
+  作者姓名  & \ahu@author  & 申请学位级别  & 专业硕士 \\[3mm]
+  指导教师姓名 & \ahu@supervisor & 职\qquad 称 & \ahu@professional@rank \\[3mm]
+  专业名称 & \ahu@professional@field & 研究方向 & 图论及其应用 \\[3mm]
+  学习时间自 & \ahu@start@date & \hspace{2em}起至 & \ahu@end@date 止 \\[3mm]
+  论文提交日期 & \ahu@format@date{\ahu@date@zh@digit}{\ahu@date} & 论文答辩日期 & \ahu@format@date{\ahu@date@zh@digit}{\ahu@defense@date}
+\end{tabular}
+   \else
+\noindent
+\begin{tabular}{@{}p{0.2\textwidth} p{0.3\textwidth} @{}p{0.2\textwidth} p{0.3\textwidth}}
+  作者姓名 & \ahu@author & 申请学位级别 & \ahu@degree@category \\[3mm]
+  指导教师姓名 & \ahu@supervisor & 职\qquad 称 & \ahu@professional@rank \\[3mm]
+  学科专业 & \ahu@discipline & 研究方向 & 图论及其应用 \\[3mm]
+  学习时间自 & \ahu@format@date{\ahu@date@zh@digit}{\ahu@start@date} & \hspace{2em}起至 & \ahu@format@date{\ahu@date@zh@digit}{\ahu@end@date} \\[3mm]
+  论文提交日期 & \ahu@format@date{\ahu@date@zh@digit}{\ahu@date} & 论文答辩日期 & \ahu@format@date{\ahu@date@zh@digit}{\ahu@defense@date}
+\end{tabular}
+   \fi
+  \endgroup
+  \clearpage
+  \restoregeometry
+}
+%    \end{macrocode}
+%
+%    \begin{macrocode}
+\newcommand\ahu@set@student@id{%
+    \ifx\ahu@student@id\@empty\else
+\ahu@warning{`student-id' in "\protect\ahusetup" would be ignored when `thesis-type' is not proposal.}%
+    \fi
+}
+\ahu@set@student@id
+\ahu@option@hook{student-id}{\ahu@set@student@id}
+%    \end{macrocode}
+%
+% 涉密信息
+%    \begin{macrocode}
+\newcommand\ahu@titlepage@secret{%
+  \sffamily\sanhao
+  \ifx\ahu@secret@level\@empty
+    \phantom{秘密}%
+  \else
+\ahu@secret@level\symbol{"2605}\makebox[3em][c]{\ahu@secret@year}年%
+  \fi\par
+}
+%    \end{macrocode}
+%
+%
+% \myentry{本科生封面}
+%    \begin{macrocode}
+\newcommand\ahu@titlepage@bachelor{%
+  \newgeometry{
+    top    = 4cm,
+    bottom = 6cm,
+    left   = 2.5cm,
+    right  = 2.5cm
+  }%
+  \thispagestyle{empty}%
+  \begingroup
+    \centering
+      \bfseries\xiaochu[1.5] 安徽大学 \\ 本科毕业论文 (设计、创作) \par%
+  \endgroup
+  \vfill
+  \begin{center}
+    \begin{tabular}{l}\xiaosan[2]
+      \makebox{题\qquad 目:~}%
+      \parbox[t]{\textwidth}{%
+      \renewcommand\ULthickness{0.05em}%
+      \renewcommand\ULdepth{0.2em}%
+      \expandafter\uline\expandafter{\ahu@title}\par
+      \ifahu@main@language@english
+         \ahusetup{language=english}%
+         \expandafter\uline\expandafter{\ahu@title@en}\par
+         \ahusetup{language=chinese}%
+      \fi
+      } \\[9mm]
+\xiaosan 学生姓名: \ahu@uline[5cm]{\ahu@author} 学号: \ahu@uline[5cm]{\ahu@student@id} \\[6mm]
+\xiaosan 院\hspace{6mm} (系): \ahu@uline[5cm]{\ahu@department} 专业: \ahu@uline[5cm]{\ahu@discipline} \\[6mm]
+\xiaosan 入学时间: \ahu@uline[5.6cm]{} 年 \ahu@uline[5cm]{} \\[6mm]
+\xiaosan 导师姓名: \ahu@uline[4cm]{\ahu@supervisor} 职称/学位: \ahu@uline[4.5cm]{\ahu@supervisor} \\[6mm]
+\xiaosan 导师所在单位: \ahu@uline[10.2cm]{\ahu@department} \\[6mm]
+\xiaosan 完成时间: \ahu@uline[5cm]{} 年 \ahu@uline[5cm]{} 月
+    \end{tabular}
+  \end{center}
+  \clearpage
+  \restoregeometry
+}
+%    \end{macrocode}
+%
+% \myentry{博士后封面}
+%    \begin{macrocode}
+\newcommand\ahu@cover@postdoc{%
+  \thispagestyle{empty}%
+  \begin{center}%
+    \renewcommand\ULthickness{0.7pt}%
+    \vspace*{0.35cm}%
+    {\sihao[2.5]%
+      \ahu@stretch{3.1em}{分类号}\ahu@underline[3.7cm]{\ahu@clc}\hfill
+      密级\ahu@underline[3.7cm]{\ahu@secret@level}\par
+      \ahu@stretch{3.1em}{U D C}\ahu@underline[3.7cm]{\ahu@udc}\hfill
+      编号\ahu@underline[3.7cm]{\ahu@id}\par
+    }%
+    \vskip 3.15cm%
+    {\sffamily\bfseries\xiaoer[2.6]%
+      {\ziju{1.5} 安徽大学 \par}%
+      {\ziju{0.5} 博士后研究工作报告 \par}%
+    }%
+    \vskip 0.2cm%
+    \parbox[t][4.0cm][c]{\textwidth}{%
+      \centering\sihao[2.5]%
+      \renewcommand\ULdepth{.5em}%
+      \expandafter\uline\expandafter{\ahu@title}\par
+    }\par
+    \vskip 0.4cm%
+    {\xiaosi\ahu@author\par}%
+    \vskip 1.4cm%
+    {\xiaosi[1.58]%
+      \renewcommand\ULdepth{0.5em}%
+      工作完成日期\quad
+      \ahu@uline[5.9cm]{%
+        \ahu@format@date{\ahu@date@zh@digit@short}{\ahu@start@date}—%
+        \ahu@format@date{\ahu@date@zh@digit@short}{\ahu@end@date}
+      }\par
+      \vskip 0.55cm%
+      报告提交日期\quad
+      \ahu@uline[5.9cm]{\ahu@format@date{\ahu@date@zh@digit@short}{\ahu@date}}\par
+    }%
+    \vskip 1cm%
+    {\xiaosi[2]{\ziju{1}安徽大学}\par}%
+    \vskip 0.25cm%
+    {\xiaosi[2]\ahu@format@date{\ahu@date@zh@digit@short}{\ahu@date}\par}%
+  \end{center}%
+}
+%    \end{macrocode}
+%
+% \myentry{博士后题名页}
+%    \begin{macrocode}
+\newcommand\ahu@titlepage@postdoc{%
+  \thispagestyle{empty}%
+  \begin{center}%
+    \vspace*{1.5cm}%
+    \parbox[t][3cm][c]{\textwidth}{%
+      \centering\sanhao[1.95]\ahu@title\par
+    }\par
+    \vskip 0.15cm%
+    \parbox[t][3cm][c]{\textwidth}{%
+      \centering\sihao[1.36]\ahu@title@en\par
+    }\par
+    \vskip 0.4cm%
+    {\xiaosi[2.6]%
+      \begin{tabular}{l@{\quad}l}%
+        \renewcommand\arraystretch{1}%
+    \ahu@stretch{11em}{博士后姓名:}                & \ahu@author       \\
+    \ahu@stretch{11em}{流动站(一级学科)名称:}      & \ahu@discipline    \\
+    \ahu@stretch{11em}{专\quad{}业(二级学科)名称:} & \ahu@subdiscipline \\
+      \end{tabular}\par
+    }%
+    \vskip 2.7cm%
+    {\xiaosi[2.6]%
+      研究工作起始时间:\quad\ahu@format@date{\ahu@date@zh@digit}{\ahu@start@date}\par
+      \vskip 0.1cm%
+      研究工作期满时间:\quad\ahu@format@date{\ahu@date@zh@digit}{\ahu@end@date}\par
+    }%
+    \vskip 2.1cm%
+    {\xiaosi[2.6]安徽大学人事处\par}%
+    \vskip 0.6cm%
+    {\ahu@format@date{\ahu@date@zh@digit@short}{\ahu@date}\par}%
+  \end{center}%
+}
+%    \end{macrocode}
+%
+% \subsubsection{授权说明}
+% \begin{macro}{\copyrightpage}
+% 授权说明
+%    \begin{macrocode}
+\newcommand\copyrightpage[1][]{%
+  \thispagestyle{empty}
+  \ifahu@degree@postdoc\relax\else
+    \def\ahu@@tmp{#1}
+    \ifx\ahu@@tmp\@empty
+      \ahusetup{language=chinese}%
+        \ahu@copyright@page@graduate
+      \ahu@reset@main@language
+    \else
+      \ahu@pdfbookmark{0}{独创性声明和使用授权书}%
+      \ahu@phantomsection
+      \kv@define@key{ahu@copyright}{file}{\includepdf{\kv@value}}%
+      \kv@set@family@handler{ahu@copyright}{%
+        \ifx\kv@value\relax
+          \includepdf{\kv@key}%
+        \else
+          \kv@handled@false
+        \fi
+      }%
+      \kvsetkeys{ahu@copyright}{#1}%
+    \fi
+  \fi
+}
+%    \end{macrocode}
+%
+% 支持扫描文件替换. 
+%    \begin{macrocode}
+\newcommand\ahu@copyright@page@graduate{%
+  \newgeometry{
+    top    = 3.5cm,
+    bottom = 5.7cm,
+    left   = 2.5cm,
+    right  = 2.5cm
+  }%
+  \thispagestyle{empty}
+  \begingroup
+    \ctexset{
+       chapter = {
+         format = {\centering\fangsong\xiaoyi},
+        },
+    }%
+    \ahu@chapter*[]{独创性声明}%
+  \endgroup
+  \vskip 7mm%
+  \begingroup
+    \fontsize{12bp}{28bp}\selectfont\fangsong
+  本人声明所呈交的学位论文是本人在导师指导下进行的研究工作及取得的研究成果。
+  据我所知，除了文中特别加以标注和致谢的地方外，论文中不包含其他人已经发表
+  或撰写过的研究成果，也不包含为获得安徽大学或其他教育机构的学位或证书而使用过
+  的材料。如有学术不端行为，一切后果由本人承担，与导师和安徽大学无关。\par\vskip3mm
+\noindent 学位论文作者签名: \hfill 签字日期: \hspace{15mm} 年 \hspace{10mm} 月 \hspace{10mm} 日
+  \endgroup
+  \vfill 
+  \begingroup
+    \fangsong\xiaoyi\centerline{学位论文版权使用授权书}
+  \endgroup
+  \vskip 12mm
+  \begingroup
+    \fontsize{12bp}{28bp}\selectfont\fangsong
+  本学位论文作者完全了解安徽大学有关保留、使用学位论文的规定，有权保留并向
+  国家有关部门或机构送交论文的复印件和磁盘，允许论文被查阅和借阅。本人授权安徽
+  大学可以将学位论文的全部或部分内容编入有关数据库进行检索，可以采用影印、缩印
+  或扫描等复制手段保存、汇编学位论文。\par
+  （保密的学位论文在解密后适用本授权书）\par 
+\noindent\makebox[.5\textwidth][l]{学位论文作者签名:} \makebox[.5\textwidth][l]{导师签名:} \par\vskip 3mm
+\noindent\makebox[.5\textwidth][l]{签字日期: \hspace{15mm} 年 \hspace{7mm} 月 \hspace{7mm} 日}% 
+\makebox[.5\textwidth][l]{签字日期: \hspace{15mm} 年 \hspace{7mm} 月 \hspace{7mm} 日}
+  \endgroup
+}
+%    \end{macrocode}
+% \end{macro}
+%
+% \subsubsection{摘要}
+% \label{sec:abstractformat}
+%
+% \begin{macro}{\ahu@clist@use}
+% 不同论文格式关键词之间的分割不太相同, 用 \option{keywords} 和
+% \option{keywords*} 来收集关键词列表, 然后用本命令来生成符合要求的格式, 
+% 类似于 \LaTeX3 的 \cs{clist\_use:Nn}. 
+%    \begin{macrocode}
+\ahu@define@key{
+  keywords,
+  keywords* = {
+    name = keywords@en,
+  },
+}
+\newcommand\ahu@clist@use[2]{%
+  \def\ahu@@tmp{}%
+  \def\ahu@clist@processor##1{%
+    \ifx\ahu@@tmp\@empty
+      \def\ahu@@tmp{#2}%
+    \else
+      #2%
+    \fi
+    ##1%
+  }%
+  \expandafter\comma@parse\expandafter{#1}{\ahu@clist@processor}%
+}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{environment}{abstract}
+% 中文摘要部分的标题为“\textbf{摘要}”, 用黑体三号字. 
+% 摘要内容用小四号字书写, 两端对齐, 汉字用宋体, 外文字用 Times New Roman 体, 
+% 标点符号一律用中文输入状态下的标点符号. 
+%    \begin{macrocode}
+\newenvironment{abstract}{%
+  \ahusetup{language = chinese}%
+  \ifahu@degree@graduate
+    \begingroup
+      \ifahu@main@language@english
+        \ctexset{%
+          chapter/format = \centering\sffamily\fontsize{16bp}{20bp}\selectfont,
+        }%
+      \fi
+      \ahu@chapter*[]{\ahu@abstract@name}%
+    \endgroup
+  \else
+    \ahu@chapter*[]{\ahu@abstract@name}%
+  \fi
+}{%
+%    \end{macrocode}
+%
+% 每个关键词之间空两个汉字符宽度,  且为悬挂缩进. 
+%    \begin{macrocode}
+  \par
+  \null\par
+  \ifahu@degree@graduate
+    \noindent
+    \textsf{关键词: }%
+  \else
+    \textbf{关键词: }%
+  \fi
+  \ahu@clist@use{\ahu@keywords}{; }%
+  \gdef\ahu@keywords{}%
+  \ifahu@degree@bachelor
+    \cleardoublepage
+  \fi
+  \ahu@reset@main@language
+}
+%    \end{macrocode}
+% \end{environment}
+%
+% \begin{environment}{abstract*}
+% 英文摘要部分的标题为 \textbf{Abstract}, 用 Arial 体三号字. 
+% 摘要内容用小四号 Times New Roman. 
+%    \begin{macrocode}
+\newenvironment{abstract*}{%
+  \ifahu@degree@bachelor
+    \cleardoublepage
+  \fi
+  \ahusetup{language = english}%
+  \ahu@chapter*[]{\ahu@abstract@name@en}%
+}{%
+  \par
+  \null\par
+  \ifahu@degree@graduate
+    \noindent
+  \fi
+  \textbf{Keywords:}\space
+  \ahu@clist@use{\ahu@keywords@en}{; }%
+  \ifahu@degree@graduate
+    \vspace*{\stretch{1}}%
+  \fi
+  \ifahu@degree@bachelor
+    \cleardoublepage
+  \fi
+  \ahu@reset@main@language % switch back to main language
+}
+%    \end{macrocode}
+% \end{environment}
+%
+% \subsubsection{主要符号表}
+% \label{sec:denotationfmt}
+% \begin{environment}{denotation}
+% 主要符号表. 
+%    \begin{macrocode}
+\newenvironment{denotation}[1][2.5cm]{%
+  \ifahu@degree@bachelor
+    \cleardoublepage
+  \fi
+  \ahu@chapter*[]{\ahu@denotation@name}% 
+  \vskip-30bp\xiaosi[1.6]\begin{ahu@denotation}[labelwidth=#1]
+}{%
+  \end{ahu@denotation}
+}
+\newlist{ahu@denotation}{description}{1}
+\setlist[ahu@denotation]{%
+  nosep,
+  font=\normalfont,
+  align=left,
+  leftmargin=0.2\textwidth,
+  rightmargin=0.2\textwidth,
+  labelindent=0pt,
+  labelwidth=2.5cm,
+  labelsep*=0.5cm,
+  itemindent=0pt,
+}
+%    \end{macrocode}
+% \end{environment}
+%
+%
+% \subsubsection{致谢以及声明}
+% \label{sec:ackanddeclare}
+%
+% \begin{environment}{acknowledgements}
+% 声明文字.
+%    \begin{macrocode}
+\newcommand{\ahu@statement@text}{本人郑重声明: 所呈交的学位论文, 是本人在导师指导下,% 
+独立进行研究工作所取得的成果. 尽我所知, 除文中已经注明引用的内容外, 本学位论%
+文的研究成果不包含任何他人享有著作权的内容. 对本论文所涉及的研究工作做出贡献的%
+其他个人和集体, 均已在文中以明确方式标明. }
+\newcommand{\ahu@signature}{签\hspace{1em}名: }
+\newcommand{\ahu@backdate}{日\hspace{1em}期: }
+%    \end{macrocode}
+%
+% 定义致谢环境. 
+%    \begin{macrocode}
+\newenvironment{acknowledgements}{%
+  \@mainmatterfalse
+  \ahu@end@appendix@ref@section
+  \ifahu@degree@bachelor
+    \cleardoublepage
+  \fi
+  \ahu@chapter*{\ahu@acknowledgements@name}%
+}{%
+  \ifahu@degree@bachelor
+    \cleardoublepage
+  \fi
+}
+%    \end{macrocode}
+% \end{environment}
+%
+% \begin{macro}{statement}
+% 声明部分(支持扫描文件替换)
+%    \begin{macrocode}
+\ahu@define@key{
+  statement-page-style = {
+    name = statement@page@style,
+    choices = {
+      auto,
+      empty,
+      plain,
+    },
+    default = auto,
+  },
+  statement-page-number = {
+    name = statement@page@number,
+    choices = {
+      false,
+      true,
+    },
+    default = false,
+  },
+}
+\ahu@option@hook{statement-page-number}{%
+  \ifahu@statement@page@number@false
+    \ahusetup{statement-page-style=empty}%
+  \else
+    \ahusetup{statement-page-style=plain}%
+  \fi
+  \ahu@warning{%
+    The "statement-page-number" option is deprecated.
+    Use "page-style" option of \protect\statement command instead%
+  }%
+}
+\newif\ifahu@statement@exists
+\newcommand\statement[1][]{%
+  \@mainmatterfalse
+  \ahu@end@appendix@ref@section
+  \ahu@statement@existstrue
+  \ifahu@degree@bachelor
+    \cleardoublepage
+    \def\ahu@statement@name{声\hspace{2em}明}%
+  \else
+    \def\ahu@statement@name{声\hspace{1em}明}%
+  \fi
+  \let\ahu@statement@file\@empty
+  \kv@define@key{ahu@statement}{page-style}{\ahusetup{statement-page-style=##1}}%
+  \kv@define@key{ahu@statement}{file}{\let\ahu@statement@file\kv@value}%
+  \kv@set@family@handler{ahu@statement}{%
+    \ifx\kv@value\relax
+      \let\ahu@statement@file\kv@key
+    \else
+      \kv@handled@false
+    \fi
+  }%
+  \kvsetkeys{ahu@statement}{#1}%
+  \ifahu@statement@page@style@auto
+    \ifx\ahu@statement@file\@empty
+      \ifahu@degree@bachelor
+        \ahusetup{statement-page-style = empty}%
+      \else
+        \ahusetup{statement-page-style = plain}%
+      \fi
+    \else
+      \ifahu@degree@bachelor
+        \ahusetup{statement-page-style = plain}%
+      \else
+        \ahusetup{statement-page-style = empty}%
+      \fi
+    \fi
+  \fi
+  \ifx\ahu@statement@file\@empty
+    \ahusetup{language=chinese}%
+    \begingroup
+      \ifahu@degree@graduate
+        \ifahu@main@language@english
+          \ctexset{%
+            chapter/format = \centering\sffamily\fontsize{16bp}{20bp}\selectfont,
+          }%
+        \fi
+      \fi
+      \ahu@chapter*{\ahu@statement@name}%
+    \endgroup
+    \thispagestyle{\ahu@statement@page@style}%
+    \ahu@statement@text\par
+    \ifahu@degree@graduate
+      \vskip 2cm%
+    \else
+      \null\par
+    \fi
+    {\hfill\ahu@signature\ahu@underline[2.5cm]\relax
+      \ahu@backdate\ahu@underline[2.5cm]\relax}%
+    \ahu@reset@main@language
+  \else
+    \includepdf[pagecommand={%
+      \markboth{\ahu@statement@name}{}%
+      \ahu@phantomsection
+      \addcontentsline{toc}{chapter}{\ahu@statement@name}%
+      \thispagestyle{\ahu@statement@page@style}%
+    }]{\ahu@statement@file}%
+  \fi
+  \ifahu@degree@bachelor
+    \cleardoublepage
+  \fi
+}
+%    \end{macrocode}
+% \end{macro}
+%
+%
+% \subsubsection{插图和附表清单}
+% \label{sec:threelists}
+% 定义图表以及公式目录样式. 
+%    \begin{macrocode}
+\def\ahu@listof#1{% #1: float type
+  \setcounter{tocdepth}{2} % restore tocdepth in case being modified
+  \@ifstar
+    {\ahu@chapter*[]{\csname list#1name\endcsname}\@starttoc{\csname ext@#1\endcsname}}
+    {\ahu@chapter*[]{\csname list#1name\endcsname}\@starttoc{\csname ext@#1\endcsname}}%
+}
+%    \end{macrocode}
+%
+% \begin{macro}{\listoffigures}
+% \begin{macro}{\listoffigures*}
+% 插图清单. 
+%    \begin{macrocode}
+\renewcommand\listoffigures{%
+  \ifahu@degree@bachelor
+    \ifahu@backmatter\else
+      \ahu@warning{The list of figures should be placed in back matter}%
+    \fi
+  \fi
+  \ahu@listof{figure}%
+}
+\titlecontents{figure}
+  [\z@]{}
+  {\contentspush{\figurename~\thecontentslabel\quad}}{}
+  {\nobreak\ahu@leaders\nobreak\hfil\thecontentspage}
+%    \end{macrocode}
+% \end{macro}
+% \end{macro}
+%
+% \begin{macro}{\listoftables}
+% \begin{macro}{\listoftables*}
+% 附表清单. 
+%    \begin{macrocode}
+\renewcommand\listoftables{%
+  \ifahu@degree@bachelor
+    \ifahu@backmatter\else
+      \ahu@warning{The list of tables should be placed in back matter}%
+    \fi
+  \fi
+  \ahu@listof{table}%
+}
+\titlecontents{table}
+  [\z@]{}
+  {\contentspush{\tablename~\thecontentslabel\quad}}{}
+  {\ahu@leaders\thecontentspage}
+%    \end{macrocode}
+% \end{macro}
+% \end{macro}
+%
+% \begin{macro}{\listoffiguresandtables}
+% 将插图和附表合在一起列出“插图和附表清单”. 
+%    \begin{macrocode}
+\newcommand\listoffiguresandtables{%
+  \ifahu@degree@bachelor
+    \ahu@warning{The list of figures and tables are for graduates only}%
+    \listoffigures
+    \listoftables
+  \else
+    \ahu@chapter*[]{\ahu@list@figure@table@name}%
+    \@starttoc{lof}%
+    \par
+    \null\par
+    \@starttoc{lot}%
+  \fi
+}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\equcaption}
+% 本命令只是为了生成公式列表, 所以这个 caption 是假的. 如果要编号最好用
+% \env{equation} 环境, 如果是其它编号环境, 请手动添加 \cs{equcaption}. 
+% 用法如下: 
+%
+% \cs{equcaption}\marg{counter}
+%
+% \marg{counter} 指定出现在索引中的编号, 一般取 \cs{theequation}, 如果你是用
+% \pkg{amsmath} 的 \cs{tag}, 那么默认是 \cs{tag} 的参数; 除此之外可能需要
+% 手工指定. 
+%
+%    \begin{macrocode}
+\def\ext@equation{loe}
+\def\equcaption#1{%
+  \addcontentsline{\ext@equation}{equation}%
+                  {\protect\numberline{#1}}}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\listofequations}
+% \begin{macro}{\listofequations*}
+% \LaTeX{} 默认没有公式索引, 此处定义自己的 \cs{listofequations}. 
+% 公式索引没有名称, 所以不设置固定的 label 宽度. 
+%    \begin{macrocode}
+\newcommand\listofequations{\ahu@listof{equation}}
+\titlecontents{equation}
+  [0pt]{\addvspace{6bp}}
+  {\ahu@equation@name~\thecontentslabel}{}
+  {\nobreak\ahu@leaders\nobreak\thecontentspage}
+\contentsuse{equation}{loe}
+%    \end{macrocode}
+% \end{macro}
+% \end{macro}
+%
+%
+% \subsection{参考文献}
+% \label{sec:ref}
+%
+% 参考文献使用 \BibTeX{} 方式编译. 设置 \option{cite-style} 的接口. 
+%    \begin{macrocode}
+\ahu@define@key{
+  cite-style = {
+    name = cite@style,
+    choices = {
+      super,
+      inline,
+      author-year,
+    }
+  }
+}
+%    \end{macrocode}
+%
+% \subsubsection{BibTeX + \pkg{natbib} 宏包}
+%
+%    \begin{macrocode}
+\def\bibliographystyle#1{%
+  \gdef\bu@bibstyle{#1}%
+  \ifx\@begindocumenthook\@undefined\else
+    \expandafter\AtBeginDocument
+  \fi
+    {\if@filesw
+       \immediate\write\@auxout{\string\bibstyle{#1}}%
+       \immediate\write\@auxout{\string\gdef\string\bu@bibstyle{#1}}%
+     \fi}%
+}
+\def\bibliography#1{%
+  \if@filesw
+    \immediate\write\@auxout{\string\bibdata{\zap@space#1 \@empty}}%
+    \immediate\write\@auxout{\string\gdef\string\bu@bibdata{#1}}%
+  \fi
+  \gdef\bu@bibdata{#1}%
+  \@input@{\jobname.bbl}}
+%    \end{macrocode}
+%
+% \BibTeX{} 和 \pkg{natbib} 宏包的配置. 
+%    \begin{macrocode}
+\PassOptionsToPackage{compress}{natbib}
+\AtEndOfPackageFile*{natbib}{
+%    \end{macrocode}
+% \begin{macro}{\inlinecite}
+% 依赖于 \pkg{natbib} 宏包, 修改其中的命令.  旧命令 \cs{onlinecite} 依然可用. 
+%    \begin{macrocode}
+  \DeclareRobustCommand\inlinecite{\@inlinecite}
+  \def\@inlinecite#1{\begingroup\let\@cite\NAT@citenum\citep{#1}\endgroup}
+  \let\onlinecite\inlinecite
+%    \end{macrocode}
+% \end{macro}
+%
+% 几种种引用样式, 与 \file{bst} 文件名保持一致, 
+% 这样在使用 \cs{bibliographystyle} 选择参考文献表的样式时也会设置对应的引用样式. 
+%    \begin{macrocode}
+  \newcommand\bibstyle@super{%
+    \bibpunct{[}{]}{,}{s}{,}{\textsuperscript{,}}}
+  \newcommand\bibstyle@inline{%
+    \bibpunct{[}{]}{,}{n}{,}{,}}
+  \@namedef{bibstyle@author-year}{%
+    \bibpunct{(}{)}{;}{a}{,}{,}}
+%    \end{macrocode}
+%
+%    \begin{macrocode}
+  \ahu@option@hook{cite-style}{\@nameuse{bibstyle@\ahu@cite@style}}
+%    \end{macrocode}
+%
+% 几种种引用样式, 与 \file{bst} 文件名保持一致, 
+% 这样在使用 \cs{bibliographystyle} 选择参考文献表的样式时也会设置对应的引用样式. 
+%    \begin{macrocode}
+  \@namedef{bibstyle@ahuthesis-numeric}{\citestyle{super}}
+  \@namedef{bibstyle@ahuthesis-author-year}{\citestyle{author-year}}
+  \@namedef{bibstyle@cell}{\citestyle{author-year}}
+  \@namedef{bibstyle@ahuthesis-bachelor}{\citestyle{super}}
+%    \end{macrocode}
+%
+% 修改引用的样式. 
+% 这里在 filehook 中无法使用 \cs{patchcmd}, 所以只能手动重定义. 
+%
+% 将 \cs{citep} super 式引用的页码改为上标. 
+%    \begin{macrocode}
+  \renewcommand\NAT@citesuper[3]{%
+    \ifNAT@swa
+      \if*#2*\else
+        #2\NAT@spacechar
+      \fi
+      % \unskip\kern\p@\textsuperscript{\NAT@@open#1\NAT@@close}%
+      %  \if*#3*\else\NAT@spacechar#3\fi\else #1\fi\endgroup}
+      \unskip\kern\p@
+      \textsuperscript{%
+        \NAT@@open#1\NAT@@close
+        \if*#3*\else#3\fi
+      }%
+      \kern\p@
+    \else
+      #1%
+    \fi
+    \endgroup
+  }
+%    \end{macrocode}
+%
+% 将 \cs{citep} numbers 式引用的页码改为上标并置于括号外. 
+%    \begin{macrocode}
+  \renewcommand\NAT@citenum[3]{%
+    \ifNAT@swa
+      \NAT@@open
+      \if*#2*\else
+        #2\NAT@spacechar
+      \fi
+      % #1\if*#3*\else\NAT@cmt#3\fi\NAT@@close
+      #1\NAT@@close
+      \if*#3*\else
+        \textsuperscript{#3}%
+      \fi
+    \else
+      #1%
+    \fi
+    \endgroup
+  }
+%    \end{macrocode}
+%
+% 修改 \cs{citet} 引用的样式. 
+%    \begin{macrocode}
+  \def\NAT@citexnum[#1][#2]#3{%
+    \NAT@reset@parser
+    \NAT@sort@cites{#3}%
+    \NAT@reset@citea
+    \@cite{\def\NAT@num{-1}\let\NAT@last@yr\relax\let\NAT@nm\@empty
+      \@for\@citeb:=\NAT@cite@list\do
+      {\@safe@activestrue
+      \edef\@citeb{\expandafter\@firstofone\@citeb\@empty}%
+      \@safe@activesfalse
+      \@ifundefined{b@\@citeb\@extra@b@citeb}{%
+        {\reset@font\bfseries?}
+          \NAT@citeundefined\PackageWarning{natbib}%
+        {Citation `\@citeb' on page \thepage \space undefined}}%
+      {\let\NAT@last@num\NAT@num\let\NAT@last@nm\NAT@nm
+        \NAT@parse{\@citeb}%
+        \ifNAT@longnames\@ifundefined{bv@\@citeb\@extra@b@citeb}{%
+          \let\NAT@name=\NAT@all@names
+          \global\@namedef{bv@\@citeb\@extra@b@citeb}{}}{}%
+        \fi
+        \ifNAT@full\let\NAT@nm\NAT@all@names\else
+          \let\NAT@nm\NAT@name\fi
+        \ifNAT@swa
+        \@ifnum{\NAT@ctype>\@ne}{%
+          \@citea
+          \NAT@hyper@{\@ifnum{\NAT@ctype=\tw@}{\NAT@test{\NAT@ctype}}{\NAT@alias}}%
+        }{%
+          \@ifnum{\NAT@cmprs>\z@}{%
+          \NAT@ifcat@num\NAT@num
+            {\let\NAT@nm=\NAT@num}%
+            {\def\NAT@nm{-2}}%
+          \NAT@ifcat@num\NAT@last@num
+            {\@tempcnta=\NAT@last@num\relax}%
+            {\@tempcnta\m@ne}%
+          \@ifnum{\NAT@nm=\@tempcnta}{%
+            \@ifnum{\NAT@merge>\@ne}{}{\NAT@last@yr@mbox}%
+          }{%
+            \advance\@tempcnta by\@ne
+            \@ifnum{\NAT@nm=\@tempcnta}{%
+%    \end{macrocode}
+%
+% 在顺序编码制下, \pkg{natbib} 只有在三个以上连续文献引用才会使用连接号, 
+% 这里修改为允许两个引用使用连接号. 
+%    \begin{macrocode}
+              % \ifx\NAT@last@yr\relax
+              %   \def@NAT@last@yr{\@citea}%
+              % \else
+              %   \def@NAT@last@yr{--\NAT@penalty}%
+              % \fi
+              \def@NAT@last@yr{-\NAT@penalty}%
+            }{%
+              \NAT@last@yr@mbox
+            }%
+          }%
+          }{%
+          \@tempswatrue
+          \@ifnum{\NAT@merge>\@ne}{\@ifnum{\NAT@last@num=\NAT@num\relax}{\@tempswafalse}{}}{}%
+          \if@tempswa\NAT@citea@mbox\fi
+          }%
+        }%
+        \NAT@def@citea
+        \else
+          \ifcase\NAT@ctype
+            \ifx\NAT@last@nm\NAT@nm \NAT@yrsep\NAT@penalty\NAT@space\else
+              \@citea \NAT@test{\@ne}\NAT@spacechar\NAT@mbox{\NAT@super@kern\NAT@@open}%
+            \fi
+            \if*#1*\else#1\NAT@spacechar\fi
+            \NAT@mbox{\NAT@hyper@{{\citenumfont{\NAT@num}}}}%
+            \NAT@def@citea@box
+          \or
+            \NAT@hyper@citea@space{\NAT@test{\NAT@ctype}}%
+          \or
+            \NAT@hyper@citea@space{\NAT@test{\NAT@ctype}}%
+          \or
+            \NAT@hyper@citea@space\NAT@alias
+          \fi
+        \fi
+      }%
+      }%
+        \@ifnum{\NAT@cmprs>\z@}{\NAT@last@yr}{}%
+        \ifNAT@swa\else
+%    \end{macrocode}
+%
+% 将页码放在括号外边, 并且置于上标. 
+%    \begin{macrocode}
+          % \@ifnum{\NAT@ctype=\z@}{%
+          %   \if*#2*\else\NAT@cmt#2\fi
+          % }{}%
+          \NAT@mbox{\NAT@@close}%
+          \@ifnum{\NAT@ctype=\z@}{%
+            \if*#2*\else
+              \textsuperscript{#2}%
+            \fi
+          }{}%
+          \NAT@super@kern
+        \fi
+    }{#1}{#2}%
+  }%
+%    \end{macrocode}
+%
+% 修改 \cs{citep} author-year 式的页码: 
+%    \begin{macrocode}
+  \renewcommand\NAT@cite%
+      [3]{\ifNAT@swa\NAT@@open\if*#2*\else#2\NAT@spacechar\fi
+          % #1\if*#3*\else\NAT@cmt#3\fi\NAT@@close\else#1\fi\endgroup}
+          #1\NAT@@close\if*#3*\else\textsuperscript{#3}\fi\else#1\fi\endgroup}
+%    \end{macrocode}
+%
+% 修改 \cs{citet} author-year 式的页码: 
+%    \begin{macrocode}
+  \def\NAT@citex%
+    [#1][#2]#3{%
+    \NAT@reset@parser
+    \NAT@sort@cites{#3}%
+    \NAT@reset@citea
+    \@cite{\let\NAT@nm\@empty\let\NAT@year\@empty
+      \@for\@citeb:=\NAT@cite@list\do
+      {\@safe@activestrue
+      \edef\@citeb{\expandafter\@firstofone\@citeb\@empty}%
+      \@safe@activesfalse
+      \@ifundefined{b@\@citeb\@extra@b@citeb}{\@citea%
+        {\reset@font\bfseries ?}\NAT@citeundefined
+                  \PackageWarning{natbib}%
+        {Citation `\@citeb' on page \thepage \space undefined}\def\NAT@date{}}%
+      {\let\NAT@last@nm=\NAT@nm\let\NAT@last@yr=\NAT@year
+        \NAT@parse{\@citeb}%
+        \ifNAT@longnames\@ifundefined{bv@\@citeb\@extra@b@citeb}{%
+          \let\NAT@name=\NAT@all@names
+          \global\@namedef{bv@\@citeb\@extra@b@citeb}{}}{}%
+        \fi
+      \ifNAT@full\let\NAT@nm\NAT@all@names\else
+        \let\NAT@nm\NAT@name\fi
+      \ifNAT@swa\ifcase\NAT@ctype
+        \if\relax\NAT@date\relax
+          \@citea\NAT@hyper@{\NAT@nmfmt{\NAT@nm}\NAT@date}%
+        \else
+          \ifx\NAT@last@nm\NAT@nm\NAT@yrsep
+              \ifx\NAT@last@yr\NAT@year
+                \def\NAT@temp{{?}}%
+                \ifx\NAT@temp\NAT@exlab\PackageWarningNoLine{natbib}%
+                {Multiple citation on page \thepage: same authors and
+                year\MessageBreak without distinguishing extra
+                letter,\MessageBreak appears as question mark}\fi
+                \NAT@hyper@{\NAT@exlab}%
+              \else\unskip\NAT@spacechar
+                \NAT@hyper@{\NAT@date}%
+              \fi
+          \else
+            \@citea\NAT@hyper@{%
+              \NAT@nmfmt{\NAT@nm}%
+              \hyper@natlinkbreak{%
+                \NAT@aysep\NAT@spacechar}{\@citeb\@extra@b@citeb
+              }%
+              \NAT@date
+            }%
+          \fi
+        \fi
+      \or\@citea\NAT@hyper@{\NAT@nmfmt{\NAT@nm}}%
+      \or\@citea\NAT@hyper@{\NAT@date}%
+      \or\@citea\NAT@hyper@{\NAT@alias}%
+      \fi \NAT@def@citea
+      \else
+        \ifcase\NAT@ctype
+          \if\relax\NAT@date\relax
+            \@citea\NAT@hyper@{\NAT@nmfmt{\NAT@nm}}%
+          \else
+          \ifx\NAT@last@nm\NAT@nm\NAT@yrsep
+              \ifx\NAT@last@yr\NAT@year
+                \def\NAT@temp{{?}}%
+                \ifx\NAT@temp\NAT@exlab\PackageWarningNoLine{natbib}%
+                {Multiple citation on page \thepage: same authors and
+                year\MessageBreak without distinguishing extra
+                letter,\MessageBreak appears as question mark}\fi
+                \NAT@hyper@{\NAT@exlab}%
+              \else
+                \unskip\NAT@spacechar
+                \NAT@hyper@{\NAT@date}%
+              \fi
+          \else
+            \@citea\NAT@hyper@{%
+              \NAT@nmfmt{\NAT@nm}%
+              \hyper@natlinkbreak{\NAT@spacechar\NAT@@open\if*#1*\else#1\NAT@spacechar\fi}%
+                {\@citeb\@extra@b@citeb}%
+              \NAT@date
+            }%
+          \fi
+          \fi
+        \or\@citea\NAT@hyper@{\NAT@nmfmt{\NAT@nm}}%
+        \or\@citea\NAT@hyper@{\NAT@date}%
+        \or\@citea\NAT@hyper@{\NAT@alias}%
+        \fi
+        \if\relax\NAT@date\relax
+          \NAT@def@citea
+        \else
+          \NAT@def@citea@close
+        \fi
+      \fi
+      }}\ifNAT@swa\else
+%    \end{macrocode}
+%
+% 将页码放在括号外边, 并且置于上标. 
+%    \begin{macrocode}
+        % \if*#2*\else\NAT@cmt#2\fi
+        \if\relax\NAT@date\relax\else\NAT@@close\fi
+        \if*#2*\else\textsuperscript{#2}\fi
+      \fi}{#1}{#2}}
+%    \end{macrocode}
+%
+% 参考文献表的正文部分用五号字. 
+% 行距采用固定值 16 磅, 段前空 3 磅, 段后空 0 磅. 
+%
+% 复用 \pkg{natbib} 的 \texttt{thebibliography} 环境, 调整距离. 
+%    \begin{macrocode}
+  \renewcommand\bibsection{\ahu@chapter*{\bibname}}
+  \newcommand\ahu@set@bibliography@format{%
+    \ifahu@degree@bachelor
+      \renewcommand\bibfont{\fontsize{10.5bp}{17bp}\selectfont}%
+      \setlength{\bibsep}{6bp \@plus 3bp \@minus 3bp}%
+      \ifahu@main@language@chinese
+        \setlength{\bibhang}{21bp}%
+      \else
+        \setlength{\bibhang}{0.5in}%
+      \fi
+    \else
+      \renewcommand\bibfont{\fontsize{10.5bp}{16bp}\selectfont}%
+      \setlength{\bibsep}{3bp \@plus 3bp \@minus 3bp}%
+      \setlength{\bibhang}{21bp}%
+    \fi
+  }
+  \ahu@set@bibliography@format
+  \ahu@option@hook{degree}{\ahu@set@bibliography@format}
+  \ahu@option@hook{main-language}{\ahu@set@bibliography@format}
+%    \end{macrocode}
+%
+% 参考文献的内容尽量写在同一页内. 遇有被迫分页的情况, 可通过“留白”或微调本页行距
+% 的方式尽量将同一条文献内容放在一页. 所以上述 \cs{bibsep} 的设置允许 1pt 的伸缩, 
+% 同时增加同一条文献内分页的惩罚. 
+%    \begin{macrocode}
+  \patchcmd\thebibliography{%
+    \clubpenalty4000%
+  }{%
+    \interlinepenalty=5000\relax
+    \clubpenalty=10000\relax
+  }{}{\ahu@patch@error{\thebibliography}}
+  \patchcmd\thebibliography{%
+    \widowpenalty4000%
+  }{%
+    \widowpenalty=10000\relax
+  }{}{\ahu@patch@error{\thebibliography}}
+%    \end{macrocode}
+%
+% 参考文献表的编号居左, 宽度 1 cm. 
+%    \begin{macrocode}
+  \def\@biblabel#1{[#1]\hfill}
+  \renewcommand\NAT@bibsetnum[1]{%
+    \setlength{\leftmargin}{1cm}%
+    \setlength{\itemindent}{\z@}%
+    \setlength{\labelsep}{0.1cm}%
+    \setlength{\labelwidth}{0.9cm}%
+    \setlength{\itemsep}{\bibsep}
+    \setlength{\parsep}{\z@}%
+    \ifNAT@openbib
+      \addtolength{\leftmargin}{\bibindent}%
+      \setlength{\itemindent}{-\bibindent}%
+      \setlength{\listparindent}{\itemindent}%
+      \setlength{\parsep}{0pt}%
+    \fi
+  }
+}
+%    \end{macrocode}
+%
+%
+% \subsection{附录}
+% \label{sec:appendix}
+% \begin{macro}{\appendix}
+%    \begin{macrocode}
+\g@addto@macro\appendix{%
+  \@mainmattertrue
+  \ifahu@degree@bachelor
+    \ifahu@statement@exists\else
+      \ahu@warning{The appendices should be placed after statement}%
+    \fi
+  \fi
+}
+%    \end{macrocode}
+% \end{macro}
+%
+% 研究生和本科生的写作指南均未规定附录的节标题是否加入目录, 
+% 但是从示例来看, 目录中只出现附录的 chapter 标题, 
+% 不出现附录中的 section 及 subsection 的标题. 
+%    \begin{macrocode}
+\ahu@define@key{
+  toc-depth = {
+    name = toc@depth,
+  },
+}
+%    \end{macrocode}
+%
+% 这里不要使用 \cs{addcontentsline}, 
+% 避免写入 \pkg{titletoc} 的 \file{.ptc} 文件中. 
+%    \begin{macrocode}
+\ahu@option@hook{toc-depth}{%
+  \ifx\@begindocumenthook\@undefined
+    \protected@write\@auxout{}{%
+      \string\ttl@writefile{toc}{%
+        \protect\setcounter{tocdepth}{\ahu@toc@depth}%
+      }%
+    }%
+  \else
+    \setcounter{tocdepth}{\ahu@toc@depth}%
+  \fi
+}
+\g@addto@macro\appendix{%
+  \ahusetup{
+    toc-depth = 0,
+  }%
+}
+%    \end{macrocode}
+%
+% 附录中的图、表不列入插图清单/附表清单. 
+%    \begin{macrocode}
+\ahu@define@key{
+  appendix-figure-in-lof = {
+    name = appendix@figure@in@lof,
+    choices = {
+      true,
+      false,
+    },
+    default = false,
+  },
+}
+\ahu@option@hook{appendix-figure-in-lof}{%
+  \ifahu@appendix@figure@in@lof@true
+    \addtocontents{lof}{\string\let\string\contentsline\string\ttl@contentsline}%
+    \addtocontents{lot}{\string\let\string\contentsline\string\ttl@contentsline}%
+    \addtocontents{loe}{\string\let\string\contentsline\string\ttl@contentsline}%
+  \else
+    \addtocontents{lof}{\string\let\string\contentsline\string\ttl@gobblecontents}%
+    \addtocontents{lot}{\string\let\string\contentsline\string\ttl@gobblecontents}%
+    \addtocontents{loe}{\string\let\string\contentsline\string\ttl@gobblecontents}%
+  \fi
+}
+\g@addto@macro\appendix{%
+  \ahusetup{
+    appendix-figure-in-lof = false,
+  }%
+}
+%    \end{macrocode}
+%
+% 附录中的参考文献等另行编序号. 
+%    \begin{macrocode}
+\newcommand\ahu@end@appendix@ref@section{}
+%    \end{macrocode}
+%
+%    \begin{macrocode}
+%    \end{macrocode}
+%
+% \pkg{bibunits} 在载入时会保存 \cs{bibliography} 和 \cs{bibliographystyle}, 
+% 所以在载入宏包前修改定义. 
+%    \begin{macrocode}
+\AtBeginOfPackageFile*{bibunits}{
+  \def\bibliography#1{%
+    \if@filesw
+      \immediate\write\@auxout{\string\bibdata{\zap@space#1 \@empty}}%
+%    \end{macrocode}
+%
+% 正文的 \cs{bibliography} 同时设置附录参考文献的默认 \file{.bib} 数据库. 
+%    \begin{macrocode}
+      \immediate\write\@auxout{\string\gdef\string\bu@bibdata{#1}}%
+    \fi
+    \@input@{\jobname.bbl}%
+    \gdef\bu@bibdata{#1}%
+  }
+  \def\bibliographystyle#1{%
+    \ifx\@begindocumenthook\@undefined\else
+      \expandafter\AtBeginDocument
+    \fi
+      {\if@filesw
+        \immediate\write\@auxout{\string\bibstyle{#1}}%
+%    \end{macrocode}
+%
+% 正文的 \cs{bibliographystyle} 同时设置附录参考文献的默认 \file{.bst} 样式. 
+%    \begin{macrocode}
+        \immediate\write\@auxout{\string\gdef\string\bu@bibstyle{#1}}%
+      \fi}%
+      \gdef\bu@bibstyle{#1}%
+  }
+}
+\AtEndOfPackageFile*{bibunits}{
+  \def\@startbibunit{%
+    \global\let\@startbibunitorrelax\relax
+    \global\let\@finishbibunit\@finishstartedbibunit
+    \global\advance\@bibunitauxcnt 1
+    \if@filesw
+      {\endlinechar-1
+%    \end{macrocode}
+%
+% 使附录 aux 文件的 \cs{gdef}\cs{@localbibstyle} 能够生效. 
+%    \begin{macrocode}
+      \makeatletter
+      \@input{\@bibunitname.aux}}%
+      \immediate\openout\@bibunitaux\@bibunitname.aux
+      \immediate\write\@bibunitaux{\string\bibstyle{\@localbibstyle}}%
+    \fi
+  }
+  \def\bu@bibliography#1{%
+    \putbib[#1]%
+  }
+  \def\bu@bibliographystyle#1{%
+    \if@filesw
+      \immediate\write\@bibunitaux{\string\gdef\string\@localbibstyle{#1}}%
+    \fi
+    \gdef\@localbibstyle{#1}%
+  }
+  \providecommand\printbibliography{\putbib\relax}%
+  \g@addto@macro\appendix{%
+    \renewcommand\@bibunitname{\jobname-appendix-\@alph\c@chapter}%
+    \bibliographyunit[\chapter]%
+    \renewcommand\bibsection{%
+      \ctexset{section/numbering = false}%
+      \section{\bibname}%
+      \ctexset{section/numbering = true}%
+    }%
+%    \end{macrocode}
+%
+% 研究生附录的引用编号加前缀, 如附录 A 的引用 [1] 为 [A.1]. 
+%    \begin{macrocode}
+    \ifahu@degree@graduate
+      \renewcommand\citenumfont{\@Alph\c@chapter.}%
+      \renewcommand\@extra@binfo{@-\@alph\c@chapter}%
+      \renewcommand\@extra@b@citeb{@-\@alph\c@chapter}%
+      \renewcommand\bibnumfmt[1]{[\@Alph\c@chapter.#1]\hfill}%
+    \fi
+  }
+  \renewcommand\ahu@end@appendix@ref@section{%
+    \bibliographyunit\relax
+  }
+  \AtEndDocument{\ahu@end@appendix@ref@section}
+%    \end{macrocode}
+%
+% 如果正文和附录引用了同一文献, \pkg{bibunits} 会给出无意义的警告, 这里消除警告. 
+%    \begin{macrocode}
+  % \let\@xtestdef\@gobbletwo  % This doesn't work
+  \def\bibunits@rerun@warning{\relax}
+}
+\PassOptionsToPackage{defernumbers = true}{biblatex}
+\AtEndOfPackageFile*{biblatex}{
+  \DeclareRefcontext{appendix}{}
+  \g@addto@macro\appendix{%
+    \pretocmd\chapter{%
+      \newrefsection
+      \ifahu@degree@bachelor\else
+        \@tempcnta=\c@chapter
+        \advance\@tempcnta\@ne
+        \newrefcontext[labelprefix = {\@Alph\@tempcnta.}]{appendix}%
+      \fi
+    }{}{\ahu@patch@error{\chapter}}%
+    \defbibheading{bibliography}[\bibname]{%
+      \ctexset{section/numbering = false}%
+      \section{#1}%
+      \ctexset{section/numbering = true}%
+    }%
+  }
+  \def\bibliographystyle#1{%
+    \ahu@warning{'bibliographystyle' invalid for 'biblatex'.}%
+  }
+}
+%    \end{macrocode}
+%
+%
+% \subsection{个人简历}
+%
+% \begin{environment}{resume}
+% 个人简历. 
+%    \begin{macrocode}
+\newenvironment{resume}{%
+  \@mainmatterfalse
+  \ahu@end@appendix@ref@section
+  \ahu@chapter*{\ahu@resume@name}%
+  \ctexset{
+    section = {
+      format    += \centering,
+      numbering = false,
+    },
+  }%
+  \ifahu@language@chinese
+    \ctexset{
+      subsection = {
+        format     = \sffamily\fontsize{14bp}{20bp}\selectfont,
+        numbering  = false,
+        aftertitle = : ,
+      },
+    }%
+    \setlist[achievements]{
+      topsep     = 6bp,
+      itemsep    = 6bp,
+      leftmargin = 1cm,
+      labelwidth = 1cm,
+      labelsep   = 0pt,
+      first      = {
+        \ifahu@degree@graduate
+          \fontsize{12bp}{16bp}\selectfont
+        \fi
+      },
+      align      = left,
+      label      = [\arabic*],
+      resume     = achievements,
+    }%
+  \else
+    \ctexset{
+      subsection = {
+        beforeskip = 0pt,
+        afterskip  = 0pt,
+        format     = \bfseries\normalsize,
+        indent     = \parindent,
+        numbering  = false,
+      },
+    }%
+    \ifahu@degree@bachelor
+      % 内容部分用 Arial 字体, 字号 15pt, 行距采用固定值 20pt, 段前后 0pt. 
+      \sffamily\fontsize{15bp}{20bp}\selectfont
+    \fi
+    \setlist[achievements]{
+      topsep     = 0bp,
+      itemsep    = 0bp,
+      leftmargin = 1.75cm,
+      labelsep   = 0.5cm,
+      align      = right,
+      label      = [\arabic*],
+      resume     = achievements,
+    }%
+  \fi
+}{}
+%    \end{macrocode}
+% \end{environment}
+%
+% \begin{environment}{achievements}
+% 学术成果由 \env{achievements} 环境罗列. 
+%    \begin{macrocode}
+\newlist{achievements}{enumerate}{1}
+\setlist[achievements]{
+  topsep     = 6bp,
+  partopsep  = 0bp,
+  itemsep    = 6bp,
+  parsep     = 0bp,
+  leftmargin = 10mm,
+  itemindent = 0pt,
+  align      = left,
+  label      = [\arabic*],
+  resume     = achievements,
+}
+%    \end{macrocode}
+% \end{environment}
+%
+%
+% \subsection{\pkg{hyperref} 宏包}
+%
+% \pkg{hyperref} 宏包放在最后进行设置. 使用 \cs{PassOptionsToPackage} 的方式进行配置, 
+% 允许用户在 \cs{usepackage} 覆盖配置. 
+%    \begin{macrocode}
+\PassOptionsToPackage{
+  linktoc            = all,
+  bookmarksdepth     = 2,
+  bookmarksnumbered  = true,
+  bookmarksopen      = true,
+  bookmarksopenlevel = 1,
+  bookmarksdepth     = 3,
+  unicode            = true,
+  psdextra           = true,
+  breaklinks         = true,
+  plainpages         = false,
+  pdfdisplaydoctitle = true,
+}{hyperref}
+\ifahu@nocolor
+\PassOptionsToPackage{
+    citecolor=black,
+    linkcolor=black,
+    urlcolor=black,
+  }{hyperref}
+\else
+\PassOptionsToPackage{
+    colorlinks=true,
+    citecolor=blue,
+    linkcolor=blue,
+    urlcolor=blue,
+  }{hyperref}
+\fi
+\AtEndOfPackageFile*{hyperref}{
+  \newcounter{ahu@bookmark}
+  \renewcommand\ahu@pdfbookmark[2]{%
+    \phantomsection
+    \stepcounter{ahu@bookmark}%
+    \pdfbookmark[#1]{#2}{ahuchapter.\theahu@bookmark}%
+  }
+  \renewcommand\ahu@phantomsection{%
+    \phantomsection
+  }
+  \pdfstringdefDisableCommands{%
+    \let\\\relax
+    \let\quad\relax
+    \let\qquad\relax
+    \let\hspace\@gobble
+  }%
+%    \end{macrocode}
+%
+% \pkg{hyperref} 与 \pkg{unicode-math} 存在一些兼容性问题, 见
+% \href{https://github.com/ustctug/ustcthesis/issues/223}{%
+%   ustctug/ustcthesis\#223}, 
+% \href{https://github.com/ho-tex/hyperref/pull/90}{ho-tex/hyperref\#90} 和
+% \href{https://github.com/ustctug/ustcthesis/issues/235}{%
+%   ustctug/ustcthesis/\#235}. 
+%    \begin{macrocode}
+  \@ifpackagelater{hyperref}{2019/04/27}{}{%
+    \g@addto@macro\psdmapshortnames{\let\mu\textmu}
+  }%
+  \ifahu@main@language@chinese
+    \hypersetup{
+      pdflang = zh-CN,
+    }%
+  \else
+    \hypersetup{
+      pdflang = en-US,
+    }%
+  \fi
+  \AtBeginDocument{%
+    \ifahu@main@language@chinese
+      \hypersetup{
+        pdftitle    = \ahu@title,
+        pdfauthor   = \ahu@author,
+        pdfsubject  = \ahu@degree@category,
+      }%
+    \else
+      \hypersetup{
+        pdftitle    = \ahu@title@en,
+        pdfauthor   = \ahu@author@en,
+        pdfsubject  = \ahu@degree@category@en,
+      }%
+    \fi
+    \hypersetup{
+      pdfcreator={\ahuthesis-v\version}}
+  }%
+}
+%    \end{macrocode}
+%
+%
+% \subsection{其他宏包的设置}
+%
+% 这些宏包并非格式要求, 但是为了方便使用, 在这里进行简单设置. 
+%
+% \subsubsection{\pkg{mathtools} 宏包}
+%
+% \pkg{mathtools} 会修改 \pkg{unicode-math} 的 \cs{underbrace} 和 \cs{overbrace}, 
+% 需要还原为 \cs{LaTeXunderbrace} 和 \cs{LaTeXoverbrace}. 
+%    \begin{macrocode}
+\AtEndOfPackageFile*{mathtools}{
+  \@ifpackageloaded{unicode-math}{
+    \let\underbrace\LaTeXunderbrace
+    \let\overbrace\LaTeXoverbrace
+  }{}
+}
+%    \end{macrocode}
+%
+% \subsubsection{\pkg{amsthm} 宏包}
+%
+% 定理标题使用黑体, 正文使用宋体, 冒号隔开. 
+%    \begin{macrocode}
+\AtEndOfPackageFile*{amsthm}{%
+  \newtheoremstyle{ahu}
+    {\z@}{\z@}
+    {\normalfont}{\z@}
+    {\normalfont\sffamily}{\ahu@theorem@separator}
+    {0.5em}{}
+  \theoremstyle{ahu}
+  \newtheorem{assumption}{\ahu@assumption@name}[chapter]%
+  \newtheorem{definition}{\ahu@definition@name}[chapter]%
+  \newtheorem{proposition}{\ahu@proposition@name}[chapter]%
+  \newtheorem{lemma}{\ahu@lemma@name}[chapter]%
+  \newtheorem{theorem}{\ahu@theorem@name}[chapter]%
+  \newtheorem{axiom}{\ahu@axiom@name}[chapter]%
+  \newtheorem{corollary}{\ahu@corollary@name}[chapter]%
+  \newtheorem{exercise}{\ahu@exercise@name}[chapter]%
+  \newtheorem{example}{\ahu@example@name}[chapter]%
+  \newtheorem{remark}{\ahu@remark@name}[chapter]%
+  \newtheorem{problem}{\ahu@problem@name}[chapter]%
+  \newtheorem{claim}{\ahu@claim@name}[chapter]%
+  \newtheorem{conjecture}{\ahu@conjecture@name}[chapter]%
+  \renewenvironment{proof}[1][\ahu@proof@name]{\par
+    \pushQED{\qed}%
+    % \normalfont \topsep6\p@\@plus6\p@\relax
+    \normalfont \topsep\z@\relax
+    \trivlist
+    \item[\hskip\labelsep
+      %     \itshape
+      % #1\@addpunct{.}]\ignorespaces
+      \sffamily
+      #1]\ignorespaces
+  }{%
+    \popQED\endtrivlist\@endpefalse
+  }
+  \renewcommand\qedsymbol{\ahu@qed}
+}
+%    \end{macrocode}
+%
+% \subsubsection{\pkg{ntheorem} 宏包}
+%
+% 定理标题使用黑体, 正文使用宋体, 冒号隔开. 
+%    \begin{macrocode}
+\AtEndOfPackageFile*{ntheorem}{%
+  \theorembodyfont{\normalfont}%
+  \theoremheaderfont{\normalfont\sffamily}%
+  \theoremsymbol{\ahu@qed}%
+  \newtheorem*{proof}{\ahu@proof@name}%
+  \theoremstyle{plain}%
+  \theoremsymbol{}%
+  \theoremseparator{\ahu@theorem@separator}%
+  \newtheorem{assumption}{\ahu@assumption@name}[chapter]%
+  \newtheorem{definition}{\ahu@definition@name}[chapter]%
+  \newtheorem{proposition}{\ahu@proposition@name}[chapter]%
+  \newtheorem{lemma}{\ahu@lemma@name}[chapter]%
+  \newtheorem{theorem}{\ahu@theorem@name}[chapter]%
+  \newtheorem{axiom}{\ahu@axiom@name}[chapter]%
+  \newtheorem{corollary}{\ahu@corollary@name}[chapter]%
+  \newtheorem{exercise}{\ahu@exercise@name}[chapter]%
+  \newtheorem{example}{\ahu@example@name}[chapter]%
+  \newtheorem{remark}{\ahu@remark@name}[chapter]%
+  \newtheorem{problem}{\ahu@problem@name}[chapter]%
+  \newtheorem{claim}{\ahu@claim@name}[chapter]%
+  \newtheorem{conjecture}{\ahu@conjecture@name}[chapter]%
+}
+%    \end{macrocode}
+%
+% \subsubsection{\pkg{algorithm} 宏包}
+%
+% 使 \env{algorithm} 和 \env{listing} 环境的名称随语言设置而改变, 
+% 并使其在附录中的编号规则与图、表等一致. 
+%
+% \begin{macro}{\listofalgorithm}
+% \begin{macro}{\listofalgorithm*}
+%    \begin{macrocode}
+\PassOptionsToPackage{chapter}{algorithm}
+\AtEndOfPackageFile*{algorithm}{
+  \floatname{algorithm}{\ahu@algorithm@name}
+  \renewcommand\listofalgorithms{%
+    \ahu@listof{algorithm}%
+  }
+  \renewcommand\listalgorithmname{\ahu@list@algorithm@name}
+  \def\ext@algorithm{loa}
+  \contentsuse{algorithm}{loa}
+  \titlecontents{algorithm}
+    [\z@]{}
+    {\contentspush{\fname@algorithm~\thecontentslabel\quad}}{}
+    {\ahu@leaders\thecontentspage}
+}
+%    \end{macrocode}
+% \end{macro}
+% \end{macro}
+%
+% \subsubsection{\pkg{algorithm2e} 宏包}
+%
+%    \begin{macrocode}
+\PassOptionsToPackage{algochapter}{algorithm2e}
+\AtEndOfPackageFile*{algorithm2e}{
+  \renewcommand\algorithmcfname{\ahu@algorithm@name}
+  \SetAlgoCaptionLayout{ahu@caption@font}
+  \SetAlCapSty{relax}
+  \SetAlgoCaptionSeparator{\hspace*{1em}}
+  \SetAlFnt{\fontsize{11bp}{14.3bp}\selectfont}
+  \renewcommand\listofalgorithms{%
+    \ahu@listof{algorithmcf}%
+  }
+  \renewcommand\listalgorithmcfname{\ahu@list@algorithm@name}
+  \def\ext@algorithmcf{loa}
+  \contentsuse{algocf}{loa}
+  \titlecontents{algocf}
+    [\z@]{}
+    {\contentspush{\algorithmcfname~\thecontentslabel\quad}}{}
+    {\ahu@leaders\thecontentspage}
+}
+%    \end{macrocode}
+%
+% \subsection{书脊}
+% \label{sec:spine}
+%
+% 博士/硕士研究生:
+%   研究生论文的书脊使用五号黑体字. 
+%   示例中上下页边距为 5.5 cm, 左右边距为 1 cm. 
+%    \begin{macrocode}
+\ahu@define@key{
+  spine-font = {
+    name = spine@font,
+  },
+  spine-title = {
+    name = spine@title,
+  },
+  spine-author = {
+    name = spine@author,
+  },
+  spine-date = {
+    name = spine@date,
+  },
+}
+\renewcommand\ahu@spine@font{%
+  \fontsize{10.5bp}{15bp}\selectfont
+}
+\newcommand*\CJKmovesymbol[1]{\raise.3em\hbox{#1}}
+\newcommand*\CJKmove{%
+  \punctstyle{plain}%
+  \let\CJKsymbol\CJKmovesymbol
+  \let\CJKpunctsymbol\CJKsymbol
+}
+\NewDocumentCommand{\spine}{
+    O{
+      \ifx\ahu@spine@title\@empty
+        \ahu@title
+      \else
+        \ahu@spine@title
+      \fi
+    }
+    O{
+      \ifx\ahu@spine@author\@empty
+        \ahu@author
+      \else
+        \ahu@spine@author
+      \fi
+    }
+    O{
+      \ifx\ahu@spine@date\@empty
+        \ahu@author
+      \else
+        \ahu@spine@date
+      \fi
+    }
+}{%
+  \clearpage
+    \newgeometry{
+      vmargin = 0cm,
+      hmargin = 1cm,
+    }%
+  \thispagestyle{empty}%
+  \ifahu@main@language@chinese
+    \ahu@pdfbookmark{0}{书脊}%
+  \else
+    \ahu@pdfbookmark{0}{Spine}%
+  \fi
+  \begingroup
+    \noindent\hfill
+    \rotatebox[origin=lt]{-90}{%
+      \makebox[\textheight]{%
+        \heiti
+        \addCJKfontfeatures*{RawFeature={vertical}}%
+        \ahu@spine@font
+        \CJKmove
+        #1\hspace{2em}
+        #2\hspace{2em}
+        安徽大学\hspace{2em} \zhdigits{#3} 年
+      }%
+    }%
+  \endgroup
+  \clearpage
+  \restoregeometry
+}
+%    \end{macrocode}
+%
+%
+% \subsection{其它}
+% \label{sec:other}
+%
+% 借用 \cls{ltxdoc} 和 \cls{l3doc} 里面的几个命令方便写文档. 
+%    \begin{macrocode}
+\DeclareRobustCommand\cs[1]{\texttt{\char`\\#1}}
+\DeclareRobustCommand\file{\nolinkurl}
+\DeclareRobustCommand\env{\textsf}
+\DeclareRobustCommand\pkg{\textsf}
+\DeclareRobustCommand\cls{\textsf}
+%    \end{macrocode}
+%
+%    \begin{macrocode}
+\sloppy
+%</cls>
+%    \end{macrocode}
+%
+%
+% \iffalse
+%    \begin{macrocode}
+%<*dtx-style>
+\ProvidesPackage{dtx-style}
+\RequirePackage{hypdoc}
+\RequirePackage{ifthen}
+\RequirePackage{fontspec}[2017/01/20]
+\RequirePackage{amsmath}
+\RequirePackage{siunitx}
+\RequirePackage[UTF8,scheme=chinese]{ctex}
+\RequirePackage[
+  top=2.5cm, bottom=2.5cm,
+  left=4.1cm, right=2cm,
+  headsep=3mm]{geometry}
+\RequirePackage{hologo}
+\RequirePackage{longtable,booktabs}
+\RequirePackage{listings}
+\RequirePackage{fancyhdr}
+\RequirePackage{xcolor}
+\RequirePackage{xcolor-material}
+\RequirePackage{enumitem}
+\RequirePackage{etoolbox}
+\RequirePackage{metalogo}
+\RequirePackage[tightLists=false]{markdown}
+
+\hypersetup{
+  pdflang     = zh-CN,
+  pdftitle    = {ahuthesis: 安徽大学学位论文模板},
+  pdfauthor   = {ahhylau},
+  pdfdisplaydoctitle = true
+}%
+
+\setmainfont[
+  Extension      = .otf,
+  UprightFont    = *-regular,
+  BoldFont       = *-bold,
+  ItalicFont     = *-italic,
+  BoldItalicFont = *-bolditalic,
+]{texgyrepagella}
+\setsansfont[
+  Extension      = .otf,
+  UprightFont    = *-regular,
+  BoldFont       = *-bold,
+  ItalicFont     = *-italic,
+  BoldItalicFont = *-bolditalic,
+]{texgyreheros}
+\setmonofont[
+  Extension      = .otf,
+  UprightFont    = *-regular,
+  BoldFont       = *-bold,
+  ItalicFont     = *-italic,
+  BoldItalicFont = *-bolditalic,
+  Scale          = MatchLowercase,
+  Ligatures      = CommonOff,
+]{texgyrecursor}
+
+\colorlet{ahu@macro}{blue!60!black}
+\colorlet{ahu@env}{blue!70!black}
+\colorlet{ahu@option}{purple}
+\patchcmd{\PrintMacroName}{\MacroFont}{\MacroFont\bfseries\color{ahu@macro}}{}{}
+\patchcmd{\PrintDescribeMacro}{\MacroFont}{\MacroFont\bfseries\color{ahu@macro}}{}{}
+\patchcmd{\PrintDescribeEnv}{\MacroFont}{\MacroFont\bfseries\color{ahu@env}}{}{}
+\patchcmd{\PrintEnvName}{\MacroFont}{\MacroFont\bfseries\color{ahu@env}}{}{}
+
+\def\DescribeOption{%
+  \leavevmode\@bsphack\begingroup\MakePrivateLetters%
+  \Describe@Option}
+\def\Describe@Option#1{\endgroup
+  \marginpar{\raggedleft\PrintDescribeOption{#1}}%
+  \ahu@special@index{option}{#1}\@esphack\ignorespaces}
+\def\PrintDescribeOption#1{\strut \MacroFont\bfseries\sffamily\color{ahu@option} #1\ }
+\def\ahu@special@index#1#2{\@bsphack
+  \begingroup
+    \HD@target
+    \let\HDorg@encapchar\encapchar
+    \edef\encapchar usage{%
+      \HDorg@encapchar hdclindex{\the\c@HD@hypercount}{usage}%
+    }%
+    \index{#2\actualchar{\string\ttfamily\space#2}
+           (#1)\encapchar usage}%
+    \index{#1:\levelchar#2\actualchar
+           {\string\ttfamily\space#2}\encapchar usage}%
+  \endgroup
+  \@esphack}
+
+\lstdefinestyle{lstStyleBase}{%
+   basicstyle=\small\ttfamily,
+   aboveskip=\medskipamount,
+   belowskip=\medskipamount,
+   lineskip=0pt,
+   boxpos=c,
+   showlines=false,
+   extendedchars=true,
+   upquote=true,
+   tabsize=2,
+   showtabs=false,
+   showspaces=false,
+   showstringspaces=false,
+   numbers=none,
+   linewidth=\linewidth,
+   xleftmargin=4pt,
+   xrightmargin=0pt,
+   resetmargins=false,
+   breaklines=true,
+   breakatwhitespace=false,
+   breakindent=0pt,
+   breakautoindent=true,
+   columns=flexible,
+   keepspaces=true,
+   gobble=4,
+   framesep=3pt,
+   rulesep=1pt,
+   framerule=1.2pt,
+   backgroundcolor=\color{gray!7},
+   stringstyle=\color{green!40!black!100},
+   keywordstyle=\bfseries\color{blue!50!black},
+   commentstyle=\slshape\color{black!60}}
+
+\lstdefinestyle{lstStyleShell}{%
+   style=lstStyleBase,
+   frame=l,
+   rulecolor=\color{MaterialIndigo600},
+   language=bash}
+
+\lstdefinestyle{lstStyleLaTeX}{%
+   style=lstStyleBase,
+   frame=l,
+   rulecolor=\color{MaterialTeal600},
+   language=[LaTeX]TeX}
+
+\lstnewenvironment{latex}{\lstset{style=lstStyleLaTeX}}{}
+\lstnewenvironment{shell}{\lstset{style=lstStyleShell}}{}
+
+\setlist{nosep}
+
+\DeclareDocumentCommand{\option}{m}{\textsf{#1}}
+\DeclareDocumentCommand{\env}{m}{\texttt{#1}}
+\DeclareDocumentCommand{\pkg}{s m}{%
+  \textsf{#2}\IfBooleanF#1{\ahu@special@index{package}{#2}}}
+\DeclareDocumentCommand{\cls}{s m}{%
+  \textsf{#2}\IfBooleanF#1{\ahu@special@index{package}{#2}}}
+\DeclareDocumentCommand{\file}{s m}{%
+  \nolinkurl{#2}\IfBooleanF#1{\ahu@special@index{file}{#2}}}
+\newcommand{\myentry}[1]{%
+  \marginpar{\raggedleft\color{purple}\bfseries\strut #1}}
+\newcommand{\note}[2][Note]{{%
+  \color{MaterialIndigo600}{\bfseries #1}\emph{#2}}}
+
+\g@addto@macro\UrlBreaks{%
+  \do0\do1\do2\do3\do4\do5\do6\do7\do8\do9%
+  \do\A\do\B\do\C\do\D\do\E\do\F\do\G\do\H\do\I\do\J\do\K\do\L\do\M
+  \do\N\do\O\do\P\do\Q\do\R\do\S\do\T\do\U\do\V\do\W\do\X\do\Y\do\Z
+  \do\a\do\b\do\c\do\d\do\e\do\f\do\g\do\h\do\i\do\j\do\k\do\l\do\m
+  \do\n\do\o\do\p\do\q\do\r\do\s\do\t\do\u\do\v\do\w\do\x\do\y\do\z
+}
+\Urlmuskip=0mu plus 0.1mu
+
+\def\ahuthesis{\textsc{Ahu}\-\textsc{Thesis}}
+%</dtx-style>
+%    \end{macrocode}
+% \fi
+%
+% \Finale
+\endinput
