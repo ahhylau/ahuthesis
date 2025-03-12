@@ -89,14 +89,6 @@
 % 致谢
 \input{chapters/acknowledgements}
 
-% 声明
-% 将签字扫描后的声明文件 scan-statement.pdf 替换原始页面
-% \statement[file=scan-statement.pdf]
-% 研究生编译生成时有页眉页脚, 插入扫描版时不再重复.
-% 也可以手动控制是否加页眉页脚
-% \statement[page-style=empty]
-% \statement[file=scan-statement.pdf, page-style=plain]
-
 \input{chapters/resume}
 \end{document}
 ```
